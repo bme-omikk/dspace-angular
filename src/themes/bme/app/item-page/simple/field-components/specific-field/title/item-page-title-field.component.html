@@ -1,0 +1,11 @@
+<h2 class="item-page-title-field">
+  <div *ngIf="item.firstMetadataValue('dspace.entity.type') as type" class="d-inline">
+    {{ type.toLowerCase() + '.page.titleprefix' | translate }}
+  </div>
+  <span class="dont-break-out">{{ dsoNameService.getName(item) }}</span>
+  <div *ngIf="item.firstMetadataValue('dc.rights.license')">
+      <a href="https://en.wikipedia.org/wiki/Creative_Commons_license#Six_regularly_used_licenses" target="_blank">
+          <img src="assets/bme/images/cc-icons/{{item.firstMetadataValue('dc.rights.license')}}.svg" />
+      </a>
+  </div>
+</h2>

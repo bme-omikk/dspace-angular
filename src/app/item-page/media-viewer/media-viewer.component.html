@@ -10,11 +10,23 @@
         <ng-container *ngVar="mediaOptions.image && mediaList[0]?.format === 'image' as showImage">
           <ds-themed-media-viewer-video *ngIf="showVideo" [medias]="mediaList" [captions]="captions$ | async"></ds-themed-media-viewer-video>
           <ds-themed-media-viewer-image *ngIf="showImage" [images]="mediaList"></ds-themed-media-viewer-image>
-          <ng-container *ngIf="showImage || showVideo; else showThumbnail"></ng-container>
+          <ng-container *ngIf="showImage || showVideo; else viewPdf"></ng-container>
         </ng-container>
       </ng-container>
     </ng-container>
   </div>
+  <ng-template #viewPdf>
+    <ng-container *ngIf="(canDownload$ | async) && (mediaOptions.pdf && mediaList[0]?.type === 'pdf' && item.metadata['dspace.viewpdf.enabled'] !== undefined); else showThumbnail">
+      <a
+        *ngIf="item.metadata['dspace.viewpdf.enabled'][0].value === 'true'"
+        (click)="displayPdfViewer()">
+          <img class="pdf-viewer-thumbnail" src="{{ (thumbnailsRD$ | async)?.payload?.page[0]?._links.content.href }}"/>
+      </a>
+      <div id="pdf-viewer-wrapper" class="pdfviewer-wrapper">
+        <ds-media-viewer-pdf class="pdfviewer-wrapper" [pdfs]="mediaList"></ds-media-viewer-pdf>
+      </div>
+    </ng-container>
+  </ng-template>
   <ng-template #showThumbnail>
     <ds-themed-media-viewer-image *ngIf="mediaOptions.image && mediaOptions.video"
       [image]="(thumbnailsRD$ | async)?.payload?.page[0]?._links.content.href || thumbnailPlaceholder"

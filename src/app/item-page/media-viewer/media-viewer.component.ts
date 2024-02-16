@@ -14,6 +14,8 @@ import { followLink } from '../../shared/utils/follow-link-config.model';
 import { MediaViewerConfig } from '../../../config/media-viewer-config.interface';
 import { environment } from '../../../environments/environment';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { AuthorizationDataService } from '../../core/data/feature-authorization/authorization-data.service';
+import { FeatureID } from '../../core/data/feature-authorization/feature-id';
 
 /**
  * This component renders the media viewers
@@ -40,9 +42,12 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
 
   subs: Subscription[] = [];
 
+  canDownload$: Observable<boolean>;
+
   constructor(
     protected bitstreamDataService: BitstreamDataService,
-    protected changeDetectorRef: ChangeDetectorRef
+    protected changeDetectorRef: ChangeDetectorRef,
+    private authorizationService: AuthorizationDataService,
   ) {
   }
 
@@ -57,6 +62,7 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
     const types: string[] = [
       ...(this.mediaOptions.image ? ['image'] : []),
       ...(this.mediaOptions.video ? ['audio', 'video'] : []),
+      ...(this.mediaOptions.pdf ? ['pdf'] : []),
     ];
     this.thumbnailsRD$ = this.loadRemoteData('THUMBNAIL');
     this.subs.push(this.loadRemoteData('ORIGINAL').subscribe((bitstreamsRD: RemoteData<PaginatedList<Bitstream>>) => {
@@ -78,7 +84,8 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
                   format,
                   thumbnailsRD.payload && thumbnailsRD.payload.page[index]
                 );
-                if (types.includes(mediaItem.format)) {
+                this.canDownload$ = this.authorizationService.isAuthorized(FeatureID.CanDownload, bitstreamsRD.payload.page[index]._links.self.href);
+                if (types.includes(mediaItem.format) || types.includes(mediaItem.type)) {
                   this.mediaList$.next([...this.mediaList$.getValue(), mediaItem]);
                 } else if (format.mimetype === 'text/vtt') {
                   this.captions$.next([...this.captions$.getValue(), bitstreamsRD.payload.page[index]]);
@@ -128,8 +135,16 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
     const mediaItem = new MediaViewerItem();
     mediaItem.bitstream = original;
     mediaItem.format = format.mimetype.split('/')[0];
+    mediaItem.type = format.mimetype.split('/')[1];
     mediaItem.mimetype = format.mimetype;
     mediaItem.thumbnail = thumbnail ? thumbnail._links.content.href : null;
     return mediaItem;
+  }
+
+  displayPdfViewer() {
+    let el = document.getElementById('pdf-viewer-wrapper');
+    if (el) {
+      el.style.display = 'block';
+    }
   }
 }

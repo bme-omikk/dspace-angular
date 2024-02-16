@@ -1,0 +1,47 @@
+<ngx-extended-pdf-viewer
+    id="pdfViewer"
+    [customToolbar]="additionalButtons"
+    [src]="pdfs[0]?.bitstream?._links?.content?.href"
+    [height]="'auto'"
+    [textLayer]="true"
+    [useBrowserLocale]="true"
+    [showToolbar]="true"
+    [showSidebarButton]="false"
+    [showFindButton]="true"
+    [showPagingButtons]="true"
+    [showDrawEditor]="false"
+    [showStampEditor]="false"
+    [showTextEditor]="false"
+    [showZoomButtons]="true"
+    [showPresentationModeButton]="false"
+    [showOpenFileButton]="false"
+    [showPrintButton]="false"
+    [showDownloadButton]="false"
+    [showSecondaryToolbarButton]="false"
+    [showRotateButton]="false"
+    [showHandToolButton]="false"
+    [showScrollingButton]="false"
+    [showSpreadButton]="false"
+    [showPropertiesButton]="false"
+    [zoom]="'100%'"
+    (pagesLoaded)="onPagesLoaded($event)">
+</ngx-extended-pdf-viewer>
+<ng-template #additionalButtons>
+  <div id="toolbarViewer">
+    <div id="toolbarViewerLeft">
+      <pdf-find-button [showFindButton]="true" [textLayer]="true"></pdf-find-button>
+      <pdf-paging-area></pdf-paging-area>
+    </div>
+    <pdf-zoom-toolbar ></pdf-zoom-toolbar> <!-- toolbar viewer middle -->
+    <div id="toolbarViewerRight">
+      <pdf-shy-button
+        [cssClass]="'lg' | responsiveCSSClass"
+        class="close-pdf-viewer"
+        primaryToolbarId="closePdfViewer"
+        [action]="onClick"
+        image="<svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'><path fill='red' d='M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z'/></svg>"
+      >
+      </pdf-shy-button>
+    </div>
+  </div>
+</ng-template>

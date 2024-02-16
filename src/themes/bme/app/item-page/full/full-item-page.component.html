@@ -1,0 +1,106 @@
+<div class="container" *ngVar="(itemRD$ | async) as itemRD">
+  <div class="item-page" *ngIf="itemRD?.hasSucceeded" @fadeInOut>
+    <div *ngIf="itemRD?.payload as item">
+      <ds-themed-item-alerts [item]="item"></ds-themed-item-alerts>
+      <ds-item-versions-notice [item]="item"></ds-item-versions-notice>
+      <ds-view-tracker [object]="item"></ds-view-tracker>
+      <div *ngIf="!item.isWithdrawn || (isAdmin$|async)" class="full-item-info">
+        <div class="d-flex flex-row">
+          <ds-themed-item-page-title-field class="mr-auto" [item]="item"></ds-themed-item-page-title-field>
+          <ds-dso-edit-menu></ds-dso-edit-menu>
+        </div>
+        <div class="simple-view-link my-3" *ngIf="!fromSubmissionObject">
+          <a class="btn btn-outline-primary" [routerLink]="[(itemPageRoute$ | async)]">
+            {{"item.page.link.simple" | translate}}
+          </a>
+        </div>
+        <div class="table-responsive">
+          <table class="table  table-striped">
+            <tbody>
+            <ng-container *ngFor="let mdEntry of (metadata$ | async) | keyvalue">
+              <tr *ngFor="let mdValue of mdEntry.value">
+                <td><label title={{mdEntry.key}}>{{this.metadataMap.get(mdEntry.key) | translate}}</label></td>
+                <ng-container *ngIf="mdEntry.key.includes('doi'); else doktori">
+                    <td><a href="https://doi.org/{{mdValue.value}}" target="_blank">{{mdValue.value}}</a></td>
+                </ng-container>
+                <ng-template #doktori>
+                    <ng-container *ngIf="mdEntry.key.includes('doktorihu'); else handle">
+                        <td *ngIf="mdEntry.key.includes('doktorihuHonositasID')"><a href="https://doktori.hu/index.php?menuid=629&lang=HU&hoid={{mdValue.value}}" target="_blank">{{mdValue.value}}</a></td>
+                        <td *ngIf="mdEntry.key.includes('doktorihuHabilitacioID')"><a href="https://doktori.hu/index.php?menuid=196&lang=HU&hid={{mdValue.value}}" target="_blank">{{mdValue.value}}</a></td>
+                        <td *ngIf="mdEntry.key.includes('doktorihuVedesID')"><a href="https://doktori.hu/index.php?menuid=193&lang=HU&vid={{mdValue.value}}" target="_blank">{{mdValue.value}}</a></td>
+                    </ng-container>
+                </ng-template>
+                <ng-template #handle>
+                    <ng-container *ngIf="mdEntry.key.includes('handle'); else mnl">
+                        <td><a href="https://hdl.handle.net/{{mdValue.value}}" target="_blank">{{mdValue.value}}</a></td>
+                    </ng-container>
+                </ng-template>
+                <ng-template #mnl>
+                    <ng-container *ngIf="mdEntry.key.includes('mnl'); else mtmt">
+                        <td><a href="{{mdValue.value}}" target="_blank">{{mdValue.value}}</a></td>
+                    </ng-container>
+                </ng-template>
+                <ng-template #mtmt>
+                    <ng-container *ngIf="mdEntry.key.includes('mtmt'); else neptun">
+                        <td><a href="https://m2.mtmt.hu/api/publication/{{mdValue.value}}" target="_blank">{{mdValue.value}}</a></td>
+                    </ng-container>
+                </ng-template>
+                <ng-template #neptun>
+                    <ng-container *ngIf="mdEntry.key.includes('neptun'); else scopus">
+                        <td>{{mdValue.value}}</td>
+                    </ng-container>
+                </ng-template>
+                <ng-template #scopus>
+                    <ng-container *ngIf="mdEntry.key.includes('scopus'); else wos">
+                        <td><a href="http://www.scopus.com/record/display.url?origin=inward&eid=2-s2.0-{{mdValue.value}}" target="_blank">{{mdValue.value}}</a></td>
+                    </ng-container>
+                </ng-template>
+                <ng-template #wos>
+                    <ng-container *ngIf="mdEntry.key.includes('wos'); else aleph">
+                        <td><a href="https://www.webofscience.com/wos/woscc/full-record/{{mdValue.value}}" target="_blank">{{mdValue.value}}</a></td>
+                    </ng-container>
+                </ng-template>
+                <ng-template #aleph>
+                    <ng-container *ngIf="mdEntry.key.includes('bmeomikk-aleph'); else callnumber">
+                        <td><a href="https://aleph.omikk.bme.hu/jump/sysno/{{mdValue.value}}" target="_blank">{{mdValue.value}}</a></td>
+                    </ng-container>
+                </ng-template>
+                <ng-template #callnumber>
+                    <ng-container *ngIf="mdEntry.key.includes('bmeomikkCallnumber'); else relatedhandle">
+                        <td><a href="https://aleph.omikk.bme.hu/jump/call-number/{{mdValue.value}}" target="_blank">{{mdValue.value}}</a></td>
+                    </ng-container>
+                </ng-template>
+                <ng-template #relatedhandle>
+                    <ng-container *ngIf="mdEntry.key.includes('relatedHandle'); else relatedurl">
+                        <td><a href="{{getGeneratedURI(mdValue.value)}}" target="_blank">{{getIDPart(mdValue.value)}}</a></td>
+                    </ng-container>
+                </ng-template>
+                <ng-template #relatedurl>
+                    <ng-container *ngIf="mdEntry.key.includes('relatedURL'); else default">
+                        <td><a href="{{mdValue.value}}" target="_blank">{{mdValue.value}}</a></td>
+                    </ng-container>
+                </ng-template>
+                <ng-template #default>
+                    <td>{{mdValue.value}}</td>
+                </ng-template>
+                <td>{{mdValue.language}}</td>
+              </tr>
+            </ng-container>
+            </tbody>
+          </table>
+        </div>
+        <ds-themed-item-page-full-file-section [item]="item"></ds-themed-item-page-full-file-section>
+        <ds-item-page-collections [item]="item"></ds-item-page-collections>
+        <ds-item-versions class="mt-2" [item]="item"></ds-item-versions>
+        <div class="button-row bottom" *ngIf="fromSubmissionObject">
+          <div class="text-right">
+            <button class="btn btn-outline-secondary mr-1" (click)="back()"><i
+                    class="fas fa-arrow-left"></i> {{'item.page.return' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ds-error *ngIf="itemRD?.hasFailed" message="{{'error.item' | translate}}"></ds-error>
+  <ds-themed-loading *ngIf="itemRD?.isLoading" message="{{'loading.item' | translate}}"></ds-themed-loading>
+</div>

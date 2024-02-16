@@ -1,0 +1,136 @@
+<ds-themed-results-back-button *ngIf="showBackButton | async" [back]="back"></ds-themed-results-back-button>
+<div class="row" *ngIf="iiifEnabled">
+  <div class="col-12">
+    <ds-mirador-viewer id="iiif-viewer"
+                   [object]="object"
+                   [searchable]="iiifSearchEnabled"
+                   [query]="iiifQuery$ | async">
+    </ds-mirador-viewer>
+  </div>
+</div>
+
+<div class="d-flex flex-row">
+  <ds-themed-item-page-title-field [item]="object" class="mr-auto">
+  </ds-themed-item-page-title-field>
+  <ds-dso-edit-menu></ds-dso-edit-menu>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-4">
+    <ng-container *ngIf="!(mediaViewer.image || mediaViewer.video)">
+      <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+        <ds-themed-thumbnail [thumbnail]="object?.thumbnail | async"></ds-themed-thumbnail>
+      </ds-metadata-field-wrapper>
+    </ng-container>
+    <div *ngIf="mediaViewer.image || mediaViewer.video || mediaViewer.pdf" class="mb-2">
+      <ds-themed-media-viewer [item]="object"></ds-themed-media-viewer>
+    </div>
+    <ds-themed-item-page-file-section [item]="object"></ds-themed-item-page-file-section>
+    <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
+    <ds-generic-item-page-field [item]="object"
+      [fields]="['dc.title']"
+      [label]="'item.page.title'">
+    </ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.contributor.author')" [item]="object" [fields]="['dc.contributor.author']" [label]="'item.page.author'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.contributor.advisor')" [item]="object" [fields]="['dc.contributor.advisor']" [label]="'item.page.advisor'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.contributor')" [item]="object" [fields]="['dc.contributor']" [label]="'item.page.contributor'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.type')" [item]="object" [fields]="['dc.type']" [label]="'item.page.type'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.coverage.spatial')" [item]="object" [fields]="['dc.coverage.spatial']" [label]="'item.page.spatial'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.date.created')" [item]="object" [fields]="['dc.date.created']" [label]="'item.page.createdDate'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.format.extent')" [item]="object" [fields]="['dc.format.extent']" [label]="'item.page.extent'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.format.medium')" [item]="object" [fields]="['dc.format.medium']" [label]="'item.page.medium'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.identifier.isbn')" [item]="object" [fields]="['dc.identifier.isbn']" [label]="'item.page.isbn'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.identifier.issn')" [item]="object" [fields]="['dc.identifier.issn']" [label]="'item.page.issn'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.language')" [item]="object" [fields]="['dc.language']" [label]="'item.page.language'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.publisher')" [item]="object" [fields]="['dc.publisher']" [label]="'item.page.publisher'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.relation.replaces')" [item]="object" [fields]="['dc.relation.replaces']" [label]="'item.page.replaces'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.title.alternative')" [item]="object" [fields]="['dc.title.alternative']" [label]="'item.page.alternative'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dcterms.accessRights')" [item]="object" [fields]="['dcterms.accessRights']" [label]="'item.page.accessRights'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dcterms.rightsHolder')" [item]="object" [fields]="['dcterms.rightsHolder']" [label]="'item.page.rightsHolder'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.address')" [item]="object" [fields]="['local.address']" [label]="'item.page.address'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.conferenceDate')" [item]="object" [fields]="['local.conferenceDate']" [label]="'item.page.conferenceDate'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.conferencePlace')" [item]="object" [fields]="['local.conferencePlace']" [label]="'item.page.conferencePlace'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.conferenceTitle')" [item]="object" [fields]="['local.conferenceTitle']" [label]="'item.page.conferenceTitle'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.containerIdentifierIsbn')" [item]="object" [fields]="['local.containerIdentifierIsbn']" [label]="'item.page.containerIdentifierIsbn'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.containerIdentifierIssn')" [item]="object" [fields]="['local.containerIdentifierIssn']" [label]="'item.page.containerIdentifierIssn'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.containerPeriodicalNumber')" [item]="object" [fields]="['local.containerPeriodicalNumber']" [label]="'item.page.containerPeriodicalNumber'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.containerPeriodicalVolume')" [item]="object" [fields]="['local.containerPeriodicalVolume']" [label]="'item.page.containerPeriodicalVolume'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.containerPeriodicalYear')" [item]="object" [fields]="['local.containerPeriodicalYear']" [label]="'item.page.containerPeriodicalYear'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.containerTitle')" [item]="object" [fields]="['local.containerTitle']" [label]="'item.page.containerTitle'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.contributor.lector')" [item]="object" [fields]="['local.contributor.lector']" [label]="'item.page.contributorLector'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.contributor.translator')" [item]="object" [fields]="['local.contributor.translator']" [label]="'item.page.contributor.lector'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.contributorBody')" [item]="object" [fields]="['local.contributorBody']" [label]="'item.page.contributorBody'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.courseCode')" [item]="object" [fields]="['local.courseCode']" [label]="'item.page.courseCode'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.courseName')" [item]="object" [fields]="['local.courseName']" [label]="'item.page.courseName'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.dateDefence')" [item]="object" [fields]="['local.dateDefence']" [label]="'item.page.dateDefence'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.department')" [item]="object" [fields]="['local.department']" [label]="'item.page.department'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.descriptionVersion')" [item]="object" [fields]="['local.descriptionVersion']" [label]="'item.page.descriptionVersion'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.doctoral-school')" [item]="object" [fields]="['local.doctoral-school']" [label]="'item.page.doctoralSchool'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.faculty')" [item]="object" [fields]="['local.faculty']" [label]="'item.page.faculty'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.firstpage')" [item]="object" [fields]="['local.firstpage']" [label]="'item.page.firstpage'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.identifier')" [item]="object" [fields]="['local.identifier']" [label]="'item.page.identifier'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.identifierLectureNotes')" [item]="object" [fields]="['local.identifierLectureNotes']" [label]="'item.page.identifierLectureNotes'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.identifierReference')" [item]="object" [fields]="['local.identifierReference']" [label]="'item.page.identifierReference'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.inscription')" [item]="object" [fields]="['local.inscription']" [label]="'item.page.inscription'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.note')" [item]="object" [fields]="['local.note']" [label]="'item.page.note'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.page')" [item]="object" [fields]="['local.page']" [label]="'item.page.page'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.periodicalCreator')" [item]="object" [fields]="['local.periodicalCreator']" [label]="'item.page.periodicalCreator'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.periodicalNumber')" [item]="object" [fields]="['local.periodicalNumber']" [label]="'item.page.periodicalNumber'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.periodicalVolume')" [item]="object" [fields]="['local.periodicalVolume']" [label]="'item.page.periodicalVolume'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.periodicalYear')" [item]="object" [fields]="['local.periodicalYear']" [label]="'item.page.periodicalYear'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.scale')" [item]="object" [fields]="['local.scale']" [label]="'item.page.scale'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.signature')" [item]="object" [fields]="['local.signature']" [label]="'item.page.signature'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.subjectArea')" [item]="object" [fields]="['local.subjectArea']" [label]="'item.page.subjectArea'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.subjectField')" [item]="object" [fields]="['local.subjectField']" [label]="'item.page.subjectField'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.subjectOszkar')" [item]="object" [fields]="['local.subjectOszkar']" [label]="'item.page.subjectOszkar'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.technique')" [item]="object" [fields]="['local.technique']" [label]="'item.page.technique'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.titlenumber')" [item]="object" [fields]="['local.titlenumber']" [label]="'item.page.titlenumber'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.typeType')" [item]="object" [fields]="['local.typeType']" [label]="'item.page.typeType'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.university')" [item]="object" [fields]="['local.university']" [label]="'item.page.university'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.universityProgram')" [item]="object" [fields]="['local.universityProgram']" [label]="'item.page.universityProgram'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('local.universityProgramLevel')" [item]="object" [fields]="['local.universityProgramLevel']" [label]="'item.page.universityProgramLevel'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('journal.title')" [item]="object"
+      [fields]="['journal.title']"
+      [label]="'item.page.journal-title'">
+    </ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('journal.identifier.issn')" [item]="object"
+      [fields]="['journal.identifier.issn']"
+      [label]="'item.page.journal-issn'">
+    </ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('journalvolume.identifier.name')" [item]="object"
+      [fields]="['journalvolume.identifier.name']"
+      [label]="'item.page.volume-title'">
+    </ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.publisher')" [item]="object"
+      [fields]="['dc.publisher']"
+      [label]="'item.page.publisher'">
+    </ds-generic-item-page-field>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
+    <ds-generic-item-page-field [item]="object"
+      [fields]="['dc.description']"
+      [label]="'item.page.description'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+      [fields]="['dc.subject']"
+      [separator]="', '"
+      [label]="'item.page.subject'">
+    </ds-generic-item-page-field>
+    <ds-generic-item-page-field [item]="object"
+      [fields]="['dc.identifier.citation']"
+      [label]="'item.page.citation'">
+    </ds-generic-item-page-field>
+    <ds-item-page-uri-field [item]="object"
+      [fields]="['dc.identifier.uri']"
+      [label]="'item.page.uri'">
+    </ds-item-page-uri-field>
+    <omikk-links [item]="object" [relatedHandleMD]="'local.relatedHandle'" [relatedURLMD]="'local.relatedURL'" [relatedTypeMD]="'local.relatedType'"></omikk-links>
+    <ds-item-page-collections [item]="object"></ds-item-page-collections>
+    <div>
+      <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="button">
+        <i class="fas fa-info-circle"></i> {{"item.page.link.full" | translate}}
+      </a>
+    </div>
+  </div>
+</div>

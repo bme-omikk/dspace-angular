@@ -41,7 +41,14 @@
             "aot": true,
             "assets": [
               "src/assets",
-              "src/robots.txt"
+              "src/robots.txt",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/ngx-extended-pdf-viewer/assets/",
+                "output": "/assets/"
+              },
+              "src/robots.txt",
+              "src/assets/images/favicon.ico"
             ],
             "styles": [
               "src/styles/startup.scss",
@@ -59,6 +66,11 @@
                 "input": "src/themes/dspace/styles/theme.scss",
                 "inject": false,
                 "bundleName": "dspace-theme"
+              },
+              {
+                "input": "src/themes/bme/styles/theme.scss",
+                "inject": false,
+                "bundleName": "bme-theme"
               }
             ],
             "scripts": [],
