@@ -1,9 +1,0 @@
-<div *ngIf="item.hasMetadata(relatedHandleMD)" class="simple-view-element">
-  <h2 class="simple-view-element-header">{{ "item.page.relatedhandle" | translate }}</h2>
-  <div *ngFor="let mdValue of item['metadata'][relatedHandleMD]">
-    <a href="{{ getGeneratedURI(mdValue.value) }}" target="_blank">{{ getIDPart(mdValue.value) }}</a>
-  </div>
-  <div *ngFor="let mdValue of item['metadata'][relatedURLMD]">
-    <a href="{{ mdValue.value }}" target="_blank">{{ mdValue.value }}</a>
-  </div>
-</div>
