@@ -40,6 +40,7 @@ import { ThemedMediaViewerVideoComponent } from './media-viewer/media-viewer-vid
 import { MediaViewerImageComponent } from './media-viewer/media-viewer-image/media-viewer-image.component';
 import { ThemedMediaViewerImageComponent } from './media-viewer/media-viewer-image/themed-media-viewer-image.component';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { MiradorViewerComponent } from './mirador-viewer/mirador-viewer.component';
 import { VersionPageComponent } from './version-page/version-page/version-page.component';
 import { ThemedFileSectionComponent } from './simple/field-components/file-section/themed-file-section.component';
@@ -60,6 +61,7 @@ import { ThemedItemAlertsComponent } from './alerts/themed-item-alerts.component
 import {
   ThemedFullFileSectionComponent
 } from './full/field-components/file-section/themed-full-file-section.component';
+import { MediaViewerPdfComponent } from './media-viewer/media-viewer-pdf/media-viewer-pdf.component';
 
 const ENTRY_COMPONENTS = [
   // put only entry components that use custom decorator
@@ -94,6 +96,7 @@ const DECLARATIONS = [
   ThemedMediaViewerVideoComponent,
   MediaViewerImageComponent,
   ThemedMediaViewerImageComponent,
+  MediaViewerPdfComponent,
   MiradorViewerComponent,
   VersionPageComponent,
   OrcidPageComponent,
@@ -117,6 +120,7 @@ const DECLARATIONS = [
     JournalEntitiesModule.withEntryComponents(),
     ResearchEntitiesModule.withEntryComponents(),
     NgxGalleryModule,
+    NgxExtendedPdfViewerModule,
     NgbAccordionModule,
     ResultsBackButtonModule,
     UploadModule,

@@ -23,4 +23,9 @@ export class MediaViewerItem {
    * Incoming Bitsream thumbnail
    */
   thumbnail: string;
+
+  /**
+   * Incoming Bitstream type
+   */
+  type: string;
 }

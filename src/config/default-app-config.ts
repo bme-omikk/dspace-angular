@@ -396,7 +396,8 @@ export class DefaultAppConfig implements AppConfig {
   // For videos, this enables embedded video streaming
   mediaViewer: MediaViewerConfig = {
     image: false,
-    video: false
+    video: false,
+    pdf: false,
   };
   // Whether the end-user-agreement and privacy policy feature should be enabled or not.
   // Disabling the end user agreement feature will result in:

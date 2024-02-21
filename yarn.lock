@@ -7724,6 +7724,11 @@ lodash.debounce@^4.0.8:
   resolved "https://registry.npmjs.org/lodash.debounce/-/lodash.debounce-4.0.8.tgz"
   integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
 
+lodash.deburr@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/lodash.deburr/-/lodash.deburr-4.1.0.tgz#ddb1bbb3ef07458c0177ba07de14422cb033ff9b"
+  integrity sha512-m/M1U1f3ddMCs6Hq2tAsYThTBDaAKFDX3dwDo97GEYzamXi9SqUpjWi/Rrj/gf3X2n8ktwgZrlP1z6E3v/IExQ==
+
 lodash.isfinite@^3.3.2:
   version "3.3.2"
   resolved "https://registry.npmjs.org/lodash.isfinite/-/lodash.isfinite-3.3.2.tgz"
@@ -8339,6 +8344,14 @@ ng2-nouislider@^2.0.0:
   resolved "https://registry.yarnpkg.com/ng2-nouislider/-/ng2-nouislider-2.0.0.tgz#a62fd6cf3f1561be19a2691c2f68d21a46dc6006"
   integrity sha512-NGbF/0w0+bZqclpSPFOlWIeVJaVwRRYFJzD1x8PClbw9GIeo7fCHoBzZ81y7K7FTJg6to+cgjSTFETPZG/Dizg==
   dependencies:
+    tslib "^2.3.0"
+
+ngx-extended-pdf-viewer@^18.0.0-beta.10:
+  version "18.1.14"
+  resolved "https://registry.yarnpkg.com/ngx-extended-pdf-viewer/-/ngx-extended-pdf-viewer-18.1.14.tgz#20e89514b37ad6c798d5aba74c6acab4176f66f5"
+  integrity sha512-8nz0sQWPn3BrN8rLy0vHrORZ3FJWPKDBt2eOJANxTmEKr0mkVECHqOoK47EfZMrc/+zwCzJkzTskA9w3CzJM/A==
+  dependencies:
+    lodash.deburr "^4.1.0"
     tslib "^2.3.0"
 
 ngx-infinite-scroll@^15.0.0:

@@ -1,1 +1,26 @@
+div.pdfviewer-wrapper {
+  display: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 0;
+  background: rgba(0,0,0,.5);
+}
 
+button.pdfviewer-close {
+  position: relative;
+  width: 25vw;
+  left: 40vw;
+  border: 1px solid black;
+  background-color: lightskyblue;
+}
+
+img.pdf-viewer-thumbnail {
+  width: 141px;
+  height: 200px;
+  cursor: pointer;
+}
