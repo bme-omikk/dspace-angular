@@ -5639,7 +5639,7 @@
   "item.page.universityProgram": "Program",
 
   "item.page.universityProgramLevel": "Program Level",
-  
+
   "item.page.relatedhandle": "Related publications, research data and project IDs",
 
   "item.page.no-related-type-found": "(There was no relatedType metadata found. The ID was handled as an URL.)",
@@ -5672,5 +5672,5 @@
 
   "local-identifier-scopus": "Other Identifier: Scopus",
 
-  "local-identifier-wos": "Other Identifier: WOS"
+  "local-identifier-wos": "Other Identifier: WOS",
 }

@@ -1,5 +1,5 @@
-import { Component, Inject, Injector, isDevMode } from '@angular/core';
-import { select, Store } from '@ngrx/store';
+import { Component, Inject, Injector } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { MenuService } from '../../../../app/shared/menu/menu.service';
 import { HostWindowService } from '../../../../app/shared/host-window.service';
 import { BrowseService } from '../../../../app/core/browse/browse.service';
@@ -22,7 +22,7 @@ import { APP_CONFIG, AppConfig } from '../../../../config/app-config.interface';
 })
 export class NavbarComponent extends BaseComponent {
   is_dev_mode: boolean = this.appConfig.rest.host.includes('dev') ? true : false;
-  
+
   constructor(
     protected menuService: MenuService,
     protected injector: Injector,

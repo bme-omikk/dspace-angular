@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { EndUserAgreementContentComponent as BaseComponent } from '../../../../../../app/info/end-user-agreement/end-user-agreement-content/end-user-agreement-content.component';
 
 @Component({
   selector: 'ds-end-user-agreement-content',
