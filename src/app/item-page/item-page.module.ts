@@ -10,6 +10,9 @@ import {
   ItemPageAuthorFieldComponent
 } from './simple/field-components/specific-field/author/item-page-author-field.component';
 import {
+  OmikkLinksComponent
+} from './simple/field-components/specific-field/omikk-links/omikk-links.component';
+import {
   ItemPageDateFieldComponent
 } from './simple/field-components/specific-field/date/item-page-date-field.component';
 import {
@@ -78,6 +81,7 @@ const DECLARATIONS = [
   ThemedFullItemPageComponent,
   MetadataUriValuesComponent,
   ItemPageAuthorFieldComponent,
+  OmikkLinksComponent,
   ItemPageDateFieldComponent,
   ItemPageAbstractFieldComponent,
   ItemPageUriFieldComponent,
