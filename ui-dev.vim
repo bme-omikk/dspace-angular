@@ -208,11 +208,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 109 - ((29 * winheight(0) + 15) / 30)
+let s:l = 124 - ((33 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 109
+keepjumps 124
 normal! 05|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
@@ -351,12 +351,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 47 - ((28 * winheight(0) + 15) / 30)
+let s:l = 34 - ((0 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 47
-normal! 0
+keepjumps 34
+normal! 04|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/themes/bme/assets/i18n/hu.json5
@@ -494,12 +494,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 156 - ((9 * winheight(0) + 14) / 29)
+let s:l = 156 - ((10 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 156
-normal! 0
+normal! 03|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/assets/i18n/hu.json5
@@ -637,12 +637,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 5367 - ((20 * winheight(0) + 14) / 29)
+let s:l = 7915 - ((7 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 5367
-normal! 050|
+keepjumps 7915
+normal! 0
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/assets/i18n/en.json5
@@ -780,7 +780,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 5543 - ((21 * winheight(0) + 14) / 29)
+let s:l = 5543 - ((33 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -923,12 +923,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 149 - ((4 * winheight(0) + 14) / 29)
+let s:l = 27 - ((26 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 149
-normal! 087|
+keepjumps 27
+normal! 069|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/full/full-item-page.component.html
@@ -1066,7 +1066,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 22 - ((4 * winheight(0) + 14) / 29)
+let s:l = 22 - ((6 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1209,11 +1209,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 15) / 30)
+let s:l = 162 - ((41 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 162
 normal! 0
 lcd ~/Dokumentumok/dspace-angular
 tabnext
@@ -1352,12 +1352,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 35 - ((18 * winheight(0) + 15) / 30)
+let s:l = 39 - ((38 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 35
-normal! 0
+keepjumps 39
+normal! 046|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links/omikk-links.component.scss
@@ -1495,12 +1495,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 15) / 30)
+let s:l = 9 - ((8 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 2
-normal! 05|
+keepjumps 9
+normal! 0
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/themes/bme/app/navbar/navbar.component.html
@@ -1638,7 +1638,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 15) / 30)
+let s:l = 1 - ((0 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1781,36 +1781,36 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 15) / 30)
+let s:l = 1 - ((0 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
 lcd ~/Dokumentumok/dspace-angular
-tabnext 4
+tabnext 10
 set stal=1
-badd +0 ~/Dokumentumok/dspace-angular/angular.json
-badd +0 ~/Dokumentumok/dspace-angular/src/themes/eager-themes.module.ts
-badd +0 ~/Dokumentumok/dspace-angular/config/config.dev.yml
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/simple/item-types/untyped-item/untyped-item.component.html
+badd +1 ~/Dokumentumok/dspace-angular/angular.json
+badd +1 ~/Dokumentumok/dspace-angular/src/themes/eager-themes.module.ts
+badd +1 ~/Dokumentumok/dspace-angular/config/config.dev.yml
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/generic/generic-item-page-field.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/assets/i18n/hu.json5
 badd +1 ~/Dokumentumok/dspace-angular/src/assets/i18n/hu.json5
 badd +1 ~/Dokumentumok/dspace-angular/src/assets/i18n/en.json5
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/full/full-item-page.component.ts
-badd +0 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/full/full-item-page.component.html
-badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links/omikk-links.component.html
+badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/full/full-item-page.component.html
+badd +0 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links/omikk-links.component.html
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links/omikk-links.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links/omikk-links.component.scss
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/navbar/navbar.component.html
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/navbar/navbar.component.ts
-badd +0 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/simple/item-types/untyped-item/untyped-item.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/assets/i18n/en.json5
 badd +1 ~/Dokumentumok/dspace-angular/src/assets/i18n
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/full/full-item-page.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/navbar
+badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/simple/item-types/untyped-item/untyped-item.component.ts
 badd +12 ~/Dokumentumok/dspace-angular/src/themes/bme/app/header/header.component.ts
 badd +7 ~/Dokumentumok/dspace-angular/src/themes/bme/app/header/header.component.html
 badd +21 ~/Dokumentumok/dspace-angular/src/themes/bme/app/home-page/home-news/home-news.component.scss

@@ -1,9 +1,163 @@
-<div *ngIf="item.hasMetadata(relatedHandleMD)" class="simple-view-element">
-  <h2 class="simple-view-element-header">{{ "item.page.relatedhandle" | translate }}</h2>
-  <div *ngFor="let mdValue of item['metadata'][relatedHandleMD]">
-    <a href="{{ getGeneratedURI(mdValue.value) }}" target="_blank">{{ getIDPart(mdValue.value) }}</a>
-  </div>
-  <div *ngFor="let mdValue of item['metadata'][relatedURLMD]">
-    <a href="{{ mdValue.value }}" target="_blank">{{ mdValue.value }}</a>
-  </div>
+<section class="url-section-wrapper" *ngIf="hasRelatedMetadata">
+<div *ngIf="item.hasMetadata('dc.identifier.uri')" class="">
+  <dl>
+  <dt class="">{{ "item.page.uri" | translate }}</dt>
+  <dd *ngFor="let mdValue of item['metadata']['dc.identifier.uri']">
+      <a href="{{ mdValue.value }}" target="_blank">{{ mdValue.value }}</a>
+      <img *ngIf="hasClipboard"
+           (click)="copyToClipboard(mdValue.value)"
+           style="wisth:20px;height:20px;cursor:pointer;"
+           alt="copy-to-clipboard"
+           title="copy-to-clipboard"
+           src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cu
+                 dzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGlu
+                 ayIgZmlsbD0iIzAwMDAwMCI+PGcgaWQ9IlNWR1JlcG9fYmdDYXJyaWVyIiBzdHJva2Utd2lkdGg9
+                 IjAiPjwvZz48ZyBpZD0iU1ZHUmVwb190cmFjZXJDYXJyaWVyIiBzdHJva2UtbGluZWNhcD0icm91
+                 bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvZz48ZyBpZD0iU1ZHUmVwb19pY29uQ2Fycmll
+                 ciI+IDwhLS0gVXBsb2FkZWQgdG86IFNWRyBSZXBvLCB3d3cuc3ZncmVwby5jb20sIEdlbmVyYXRv
+                 cjogU1ZHIFJlcG8gTWl4ZXIgVG9vbHMgLS0+IDx0aXRsZT5pY19mbHVlbnRfY29weV8yNF9yZWd1
+                 bGFyPC90aXRsZT4gPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+IDxnIGlkPSLwn5SN
+                 LVByb2R1Y3QtSWNvbnMiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25l
+                 IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPiA8ZyBpZD0iaWNfZmx1ZW50X2NvcHlfMjRfcmVndWxhciIg
+                 ZmlsbD0iIzIxMjEyMSIgZmlsbC1ydWxlPSJub256ZXJvIj4gPHBhdGggZD0iTTUuNTAyODAzODEs
+                 NC42MjcwNDAzOCBMNS41LDYuNzUgTDUuNSwxNy4yNTQyMDg3IEM1LjUsMTkuMDQ5MTM0MiA2Ljk1
+                 NTA3NDU2LDIwLjUwNDIwODcgOC43NSwyMC41MDQyMDg3IEwxNy4zNjYyODY4LDIwLjUwNDQ2MjIg
+                 QzE3LjA1NzMzOCwyMS4zNzgyMjQxIDE2LjIyMzk3NTEsMjIuMDA0MjA4NyAxNS4yNDQ0MDU3LDIy
+                 LjAwNDIwODcgTDguNzUsMjIuMDA0MjA4NyBDNi4xMjY2NDc0NCwyMi4wMDQyMDg3IDQsMTkuODc3
+                 NTYxMyA0LDE3LjI1NDIwODcgTDQsNi43NSBDNCw1Ljc2OTI4ODQ4IDQuNjI3NDQ1MjMsNC45MzUx
+                 MjQ2NCA1LjUwMjgwMzgxLDQuNjI3MDQwMzggWiBNMTcuNzUsMiBDMTguOTkyNjQwNywyIDIwLDMu
+                 MDA3MzU5MzEgMjAsNC4yNSBMMjAsMTcuMjUgQzIwLDE4LjQ5MjY0MDcgMTguOTkyNjQwNywxOS41
+                 IDE3Ljc1LDE5LjUgTDguNzUsMTkuNSBDNy41MDczNTkzMSwxOS41IDYuNSwxOC40OTI2NDA3IDYu
+                 NSwxNy4yNSBMNi41LDQuMjUgQzYuNSwzLjAwNzM1OTMxIDcuNTA3MzU5MzEsMiA4Ljc1LDIgTDE3
+                 Ljc1LDIgWiBNMTcuNzUsMy41IEw4Ljc1LDMuNSBDOC4zMzU3ODY0NCwzLjUgOCwzLjgzNTc4NjQ0
+                 IDgsNC4yNSBMOCwxNy4yNSBDOCwxNy42NjQyMTM2IDguMzM1Nzg2NDQsMTggOC43NSwxOCBMMTcu
+                 NzUsMTggQzE4LjE2NDIxMzYsMTggMTguNSwxNy42NjQyMTM2IDE4LjUsMTcuMjUgTDE4LjUsNC4y
+                 NSBDMTguNSwzLjgzNTc4NjQ0IDE4LjE2NDIxMzYsMy41IDE3Ljc1LDMuNSBaIiBpZD0i8J+OqC1D
+                 b2xvciI+IDwvcGF0aD4gPC9nPiA8L2c+IDwvZz48L3N2Zz4K
+                 "
+      />
+  </dd>
+  </dl>
 </div>
+
+<!-- local.identifier.doi  -->
+<div *ngIf="item.hasMetadata('local.identifier.doi')" class="">
+  <dl>
+  <dt class="">{{ "local-identifier-doi" | translate }}</dt>
+  <dd *ngFor="let mdValue of item['metadata']['local.identifier.doi']">
+    <a href="{{ getHandleURI(mdValue.value) }}" target="_blank">{{ mdValue.value }}</a>
+      <img *ngIf="hasClipboard"
+           (click)="copyToClipboard(mdValue.value)"
+           style="wisth:20px;height:20px;cursor:pointer;"
+           alt="copy-to-clipboard"
+           title="copy-to-clipboard"
+           src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cu
+                 dzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGlu
+                 ayIgZmlsbD0iIzAwMDAwMCI+PGcgaWQ9IlNWR1JlcG9fYmdDYXJyaWVyIiBzdHJva2Utd2lkdGg9
+                 IjAiPjwvZz48ZyBpZD0iU1ZHUmVwb190cmFjZXJDYXJyaWVyIiBzdHJva2UtbGluZWNhcD0icm91
+                 bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvZz48ZyBpZD0iU1ZHUmVwb19pY29uQ2Fycmll
+                 ciI+IDwhLS0gVXBsb2FkZWQgdG86IFNWRyBSZXBvLCB3d3cuc3ZncmVwby5jb20sIEdlbmVyYXRv
+                 cjogU1ZHIFJlcG8gTWl4ZXIgVG9vbHMgLS0+IDx0aXRsZT5pY19mbHVlbnRfY29weV8yNF9yZWd1
+                 bGFyPC90aXRsZT4gPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+IDxnIGlkPSLwn5SN
+                 LVByb2R1Y3QtSWNvbnMiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25l
+                 IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPiA8ZyBpZD0iaWNfZmx1ZW50X2NvcHlfMjRfcmVndWxhciIg
+                 ZmlsbD0iIzIxMjEyMSIgZmlsbC1ydWxlPSJub256ZXJvIj4gPHBhdGggZD0iTTUuNTAyODAzODEs
+                 NC42MjcwNDAzOCBMNS41LDYuNzUgTDUuNSwxNy4yNTQyMDg3IEM1LjUsMTkuMDQ5MTM0MiA2Ljk1
+                 NTA3NDU2LDIwLjUwNDIwODcgOC43NSwyMC41MDQyMDg3IEwxNy4zNjYyODY4LDIwLjUwNDQ2MjIg
+                 QzE3LjA1NzMzOCwyMS4zNzgyMjQxIDE2LjIyMzk3NTEsMjIuMDA0MjA4NyAxNS4yNDQ0MDU3LDIy
+                 LjAwNDIwODcgTDguNzUsMjIuMDA0MjA4NyBDNi4xMjY2NDc0NCwyMi4wMDQyMDg3IDQsMTkuODc3
+                 NTYxMyA0LDE3LjI1NDIwODcgTDQsNi43NSBDNCw1Ljc2OTI4ODQ4IDQuNjI3NDQ1MjMsNC45MzUx
+                 MjQ2NCA1LjUwMjgwMzgxLDQuNjI3MDQwMzggWiBNMTcuNzUsMiBDMTguOTkyNjQwNywyIDIwLDMu
+                 MDA3MzU5MzEgMjAsNC4yNSBMMjAsMTcuMjUgQzIwLDE4LjQ5MjY0MDcgMTguOTkyNjQwNywxOS41
+                 IDE3Ljc1LDE5LjUgTDguNzUsMTkuNSBDNy41MDczNTkzMSwxOS41IDYuNSwxOC40OTI2NDA3IDYu
+                 NSwxNy4yNSBMNi41LDQuMjUgQzYuNSwzLjAwNzM1OTMxIDcuNTA3MzU5MzEsMiA4Ljc1LDIgTDE3
+                 Ljc1LDIgWiBNMTcuNzUsMy41IEw4Ljc1LDMuNSBDOC4zMzU3ODY0NCwzLjUgOCwzLjgzNTc4NjQ0
+                 IDgsNC4yNSBMOCwxNy4yNSBDOCwxNy42NjQyMTM2IDguMzM1Nzg2NDQsMTggOC43NSwxOCBMMTcu
+                 NzUsMTggQzE4LjE2NDIxMzYsMTggMTguNSwxNy42NjQyMTM2IDE4LjUsMTcuMjUgTDE4LjUsNC4y
+                 NSBDMTguNSwzLjgzNTc4NjQ0IDE4LjE2NDIxMzYsMy41IDE3Ljc1LDMuNSBaIiBpZD0i8J+OqC1D
+                 b2xvciI+IDwvcGF0aD4gPC9nPiA8L2c+IDwvZz48L3N2Zz4K
+                 "
+      />
+  </dd>
+  </dl>
+</div>
+
+<!-- local.relatedHandle  -->
+<!-- local.relatedURL  -->
+<div *ngIf="item.hasMetadata('local.relatedHandle') || item.hasMetadata('local.relatedURL')" 
+     class="">
+  <dl *ngIf="item.hasMetadata('local.relatedHandle')">
+    <dt>{{ "item.page.relatedhandle" | translate }}</dt>
+    <dd *ngFor="let mdValue of item['metadata']['local.relatedHandle']">
+      <a href="{{ getHandleURI(mdValue.value) }}" target="_blank">{{ mdValue.value }}</a>
+        <img *ngIf="hasClipboard"
+             (click)="copyToClipboard(mdValue.value)"
+             style="wisth:20px;height:20px;cursor:pointer;"
+             alt="copy-to-clipboard"
+             title="copy-to-clipboard"
+             src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cu
+                 dzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGlu
+                 ayIgZmlsbD0iIzAwMDAwMCI+PGcgaWQ9IlNWR1JlcG9fYmdDYXJyaWVyIiBzdHJva2Utd2lkdGg9
+                 IjAiPjwvZz48ZyBpZD0iU1ZHUmVwb190cmFjZXJDYXJyaWVyIiBzdHJva2UtbGluZWNhcD0icm91
+                 bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvZz48ZyBpZD0iU1ZHUmVwb19pY29uQ2Fycmll
+                 ciI+IDwhLS0gVXBsb2FkZWQgdG86IFNWRyBSZXBvLCB3d3cuc3ZncmVwby5jb20sIEdlbmVyYXRv
+                 cjogU1ZHIFJlcG8gTWl4ZXIgVG9vbHMgLS0+IDx0aXRsZT5pY19mbHVlbnRfY29weV8yNF9yZWd1
+                 bGFyPC90aXRsZT4gPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+IDxnIGlkPSLwn5SN
+                 LVByb2R1Y3QtSWNvbnMiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25l
+                 IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPiA8ZyBpZD0iaWNfZmx1ZW50X2NvcHlfMjRfcmVndWxhciIg
+                 ZmlsbD0iIzIxMjEyMSIgZmlsbC1ydWxlPSJub256ZXJvIj4gPHBhdGggZD0iTTUuNTAyODAzODEs
+                 NC42MjcwNDAzOCBMNS41LDYuNzUgTDUuNSwxNy4yNTQyMDg3IEM1LjUsMTkuMDQ5MTM0MiA2Ljk1
+                 NTA3NDU2LDIwLjUwNDIwODcgOC43NSwyMC41MDQyMDg3IEwxNy4zNjYyODY4LDIwLjUwNDQ2MjIg
+                 QzE3LjA1NzMzOCwyMS4zNzgyMjQxIDE2LjIyMzk3NTEsMjIuMDA0MjA4NyAxNS4yNDQ0MDU3LDIy
+                 LjAwNDIwODcgTDguNzUsMjIuMDA0MjA4NyBDNi4xMjY2NDc0NCwyMi4wMDQyMDg3IDQsMTkuODc3
+                 NTYxMyA0LDE3LjI1NDIwODcgTDQsNi43NSBDNCw1Ljc2OTI4ODQ4IDQuNjI3NDQ1MjMsNC45MzUx
+                 MjQ2NCA1LjUwMjgwMzgxLDQuNjI3MDQwMzggWiBNMTcuNzUsMiBDMTguOTkyNjQwNywyIDIwLDMu
+                 MDA3MzU5MzEgMjAsNC4yNSBMMjAsMTcuMjUgQzIwLDE4LjQ5MjY0MDcgMTguOTkyNjQwNywxOS41
+                 IDE3Ljc1LDE5LjUgTDguNzUsMTkuNSBDNy41MDczNTkzMSwxOS41IDYuNSwxOC40OTI2NDA3IDYu
+                 NSwxNy4yNSBMNi41LDQuMjUgQzYuNSwzLjAwNzM1OTMxIDcuNTA3MzU5MzEsMiA4Ljc1LDIgTDE3
+                 Ljc1LDIgWiBNMTcuNzUsMy41IEw4Ljc1LDMuNSBDOC4zMzU3ODY0NCwzLjUgOCwzLjgzNTc4NjQ0
+                 IDgsNC4yNSBMOCwxNy4yNSBDOCwxNy42NjQyMTM2IDguMzM1Nzg2NDQsMTggOC43NSwxOCBMMTcu
+                 NzUsMTggQzE4LjE2NDIxMzYsMTggMTguNSwxNy42NjQyMTM2IDE4LjUsMTcuMjUgTDE4LjUsNC4y
+                 NSBDMTguNSwzLjgzNTc4NjQ0IDE4LjE2NDIxMzYsMy41IDE3Ljc1LDMuNSBaIiBpZD0i8J+OqC1D
+                 b2xvciI+IDwvcGF0aD4gPC9nPiA8L2c+IDwvZz48L3N2Zz4K
+                 "
+      />
+    </dd>
+    <dd *ngFor="let mdValue of item['metadata']['local.relatedURL']">
+      <a href="{{ mdValue.value }}" target="_blank">{{ mdValue.value }}</a>
+      <img *ngIf="hasClipboard"
+           (click)="copyToClipboard(mdValue.value)"
+           style="wisth:20px;height:20px;cursor:pointer;"
+           alt="copy-to-clipboard"
+           title="copy-to-clipboard"
+           src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cu
+                 dzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGlu
+                 ayIgZmlsbD0iIzAwMDAwMCI+PGcgaWQ9IlNWR1JlcG9fYmdDYXJyaWVyIiBzdHJva2Utd2lkdGg9
+                 IjAiPjwvZz48ZyBpZD0iU1ZHUmVwb190cmFjZXJDYXJyaWVyIiBzdHJva2UtbGluZWNhcD0icm91
+                 bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvZz48ZyBpZD0iU1ZHUmVwb19pY29uQ2Fycmll
+                 ciI+IDwhLS0gVXBsb2FkZWQgdG86IFNWRyBSZXBvLCB3d3cuc3ZncmVwby5jb20sIEdlbmVyYXRv
+                 cjogU1ZHIFJlcG8gTWl4ZXIgVG9vbHMgLS0+IDx0aXRsZT5pY19mbHVlbnRfY29weV8yNF9yZWd1
+                 bGFyPC90aXRsZT4gPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+IDxnIGlkPSLwn5SN
+                 LVByb2R1Y3QtSWNvbnMiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25l
+                 IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPiA8ZyBpZD0iaWNfZmx1ZW50X2NvcHlfMjRfcmVndWxhciIg
+                 ZmlsbD0iIzIxMjEyMSIgZmlsbC1ydWxlPSJub256ZXJvIj4gPHBhdGggZD0iTTUuNTAyODAzODEs
+                 NC42MjcwNDAzOCBMNS41LDYuNzUgTDUuNSwxNy4yNTQyMDg3IEM1LjUsMTkuMDQ5MTM0MiA2Ljk1
+                 NTA3NDU2LDIwLjUwNDIwODcgOC43NSwyMC41MDQyMDg3IEwxNy4zNjYyODY4LDIwLjUwNDQ2MjIg
+                 QzE3LjA1NzMzOCwyMS4zNzgyMjQxIDE2LjIyMzk3NTEsMjIuMDA0MjA4NyAxNS4yNDQ0MDU3LDIy
+                 LjAwNDIwODcgTDguNzUsMjIuMDA0MjA4NyBDNi4xMjY2NDc0NCwyMi4wMDQyMDg3IDQsMTkuODc3
+                 NTYxMyA0LDE3LjI1NDIwODcgTDQsNi43NSBDNCw1Ljc2OTI4ODQ4IDQuNjI3NDQ1MjMsNC45MzUx
+                 MjQ2NCA1LjUwMjgwMzgxLDQuNjI3MDQwMzggWiBNMTcuNzUsMiBDMTguOTkyNjQwNywyIDIwLDMu
+                 MDA3MzU5MzEgMjAsNC4yNSBMMjAsMTcuMjUgQzIwLDE4LjQ5MjY0MDcgMTguOTkyNjQwNywxOS41
+                 IDE3Ljc1LDE5LjUgTDguNzUsMTkuNSBDNy41MDczNTkzMSwxOS41IDYuNSwxOC40OTI2NDA3IDYu
+                 NSwxNy4yNSBMNi41LDQuMjUgQzYuNSwzLjAwNzM1OTMxIDcuNTA3MzU5MzEsMiA4Ljc1LDIgTDE3
+                 Ljc1LDIgWiBNMTcuNzUsMy41IEw4Ljc1LDMuNSBDOC4zMzU3ODY0NCwzLjUgOCwzLjgzNTc4NjQ0
+                 IDgsNC4yNSBMOCwxNy4yNSBDOCwxNy42NjQyMTM2IDguMzM1Nzg2NDQsMTggOC43NSwxOCBMMTcu
+                 NzUsMTggQzE4LjE2NDIxMzYsMTggMTguNSwxNy42NjQyMTM2IDE4LjUsMTcuMjUgTDE4LjUsNC4y
+                 NSBDMTguNSwzLjgzNTc4NjQ0IDE4LjE2NDIxMzYsMy41IDE3Ljc1LDMuNSBaIiBpZD0i8J+OqC1D
+                 b2xvciI+IDwvcGF0aD4gPC9nPiA8L2c+IDwvZz48L3N2Zz4K
+                 "
+      />
+    </dd>
+  </dl>
+</div>
+</section>

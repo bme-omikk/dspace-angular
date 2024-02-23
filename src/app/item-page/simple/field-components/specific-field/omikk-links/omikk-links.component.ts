@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Item } from '../../../../../core/shared/item.model';
 import { ItemPageFieldComponent } from '../item-page-field.component';
 
@@ -17,12 +17,12 @@ import { ItemPageFieldComponent } from '../item-page-field.component';
   templateUrl: './omikk-links.component.html'
 })
 
-export class OmikkLinksComponent extends ItemPageFieldComponent {
+export class OmikkLinksComponent extends ItemPageFieldComponent implements OnInit {
+
+  hasRelatedMetadata: boolean;
+  hasClipboard: boolean = window.isSecureContext;
 
   @Input() item: Item;
-  @Input() relatedHandleMD: string;
-  @Input() relatedURLMD: string;
-  @Input() relatedTypeMD: string;
   @Input() label: string;
 
   relatedTypesMap: Map<string, string> = new Map(
@@ -31,6 +31,13 @@ export class OmikkLinksComponent extends ItemPageFieldComponent {
       , ['OMIKKHANDLE', 'http://hdl.handle.net/']
     ]
   );
+
+  ngOnInit() {
+    this.hasRelatedMetadata = this.item.hasMetadata('local.identifier.doi') ||
+      this.item.hasMetadata('local.relatedHandle') ||
+      this.item.hasMetadata('local.relatedURL') ||
+      this.item.hasMetadata('dc.identifier.uri');
+  }
 
   isValidHandleID(parts) {
     if (parts.length !== 2) {
@@ -64,5 +71,13 @@ export class OmikkLinksComponent extends ItemPageFieldComponent {
 
   getIDPart(value: string) {
     return this.processID(value, 'title');
+  }
+
+  getHandleURI(value: string) {
+    return 'http://hdl.handle.net/' + value;
+  }
+
+  copyToClipboard(txt) {
+    navigator.clipboard.writeText(txt);
   }
 }
