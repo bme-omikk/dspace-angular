@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Item } from '../../../../../core/shared/item.model';
 import { ItemPageFieldComponent } from '../item-page-field.component';
+import { BrowseDefinitionDataService } from '../../../../../core/browse/browse-definition-data.service';
+import { map } from 'rxjs';
 
 /**
  * This is a bit overloaded component to resolve metadata values
@@ -21,13 +24,22 @@ export class OmikkLinksComponent extends ItemPageFieldComponent implements OnIni
 
   readonly bmeDOI: string = '10.3311';
   refLink: string;
+  safeVideoLink: SafeResourceUrl;
 
   copyToClipboardImg: string;
   hasRelatedMetadata: boolean;
+  hasBMEDOI: boolean;
   hasClipboard: boolean = window.isSecureContext;
 
   @Input() item: Item;
   @Input() label: string;
+
+  // BrowserDefinitionSevrice is needed due to Angular's unsafe url error of youtube URL:
+  // https://filipmolcik.com/error-unsafe-value-used-in-a-resource-url-context/
+  constructor(protected browseDefinitionDataService: BrowseDefinitionDataService,
+              private sanitizer: DomSanitizer) {
+    super(browseDefinitionDataService);
+  }
 
   relatedTypesMap: Map<string, string> = new Map(
     [
@@ -41,6 +53,7 @@ export class OmikkLinksComponent extends ItemPageFieldComponent implements OnIni
       for (let mdValue of this.item['metadata']['local.identifier.doi']) {
         if (mdValue.value.includes(this.bmeDOI)) {
           this.hasRelatedMetadata = true;
+          this.hasBMEDOI = true;
           this.refLink = this.relatedTypesMap.get('DOI') + mdValue.value;
         }
       }
@@ -51,12 +64,14 @@ export class OmikkLinksComponent extends ItemPageFieldComponent implements OnIni
         if (mdValue.value.startsWith('doi:')) {
           if (mdValue.value.includes(this.bmeDOI)) {
             this.hasRelatedMetadata = true;
+            this.hasBMEDOI = true;
             this.refLink = this.relatedTypesMap.get('DOI') + mdValue.value.slice(4);
             break;
           } else {
             // TODO: what makes a DOI link of BME different from other DOI links?
             // currently it is the same as the BME DOI.
             this.hasRelatedMetadata = true;
+            this.hasBMEDOI = false;
             this.refLink = this.relatedTypesMap.get('DOI') + mdValue.value.slice(4);
           }
         }
@@ -64,7 +79,12 @@ export class OmikkLinksComponent extends ItemPageFieldComponent implements OnIni
 
       if (!this.hasRelatedMetadata) {
         this.hasRelatedMetadata = true;
+        this.hasBMEDOI = false;
         this.refLink = this.item['metadata']['dc.identifier.uri'][0].value;
+      }
+
+      if (this.item.hasMetadata('local.embedVideo')) {
+        this.safeVideoLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.item['metadata']['local.embedVideo'][0].value);
       }
     }
 

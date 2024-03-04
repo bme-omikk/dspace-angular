@@ -16,6 +16,13 @@
     </div>
 </section>
 <section>
+  <div *ngIf="!hasBMEDOI" class="simple-view-element">
+    <h2 class="simple-view-element-header">{{ "local-identifier-doi" | translate }}</h2>
+    <div class="simple-view-element-body">
+        <a href="{{ getHandleURI(item['metadata']['local.identifier.doi'][0].value) }}"
+           target="_blank">{{ item['metadata']['local.identifier.doi'][0].value }}</a>
+    </div>
+  </div>
   <div *ngIf="item.hasMetadata('local.relatedHandle') || item.hasMetadata('local.relatedURL')" 
        class="simple-view-element">
     <h2 class="simple-view-element-header">{{ "item.page.relatedhandle" | translate }}</h2>
@@ -39,6 +46,16 @@
              title="copy-to-clipboard"
              src="{{ copyToClipboardImg }}"
         />
+        <iframe
+            *ngIf="item.hasMetadata('local.embedVideo')"
+            width="560"
+            height="315"
+            [src]="safeVideoLink"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
       </p>
     </div>
   </div>

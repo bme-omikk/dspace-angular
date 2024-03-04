@@ -73,6 +73,8 @@ tabnew
 tabnew
 tabnew
 tabnew
+tabnew
+tabnew
 tabrewind
 edit src/themes/bme/app/item-page/simple/item-types/untyped-item/untyped-item.component.html
 set splitbelow splitright
@@ -209,7 +211,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 124 - ((28 * winheight(0) + 19) / 38)
+let s:l = 124 - ((28 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -352,12 +354,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 34 - ((0 * winheight(0) + 19) / 38)
+let s:l = 31 - ((30 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 34
-normal! 04|
+keepjumps 31
+normal! 03|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/themes/bme/assets/i18n/hu.json5
@@ -495,7 +497,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 158 - ((14 * winheight(0) + 28) / 56)
+let s:l = 158 - ((10 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -637,7 +639,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 156 - ((39 * winheight(0) + 28) / 56)
+let s:l = 156 - ((27 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -780,7 +782,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 7921 - ((15 * winheight(0) + 28) / 56)
+let s:l = 7921 - ((11 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -923,7 +925,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 5649 - ((7 * winheight(0) + 28) / 56)
+let s:l = 5649 - ((5 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1066,7 +1068,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 27 - ((26 * winheight(0) + 28) / 56)
+let s:l = 27 - ((18 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1209,7 +1211,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 22 - ((8 * winheight(0) + 28) / 56)
+let s:l = 22 - ((5 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1352,12 +1354,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 20 - ((19 * winheight(0) + 28) / 56)
+let s:l = 31 - ((30 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 20
-normal! 034|
+keepjumps 31
+normal! 09|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links/omikk-links.component.ts
@@ -1495,12 +1497,298 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 67 - ((30 * winheight(0) + 28) / 56)
+let s:l = 42 - ((22 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 67
-normal! $
+keepjumps 42
+normal! 03|
+lcd ~/Dokumentumok/dspace-angular
+tabnext
+edit ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/item-page-field.component.ts
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+if bufexists("~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/item-page-field.component.ts") | buffer ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/item-page-field.component.ts | else | edit ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/item-page-field.component.ts | endif
+balt ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/item-page-field.component.html
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal cursorlineopt=both
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'typescript'
+setlocal filetype=typescript
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=Fixedgq(v:lnum,v:count)
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=GetTypescriptIndent()
+setlocal indentkeys=0{,0},0),0],0,,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255,$,#
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal nomodeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=htmlcomplete#CompleteTags
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal spelloptions=
+setlocal statusline=
+setlocal suffixesadd=.ts,.d.ts,.tsx,.js,.jsx,.cjs,.mjs
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'typescript'
+setlocal syntax=typescript
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal wincolor=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 6 - ((5 * winheight(0) + 19) / 39)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 6
+normal! 0
+lcd ~/Dokumentumok/dspace-angular
+tabnext
+edit ~/Dokumentumok/dspace-angular/src/app/core/shared/item.model.ts
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+if bufexists("~/Dokumentumok/dspace-angular/src/app/core/shared/item.model.ts") | buffer ~/Dokumentumok/dspace-angular/src/app/core/shared/item.model.ts | else | edit ~/Dokumentumok/dspace-angular/src/app/core/shared/item.model.ts | endif
+balt ~/Dokumentumok/dspace-angular/src/app/item-page/edit-item-page/item-collection-mapper/item-collection-mapper.component.ts
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal cursorlineopt=both
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'typescript'
+setlocal filetype=typescript
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=Fixedgq(v:lnum,v:count)
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=GetTypescriptIndent()
+setlocal indentkeys=0{,0},0),0],0,,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255,#,$
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal nomodeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=htmlcomplete#CompleteTags
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal spelloptions=
+setlocal statusline=
+setlocal suffixesadd=.ts,.d.ts,.tsx,.js,.jsx,.cjs,.mjs
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'typescript'
+setlocal syntax=typescript
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal wincolor=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 115 - ((0 * winheight(0) + 19) / 39)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 115
+normal! 04|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links/omikk-links.component.scss
@@ -1638,7 +1926,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 28) / 56)
+let s:l = 1 - ((0 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1781,7 +2069,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 1 - ((0 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1924,14 +2212,14 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 1 - ((0 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
 lcd ~/Dokumentumok/dspace-angular
-tabnext 9
+tabnext 10
 set stal=1
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/simple/item-types/untyped-item/untyped-item.component.html
 badd +1 ~/Dokumentumok/dspace-angular/angular.json
@@ -1945,12 +2233,14 @@ badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/full/full-ite
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/full/full-item-page.component.html
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links/omikk-links.component.html
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links/omikk-links.component.ts
-badd +0 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links/omikk-links.component.scss
+badd +0 ~/Dokumentumok/dspace-angular/src/app/core/shared/item.model.ts
+badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links/omikk-links.component.scss
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/navbar/navbar.component.html
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/navbar/navbar.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/assets/i18n/en.json5
 badd +1 ~/Dokumentumok/dspace-angular/src/assets/i18n
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/full/full-item-page.component.ts
+badd +141 ~/Dokumentumok/dspace-angular/src/app/item-page/edit-item-page/item-collection-mapper/item-collection-mapper.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/navbar
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/simple/item-types/untyped-item/untyped-item.component.ts
@@ -2003,6 +2293,8 @@ badd +144 ~/Dokumentumok/dspace-angular/src/themes/bme/lazy-theme.module.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/eager-theme.module.ts
 badd +13 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/author/item-page-author-field.component.ts
 badd +3 ~/Dokumentumok/dspace-angular/src/app/navbar/navbar.component.ts
+badd +3 ~/Dokumentumok/dspace-angular/src/app/core/shared/dspace-object.model.ts
+badd +0 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/item-page-field.component.ts
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -2014,6 +2306,7 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
