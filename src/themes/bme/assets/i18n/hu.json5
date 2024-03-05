@@ -1,6 +1,6 @@
 {
   // DSpace default: "All of DSpace"
-  "menu.section.browse_global": "Browse DSpace",
+  "menu.section.browse_global": "MDA tallózása",
 
   // DSpace default: "DSpace Angular :: "
   "repository.title.prefix": "",
