@@ -1,7 +1,14 @@
+import { Observable } from 'rxjs';
+import { startWith } from 'rxjs/operators';
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Item } from '../../../../../core/shared/item.model';
 import { ItemPageFieldComponent } from '../item-page-field.component';
+import { CollectionDataService } from '../../../../../core/data/collection-data.service';
+import { Collection } from '../../../../../core/shared/collection.model';
+import {
+  getFirstSucceededRemoteDataPayload,
+} from '../../../../../core/shared/operators';
 import { BrowseDefinitionDataService } from '../../../../../core/browse/browse-definition-data.service';
 import { map } from 'rxjs';
 
@@ -37,7 +44,8 @@ export class OmikkLinksComponent extends ItemPageFieldComponent implements OnIni
   // BrowserDefinitionSevrice is needed due to Angular's unsafe url error of youtube URL:
   // https://filipmolcik.com/error-unsafe-value-used-in-a-resource-url-context/
   constructor(protected browseDefinitionDataService: BrowseDefinitionDataService,
-              private sanitizer: DomSanitizer) {
+              private sanitizer: DomSanitizer,
+              private cds: CollectionDataService) {
     super(browseDefinitionDataService);
   }
 
@@ -49,6 +57,11 @@ export class OmikkLinksComponent extends ItemPageFieldComponent implements OnIni
   );
 
   ngOnInit() {
+    const owningCollection$: Observable<Collection> = this.cds.findOwningCollectionFor(this.item).pipe(
+      getFirstSucceededRemoteDataPayload(),
+      startWith(null as Collection),
+    );
+    //console.log(owningCollection$);
     if (this.item.hasMetadata('local.identifier.doi')) {
       for (let mdValue of this.item['metadata']['local.identifier.doi']) {
         if (mdValue.value.includes(this.bmeDOI)) {

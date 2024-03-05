@@ -16,7 +16,7 @@
     </div>
 </section>
 <section>
-  <div *ngIf="!hasBMEDOI" class="simple-view-element">
+  <div *ngIf="!hasBMEDOI && item.hasMetadata('local.identifier.doi')" class="simple-view-element">
     <h2 class="simple-view-element-header">{{ "local-identifier-doi" | translate }}</h2>
     <div class="simple-view-element-body">
         <a href="{{ getHandleURI(item['metadata']['local.identifier.doi'][0].value) }}"
