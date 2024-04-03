@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { startWith } from 'rxjs/operators';
+import { startWith, tap } from 'rxjs/operators';
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Item } from '../../../../../core/shared/item.model';
@@ -58,10 +58,10 @@ export class OmikkLinksComponent extends ItemPageFieldComponent implements OnIni
 
   ngOnInit() {
     const owningCollection$: Observable<Collection> = this.cds.findOwningCollectionFor(this.item).pipe(
+      tap(coll => { console.log('collection in omikk-links', coll); }),
       getFirstSucceededRemoteDataPayload(),
       startWith(null as Collection),
     );
-    //console.log(owningCollection$);
     if (this.item.hasMetadata('local.identifier.doi')) {
       for (let mdValue of this.item['metadata']['local.identifier.doi']) {
         if (mdValue.value.includes(this.bmeDOI)) {

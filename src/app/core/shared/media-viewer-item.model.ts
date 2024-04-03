@@ -28,4 +28,9 @@ export class MediaViewerItem {
    * Incoming Bitstream type
    */
   type: string;
+
+  /**
+   * Is downloadable?
+   */
+  canDownload: boolean;
 }

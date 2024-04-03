@@ -16,6 +16,7 @@ import { environment } from '../../../environments/environment';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { AuthorizationDataService } from '../../core/data/feature-authorization/authorization-data.service';
 import { FeatureID } from '../../core/data/feature-authorization/feature-id';
+import { ViewpdfService } from '../../shared/viewpdf.service'; 
 
 /**
  * This component renders the media viewers
@@ -42,7 +43,9 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
 
   subs: Subscription[] = [];
 
-  canDownload$: Observable<boolean>;
+  viewPdfOnCollLevel: string = '';
+  viewPdfOnItemLevel: string = '';
+  viewPdfEnabled: boolean = false;
 
   constructor(
     protected bitstreamDataService: BitstreamDataService,
@@ -82,9 +85,9 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
                 const mediaItem = this.createMediaViewerItem(
                   bitstreamsRD.payload.page[index],
                   format,
-                  thumbnailsRD.payload && thumbnailsRD.payload.page[index]
+                  thumbnailsRD.payload && thumbnailsRD.payload.page[index],
+                  this.authorizationService.isAuthorized(FeatureID.CanDownload, bitstreamsRD.payload.page[index]._links.self.href)
                 );
-                this.canDownload$ = this.authorizationService.isAuthorized(FeatureID.CanDownload, bitstreamsRD.payload.page[index]._links.self.href);
                 if (types.includes(mediaItem.format) || types.includes(mediaItem.type)) {
                   this.mediaList$.next([...this.mediaList$.getValue(), mediaItem]);
                 } else if (format.mimetype === 'text/vtt') {
@@ -93,10 +96,12 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
               }));
           }
           this.isLoading = false;
+          this.isPDFViewEnabled();
           this.changeDetectorRef.detectChanges();
         }));
       }
     }));
+
   }
 
   /**
@@ -131,13 +136,16 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
    * @param format original bitstream format
    * @param thumbnail thumbnail bitstream
    */
-  createMediaViewerItem(original: Bitstream, format: BitstreamFormat, thumbnail: Bitstream): MediaViewerItem {
+  createMediaViewerItem(original: Bitstream, format: BitstreamFormat, thumbnail: Bitstream, canDownload: Observable<boolean>): MediaViewerItem {
     const mediaItem = new MediaViewerItem();
     mediaItem.bitstream = original;
     mediaItem.format = format.mimetype.split('/')[0];
     mediaItem.type = format.mimetype.split('/')[1];
     mediaItem.mimetype = format.mimetype;
     mediaItem.thumbnail = thumbnail ? thumbnail._links.content.href : null;
+    canDownload.subscribe(cd => {
+      mediaItem.canDownload = cd;
+    }).unsubscribe();
     return mediaItem;
   }
 
@@ -145,6 +153,63 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
     let el = document.getElementById('pdf-viewer-wrapper');
     if (el) {
       el.style.display = 'block';
+    }
+  }
+
+  /**
+   * viewPdfOnCollLevel: a dspace.pdfviewer.enabled meg van adva a tételeket tartalmazó szülő gyűjtemény szintjén.
+   * viewPdfOnItemLevel: a dspace.pdfviewer.enabled meg van adva a tétel metaadatai között.
+   * canDownload: a bitstreamek felolvasása közben kerül beállításra az authorizationService.isAuthorized visszatérési értéke
+   *  lesz benne, és a mediaItem-eket tároló mediaList.canDownload fogja tartalmazni. Csak a listában az első helyen szereplő 
+   *  bitstream-mel foglalkozunk, mert ahhoz lesz a bélyegkép megjelenítve, amire aztán kattintva megjelenhet a PDF viewer.
+   * viewPdfStatus: a viewPDFOnCollLevel és/vagy a viewPdfOnItemLevel értéke. A tétel szintű metaadat erősebb, mint a 
+   *  gyűjtemény szintű, így, ha mind a kettő meg van adva, akkor a tétel metaadata lesz használva. Ha egyik sincs megadva, 
+   *  akkor üres sztring.
+   * viewPdfEnabled: ez mondja meg a fenti feltételek alapján, hogy végül a PDF viewer előhívható-e a bélyegképre kattintással 
+   *  vagy sem?
+   *
+   * A dspace.viewpdf.enabled háromállású sztring lehet:
+   *
+   * 1: Csak a PDF nézegetővel lehet a tétel csatolmányát megnézni. A letöltés link nem elérhető sem a tétel oldalán, sem a nézegetőben. - viewer
+   * 2: Elérhető a PDF nézegető és a tétel letöltés linkje is. - viewer-download
+   * 3: A PDF nézegető nem érhető el. - download
+   */
+  isPDFViewEnabled() {
+    let vp = new ViewpdfService(this.item);
+    vp.statusOnCollLevel().subscribe(r => { this.viewPdfOnCollLevel = r; });
+    vp.statusOnItemLevel().subscribe(r => { this.viewPdfOnItemLevel = r; });
+
+    this.viewPdfEnabled = false;
+
+    let viewPdfStatus: string = '';
+    let mediaOptionsPDF: boolean = this.mediaOptions.pdf;
+    let mediaType: string = this.mediaList$.value[0]?.type;
+
+    if (this.viewPdfOnItemLevel !== 'na') {
+      viewPdfStatus = this.viewPdfOnItemLevel;
+    } else if (this.viewPdfOnCollLevel !== 'na') {
+      viewPdfStatus = this.viewPdfOnCollLevel;
+    } else {
+      viewPdfStatus = '';
+    }
+
+    switch (viewPdfStatus) {
+      case 'viewer': {
+        this.viewPdfEnabled = mediaOptionsPDF && (mediaType === 'pdf' ? true : false);
+        break;
+      }
+      case 'viewer-download': {
+        this.viewPdfEnabled = mediaOptionsPDF && (mediaType === 'pdf' ? true : false);
+        break;
+      }
+      case 'download': {
+        this.viewPdfEnabled = false;
+        break;
+      }
+      default: {
+        this.viewPdfEnabled = false;
+        break;
+      }
     }
   }
 }

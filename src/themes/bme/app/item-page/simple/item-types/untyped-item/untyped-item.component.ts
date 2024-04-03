@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Item } from '../../../../../../../app/core/shared/item.model';
 import { ViewMode } from '../../../../../../../app/core/shared/view-mode.model';
 import {
@@ -8,6 +8,7 @@ import { Context } from '../../../../../../../app/core/shared/context.model';
 import {
   UntypedItemComponent as BaseComponent
 } from '../../../../../../../app/item-page/simple/item-types/untyped-item/untyped-item.component';
+import { ViewpdfService } from '../../../../../../../app/shared/viewpdf.service'; 
 /**
  * Component that represents an untyped Item page
  */
@@ -20,5 +21,45 @@ import {
   //templateUrl: '../../../../../../../app/item-page/simple/item-types/untyped-item/untyped-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UntypedItemComponent extends BaseComponent {
+export class UntypedItemComponent extends BaseComponent implements OnInit {
+  private viewPdfOnCollLevel: string;
+  private viewPdfOnItemLevel: string;
+  viewDownloadLink: boolean;
+
+  ngOnInit(): void {
+    let vp = new ViewpdfService(this.object);
+    vp.statusOnCollLevel().subscribe(r => { this.viewPdfOnCollLevel = r; });
+    vp.statusOnItemLevel().subscribe(r => { this.viewPdfOnItemLevel = r; });
+
+    this.viewDownloadLink = false;
+
+    let viewPdfStatus: string = '';
+
+    if (this.viewPdfOnItemLevel !== 'na') {
+      viewPdfStatus = this.viewPdfOnItemLevel;
+    } else if (this.viewPdfOnCollLevel !== 'na') {
+      viewPdfStatus = this.viewPdfOnCollLevel;
+    } else {
+      viewPdfStatus = '';
+    }
+
+    switch (viewPdfStatus) {
+      case 'viewer': {
+        this.viewDownloadLink = false;
+        break;
+      }
+      case 'viewer-download': {
+        this.viewDownloadLink = true;
+        break;
+      }
+      case 'download': {
+        this.viewDownloadLink = true;
+        break;
+      }
+      default: {
+        this.viewDownloadLink = false;
+        break;
+      }
+    }
+  }
 }

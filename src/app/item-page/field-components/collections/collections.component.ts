@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ChangeDetectorRef } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import {map, scan, startWith, switchMap, tap, withLatestFrom} from 'rxjs/operators';
+import { map, scan, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { CollectionDataService } from '../../../core/data/collection-data.service';
 import { PaginatedList } from '../../../core/data/paginated-list.model';
 
