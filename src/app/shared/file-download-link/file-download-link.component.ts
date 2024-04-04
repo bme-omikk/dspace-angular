@@ -61,6 +61,7 @@ export class FileDownloadLinkComponent implements OnInit {
         map(([canDownload, canRequestACopy]) => this.getBitstreamPath(canDownload, canRequestACopy))
       );
     } else {
+      this.showDownloadLink = false;
       this.bitstreamPath$ = observableOf(this.getBitstreamDownloadPath());
       this.canDownload$ = observableOf(true);
     }

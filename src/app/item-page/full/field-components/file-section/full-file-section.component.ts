@@ -1,6 +1,7 @@
 import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BitstreamDataService } from '../../../../core/data/bitstream-data.service';
+import { ConfigurationDataService } from '../../../../core/data/configuration-data.service';
 
 import { Bitstream } from '../../../../core/shared/bitstream.model';
 import { Item } from '../../../../core/shared/item.model';
@@ -49,6 +50,7 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
   });
 
   constructor(
+    protected configurationService: ConfigurationDataService,
     bitstreamDataService: BitstreamDataService,
     protected notificationsService: NotificationsService,
     protected translateService: TranslateService,
@@ -56,7 +58,7 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
     public dsoNameService: DSONameService,
     @Inject(APP_CONFIG) protected appConfig: AppConfig
   ) {
-    super(bitstreamDataService, notificationsService, translateService, dsoNameService, appConfig);
+    super(configurationService, bitstreamDataService, notificationsService, translateService, dsoNameService, appConfig);
   }
 
   ngOnInit(): void {

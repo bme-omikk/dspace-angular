@@ -1,15 +1,18 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { BitstreamDataService } from '../../../../core/data/bitstream-data.service';
+import { ConfigurationDataService } from '../../../../core/data/configuration-data.service';
 
 import { Bitstream } from '../../../../core/shared/bitstream.model';
+import { ConfigurationProperty } from '../../../../core/shared/configuration-property.model';
 import { Item } from '../../../../core/shared/item.model';
 import { RemoteData } from '../../../../core/data/remote-data';
 import { hasValue } from '../../../../shared/empty.util';
 import { PaginatedList } from '../../../../core/data/paginated-list.model';
 import { NotificationsService } from '../../../../shared/notifications/notifications.service';
 import { TranslateService } from '@ngx-translate/core';
-import { getFirstCompletedRemoteData } from '../../../../core/shared/operators';
+import { getFirstCompletedRemoteData, getFirstSucceededRemoteDataPayload } from '../../../../core/shared/operators';
 import { AppConfig, APP_CONFIG } from 'src/config/app-config.interface';
 import { DSONameService } from '../../../../core/breadcrumbs/dso-name.service';
 
@@ -39,7 +42,10 @@ export class FileSectionComponent implements OnInit {
 
   pageSize: number;
 
+  enableDownloadLink: boolean;
+
   constructor(
+    protected configurationService: ConfigurationDataService,
     protected bitstreamDataService: BitstreamDataService,
     protected notificationsService: NotificationsService,
     protected translateService: TranslateService,
@@ -51,6 +57,15 @@ export class FileSectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.getNextPage();
+    
+    this.configurationService.findByPropertyName('request.item.type').pipe(
+      getFirstCompletedRemoteData(),
+      map((response: RemoteData<ConfigurationProperty>) => {
+        if (response.hasSucceeded) {
+          return response.payload.values[0] === undefined ? false : true;
+        }
+      })
+    ).subscribe(res => this.enableDownloadLink = res);
   }
 
   /**
