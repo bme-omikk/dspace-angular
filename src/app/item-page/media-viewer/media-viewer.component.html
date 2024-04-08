@@ -16,7 +16,6 @@
     </ng-container>
   </div>
   <ng-template #viewPdf>
-    <span>this.viewPdfEnabled status is {{viewPdfEnabled}}</span>
     <ng-container *ngIf="viewPdfEnabled; else showThumbnail">
       <a
         *ngIf="viewPdfEnabled"

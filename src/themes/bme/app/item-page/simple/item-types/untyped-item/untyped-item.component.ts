@@ -8,7 +8,7 @@ import { Context } from '../../../../../../../app/core/shared/context.model';
 import {
   UntypedItemComponent as BaseComponent
 } from '../../../../../../../app/item-page/simple/item-types/untyped-item/untyped-item.component';
-import { ViewpdfService } from '../../../../../../../app/shared/viewpdf.service'; 
+import { ViewpdfService } from '../../../../../../../app/shared/viewpdf.service';
 /**
  * Component that represents an untyped Item page
  */
@@ -27,13 +27,15 @@ export class UntypedItemComponent extends BaseComponent implements OnInit {
   viewDownloadLink: boolean;
 
   ngOnInit(): void {
+    super.ngOnInit();
+
     let vp = new ViewpdfService(this.object);
     vp.statusOnCollLevel().subscribe(r => { this.viewPdfOnCollLevel = r; });
     vp.statusOnItemLevel().subscribe(r => { this.viewPdfOnItemLevel = r; });
 
     this.viewDownloadLink = false;
 
-    let viewPdfStatus: string = '';
+    let viewPdfStatus = '';
 
     if (this.viewPdfOnItemLevel !== 'na') {
       viewPdfStatus = this.viewPdfOnItemLevel;
@@ -57,7 +59,7 @@ export class UntypedItemComponent extends BaseComponent implements OnInit {
         break;
       }
       default: {
-        this.viewDownloadLink = false;
+        this.viewDownloadLink = true;
         break;
       }
     }

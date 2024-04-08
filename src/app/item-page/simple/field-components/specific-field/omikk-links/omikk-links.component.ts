@@ -10,7 +10,6 @@ import {
   getFirstSucceededRemoteDataPayload,
 } from '../../../../../core/shared/operators';
 import { BrowseDefinitionDataService } from '../../../../../core/browse/browse-definition-data.service';
-import { map } from 'rxjs';
 
 /**
  * This is a bit overloaded component to resolve metadata values
@@ -63,7 +62,7 @@ export class OmikkLinksComponent extends ItemPageFieldComponent implements OnIni
       startWith(null as Collection),
     );
     if (this.item.hasMetadata('local.identifier.doi')) {
-      for (let mdValue of this.item['metadata']['local.identifier.doi']) {
+      for (let mdValue of this.item.metadata['local.identifier.doi']) {
         if (mdValue.value.includes(this.bmeDOI)) {
           this.hasRelatedMetadata = true;
           this.hasBMEDOI = true;
@@ -73,7 +72,7 @@ export class OmikkLinksComponent extends ItemPageFieldComponent implements OnIni
     }
 
     if (!this.hasRelatedMetadata && this.item.hasMetadata('dc.identifier.uri')) {
-      for (let mdValue of this.item['metadata']['dc.identifier.uri']) {
+      for (let mdValue of this.item.metadata['dc.identifier.uri']) {
         if (mdValue.value.startsWith('doi:')) {
           if (mdValue.value.includes(this.bmeDOI)) {
             this.hasRelatedMetadata = true;
@@ -93,11 +92,11 @@ export class OmikkLinksComponent extends ItemPageFieldComponent implements OnIni
       if (!this.hasRelatedMetadata) {
         this.hasRelatedMetadata = true;
         this.hasBMEDOI = false;
-        this.refLink = this.item['metadata']['dc.identifier.uri'][0].value;
+        this.refLink = this.item.metadata['dc.identifier.uri'][0].value;
       }
 
       if (this.item.hasMetadata('local.embedVideo')) {
-        this.safeVideoLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.item['metadata']['local.embedVideo'][0].value);
+        this.safeVideoLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.item.metadata['local.embedVideo'][0].value);
       }
     }
 

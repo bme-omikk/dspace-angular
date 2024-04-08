@@ -16,7 +16,7 @@ import { environment } from '../../../environments/environment';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { AuthorizationDataService } from '../../core/data/feature-authorization/authorization-data.service';
 import { FeatureID } from '../../core/data/feature-authorization/feature-id';
-import { ViewpdfService } from '../../shared/viewpdf.service'; 
+import { ViewpdfService } from '../../shared/viewpdf.service';
 
 /**
  * This component renders the media viewers
@@ -43,9 +43,9 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
 
   subs: Subscription[] = [];
 
-  viewPdfOnCollLevel: string = '';
-  viewPdfOnItemLevel: string = '';
-  viewPdfEnabled: boolean = false;
+  viewPdfOnCollLevel = '';
+  viewPdfOnItemLevel = '';
+  viewPdfEnabled = false;
 
   constructor(
     protected bitstreamDataService: BitstreamDataService,
@@ -160,12 +160,12 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
    * viewPdfOnCollLevel: a dspace.pdfviewer.enabled meg van adva a tételeket tartalmazó szülő gyűjtemény szintjén.
    * viewPdfOnItemLevel: a dspace.pdfviewer.enabled meg van adva a tétel metaadatai között.
    * canDownload: a bitstreamek felolvasása közben kerül beállításra az authorizationService.isAuthorized visszatérési értéke
-   *  lesz benne, és a mediaItem-eket tároló mediaList.canDownload fogja tartalmazni. Csak a listában az első helyen szereplő 
+   *  lesz benne, és a mediaItem-eket tároló mediaList.canDownload fogja tartalmazni. Csak a listában az első helyen szereplő
    *  bitstream-mel foglalkozunk, mert ahhoz lesz a bélyegkép megjelenítve, amire aztán kattintva megjelenhet a PDF viewer.
-   * viewPdfStatus: a viewPDFOnCollLevel és/vagy a viewPdfOnItemLevel értéke. A tétel szintű metaadat erősebb, mint a 
-   *  gyűjtemény szintű, így, ha mind a kettő meg van adva, akkor a tétel metaadata lesz használva. Ha egyik sincs megadva, 
+   * viewPdfStatus: a viewPDFOnCollLevel és/vagy a viewPdfOnItemLevel értéke. A tétel szintű metaadat erősebb, mint a
+   *  gyűjtemény szintű, így, ha mind a kettő meg van adva, akkor a tétel metaadata lesz használva. Ha egyik sincs megadva,
    *  akkor üres sztring.
-   * viewPdfEnabled: ez mondja meg a fenti feltételek alapján, hogy végül a PDF viewer előhívható-e a bélyegképre kattintással 
+   * viewPdfEnabled: ez mondja meg a fenti feltételek alapján, hogy végül a PDF viewer előhívható-e a bélyegképre kattintással
    *  vagy sem?
    *
    * A dspace.viewpdf.enabled háromállású sztring lehet:
@@ -181,7 +181,7 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
 
     this.viewPdfEnabled = false;
 
-    let viewPdfStatus: string = '';
+    let viewPdfStatus = '';
     let mediaOptionsPDF: boolean = this.mediaOptions.pdf;
     let mediaType: string = this.mediaList$.value[0]?.type;
 

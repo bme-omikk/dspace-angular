@@ -62,6 +62,9 @@ export class FileDownloadLinkComponent implements OnInit {
       );
     } else {
       this.showDownloadLink = false;
+      this.authorizationService.isAuthorized(
+          FeatureID.CanDownload, isNotEmpty(this.bitstream) ? this.bitstream.self : undefined
+      ).subscribe(res => this.showDownloadLink = res);
       this.bitstreamPath$ = observableOf(this.getBitstreamDownloadPath());
       this.canDownload$ = observableOf(true);
     }

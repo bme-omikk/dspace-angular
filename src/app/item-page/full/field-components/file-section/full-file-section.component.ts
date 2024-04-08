@@ -1,15 +1,18 @@
 import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { BitstreamDataService } from '../../../../core/data/bitstream-data.service';
 import { ConfigurationDataService } from '../../../../core/data/configuration-data.service';
 
 import { Bitstream } from '../../../../core/shared/bitstream.model';
+import { ConfigurationProperty } from '../../../../core/shared/configuration-property.model';
 import { Item } from '../../../../core/shared/item.model';
 import { followLink } from '../../../../shared/utils/follow-link-config.model';
 import { FileSectionComponent } from '../../../simple/field-components/file-section/file-section.component';
 import { PaginationComponentOptions } from '../../../../shared/pagination/pagination-component-options.model';
 import { PaginatedList } from '../../../../core/data/paginated-list.model';
 import { RemoteData } from '../../../../core/data/remote-data';
+import { getFirstCompletedRemoteData } from '../../../../core/shared/operators';
 import { switchMap, tap } from 'rxjs/operators';
 import { NotificationsService } from '../../../../shared/notifications/notifications.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -33,6 +36,8 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
   @Input() item: Item;
 
   label: string;
+
+  enableRequestACopy: boolean;
 
   originals$: Observable<RemoteData<PaginatedList<Bitstream>>>;
   licenses$: Observable<RemoteData<PaginatedList<Bitstream>>>;
@@ -101,6 +106,15 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
         }
       )
     );
+
+    this.configurationService.findByPropertyName('request.item.type').pipe(
+      getFirstCompletedRemoteData(),
+      map((response: RemoteData<ConfigurationProperty>) => {
+        if (response.hasSucceeded) {
+          return response.payload.values[0] === undefined ? false : true;
+        }
+      })
+    ).subscribe(res => this.enableRequestACopy = res);
 
   }
 

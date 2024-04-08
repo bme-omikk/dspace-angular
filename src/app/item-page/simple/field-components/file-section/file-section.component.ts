@@ -1,5 +1,5 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BitstreamDataService } from '../../../../core/data/bitstream-data.service';
 import { ConfigurationDataService } from '../../../../core/data/configuration-data.service';
@@ -12,7 +12,7 @@ import { hasValue } from '../../../../shared/empty.util';
 import { PaginatedList } from '../../../../core/data/paginated-list.model';
 import { NotificationsService } from '../../../../shared/notifications/notifications.service';
 import { TranslateService } from '@ngx-translate/core';
-import { getFirstCompletedRemoteData, getFirstSucceededRemoteDataPayload } from '../../../../core/shared/operators';
+import { getFirstCompletedRemoteData } from '../../../../core/shared/operators';
 import { AppConfig, APP_CONFIG } from 'src/config/app-config.interface';
 import { DSONameService } from '../../../../core/breadcrumbs/dso-name.service';
 
@@ -42,7 +42,7 @@ export class FileSectionComponent implements OnInit {
 
   pageSize: number;
 
-  enableDownloadLink: boolean;
+  enableRequestACopy: boolean;
 
   constructor(
     protected configurationService: ConfigurationDataService,
@@ -57,7 +57,7 @@ export class FileSectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.getNextPage();
-    
+
     this.configurationService.findByPropertyName('request.item.type').pipe(
       getFirstCompletedRemoteData(),
       map((response: RemoteData<ConfigurationProperty>) => {
@@ -65,7 +65,7 @@ export class FileSectionComponent implements OnInit {
           return response.payload.values[0] === undefined ? false : true;
         }
       })
-    ).subscribe(res => this.enableDownloadLink = res);
+    ).subscribe(res => this.enableRequestACopy = res);
   }
 
   /**
