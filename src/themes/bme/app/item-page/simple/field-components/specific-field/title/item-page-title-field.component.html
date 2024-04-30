@@ -3,9 +3,9 @@
     {{ type.toLowerCase() + '.page.titleprefix' | translate }}
   </div>
   <span class="dont-break-out">{{ dsoNameService.getName(item) }}</span>
-  <div *ngIf="item.firstMetadataValue('dc.rights.license')">
-      <a href="https://en.wikipedia.org/wiki/Creative_Commons_license#Six_regularly_used_licenses" target="_blank">
-          <img src="assets/bme/images/cc-icons/{{item.firstMetadataValue('dc.rights.license')}}.svg" />
-      </a>
+  <div *ngFor="let md of item.allMetadataValues('dc.rights.license')">
+    <a href="https://creativecommons.org/{{ md=='zero'?'publicdomain':'licenses' }}/{{ md }}/{{ md=='zero'?'1.0':'4.0' }}" target="_blank">
+      <img src="assets/bme/images/cc-icons/{{ md }}.svg" />
+    </a>
   </div>
 </h2>
