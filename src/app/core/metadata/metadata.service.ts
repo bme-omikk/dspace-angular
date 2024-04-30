@@ -316,7 +316,6 @@ export class MetadataService {
    */
   private setCitationFirstPageTag(): void {
     const value = this.getMetaTagValue('local.firstpage');
-    console.log('local.firstpage', value);
     this.addMetaTag('citation_firstpage', value);
   }
 
