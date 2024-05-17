@@ -11,6 +11,54 @@ div.pdfviewer-wrapper {
   background: rgba(0,0,0,.5);
 }
 
+div#viewer-progress {
+  display: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 0;
+  background: rgba(241,241,241,.9);
+}
+
+div#viewer-progress > span {
+  font-size: xxx-large;
+  position: absolute;
+  top: 40vh;
+  left: 45vw;
+}
+
+div#viewer-progress > img {
+  top: 50vh;
+  position: absolute;
+  left: 45vw;
+  width: 217px;
+  height: 58px; 
+}
+
+div#viewer-progress > button {
+  position: absolute;
+  left: 53vw;
+  top: 60vh;
+}
+
+ul#viewer-links {
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+}
+
+ul#viewer-links > li.clickable > a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+ul#viewer-links > li.non-clickable > a {
+  text-decoration: none;
+}
+
 button.pdfviewer-close {
   position: relative;
   width: 25vw;

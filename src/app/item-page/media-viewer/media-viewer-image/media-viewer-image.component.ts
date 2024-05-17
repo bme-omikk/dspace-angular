@@ -48,6 +48,7 @@ export class MediaViewerImageComponent implements OnChanges, OnInit {
         previewZoom: true,
         previewRotate: true,
         previewFullscreen: true,
+        previewKeyboardNavigation: true,
       },
     ];
     if (this.image) {

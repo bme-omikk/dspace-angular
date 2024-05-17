@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { pdfDefaultOptions } from 'ngx-extended-pdf-viewer';
+import { pdfDefaultOptions, PagesLoadedEvent, PageRenderedEvent, PdfLoadingStartsEvent } from 'ngx-extended-pdf-viewer';
 import { MediaViewerItem } from '../../../core/shared/media-viewer-item.model';
 
 @Component({
@@ -8,7 +8,7 @@ import { MediaViewerItem } from '../../../core/shared/media-viewer-item.model';
   styleUrls: ['./media-viewer-pdf.component.scss']
 })
 export class MediaViewerPdfComponent {
-  @Input() pdfs: MediaViewerItem[];
+  @Input() pdf: MediaViewerItem[];
 
   @Input()
     public showViewer: boolean;
@@ -42,5 +42,18 @@ export class MediaViewerPdfComponent {
     if (el) {
       el.style.display = 'none';
     }
+  }
+
+  public onPagesLoaded(pagecount: PagesLoadedEvent): void {
+    const now = new Date().toLocaleTimeString();
+    console.log('pages loaded:', pagecount.pagesCount);
+  }
+
+  public onPageRendered(pr: PageRenderedEvent): void {
+    console.log('pagerendered');
+  }
+
+  public onPdfLoadingStarts(l: PdfLoadingStartsEvent): void {
+    console.log('pdf loading starts');
   }
 }

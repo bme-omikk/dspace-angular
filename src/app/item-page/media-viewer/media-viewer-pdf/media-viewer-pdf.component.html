@@ -1,7 +1,7 @@
 <ngx-extended-pdf-viewer
     id="pdfViewer"
     [customToolbar]="additionalButtons"
-    [src]="pdfs[0]?.bitstream?._links?.content?.href"
+    [src]="pdf"
     [height]="'auto'"
     [textLayer]="true"
     [useBrowserLocale]="true"
@@ -23,7 +23,10 @@
     [showScrollingButton]="false"
     [showSpreadButton]="false"
     [showPropertiesButton]="false"
-    [zoom]="'100%'">
+    [zoom]="'100%'"
+    (pagesLoaded)="onPagesLoaded($event)"
+    (pageRendered)="onPageRendered($event)"
+    (pdfLoadingStarts)="onPdfLoadingStarts($event)">
 </ngx-extended-pdf-viewer>
 <ng-template #additionalButtons>
   <div id="toolbarViewer">

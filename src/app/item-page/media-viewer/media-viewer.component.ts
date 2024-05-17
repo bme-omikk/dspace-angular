@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { filter, take } from 'rxjs/operators';
+import { filter, take, map } from 'rxjs/operators';
 import { BitstreamDataService } from '../../core/data/bitstream-data.service';
 import { PaginatedList } from '../../core/data/paginated-list.model';
 import { RemoteData } from '../../core/data/remote-data';
@@ -17,6 +17,8 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { AuthorizationDataService } from '../../core/data/feature-authorization/authorization-data.service';
 import { FeatureID } from '../../core/data/feature-authorization/feature-id';
 import { ViewpdfService } from '../../shared/viewpdf.service';
+import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
+import { DomSanitizer } from "@angular/platform-browser";
 
 /**
  * This component renders the media viewers
@@ -29,9 +31,15 @@ import { ViewpdfService } from '../../shared/viewpdf.service';
 export class MediaViewerComponent implements OnDestroy, OnInit {
   @Input() item: Item;
 
+  @Input() kbLoaded: string;
+
   @Input() mediaOptions: MediaViewerConfig = environment.mediaViewer;
+  
+  @Input() pdfblob: Blob;
 
   mediaList$: BehaviorSubject<MediaViewerItem[]> = new BehaviorSubject([]);
+
+  request: any;
 
   captions$: BehaviorSubject<Bitstream[]> = new BehaviorSubject([]);
 
@@ -51,6 +59,8 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
     protected bitstreamDataService: BitstreamDataService,
     protected changeDetectorRef: ChangeDetectorRef,
     private authorizationService: AuthorizationDataService,
+    private http: HttpClient,
+    private sanitizer: DomSanitizer,
   ) {
   }
 
@@ -145,14 +155,62 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
     mediaItem.thumbnail = thumbnail ? thumbnail._links.content.href : null;
     canDownload.subscribe(cd => {
       mediaItem.canDownload = cd;
-    }).unsubscribe();
+      this.changeDetectorRef.detectChanges();
+    });
     return mediaItem;
   }
 
-  displayPdfViewer() {
-    let el = document.getElementById('pdf-viewer-wrapper');
-    if (el) {
-      el.style.display = 'block';
+  private showPDFModal() {
+    document.getElementById('pdf-viewer-wrapper').style.display = 'block';
+  }
+
+  private showProgressModal() {
+    document.getElementById('viewer-progress').style.display = 'block';
+  }
+  
+  private hideProgressModal() {
+    document.getElementById('viewer-progress').style.display = 'none';
+  }
+
+  private getPDFContent(mediaItem): Observable<HttpEvent<any>> {
+    return this.http.get(mediaItem.bitstream._links.content.href,
+      { responseType: 'blob',
+        headers: { Accept: 'application/pdf' },
+        reportProgress: true, observe: 'events'
+      }
+    );
+  }
+
+  async cancelContentDownload() {
+    this.request.unsubscribe();
+    this.hideProgressModal();
+  }
+
+  showPdfViewer(mediaItem) {
+    this.pdfblob = undefined;
+    this.changeDetectorRef.detectChanges();
+
+    if (mediaItem.canDownload && mediaItem.type==='pdf') {
+      this.request = this.getPDFContent(mediaItem).subscribe((event) => {
+        switch (event.type) {
+          case HttpEventType.ResponseHeader:
+            this.showProgressModal();
+            break;
+          case HttpEventType.DownloadProgress:
+            const kb = Math.round(event.loaded / 1024);
+            this.kbLoaded = Math.round(mediaItem.bitstream.sizeBytes / 1024) + ' / ' + kb + ' kbytes';
+            this.changeDetectorRef.detectChanges();
+            break;
+          case HttpEventType.Response:
+            this.hideProgressModal();
+            this.pdfblob = event.body;
+            this.changeDetectorRef.detectChanges();
+            setTimeout(() => {
+              this.showPDFModal();
+            }, 100);
+            break;
+        }
+      });
     }
   }
 
