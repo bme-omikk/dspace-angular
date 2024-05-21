@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { pdfDefaultOptions, PagesLoadedEvent, PageRenderedEvent, PdfLoadingStartsEvent } from 'ngx-extended-pdf-viewer';
+import { pdfDefaultOptions } from 'ngx-extended-pdf-viewer';
 import { MediaViewerItem } from '../../../core/shared/media-viewer-item.model';
 
 @Component({
@@ -44,16 +44,10 @@ export class MediaViewerPdfComponent {
     }
   }
 
-  public onPagesLoaded(pagecount: PagesLoadedEvent): void {
-    const now = new Date().toLocaleTimeString();
-    console.log('pages loaded:', pagecount.pagesCount);
-  }
-
-  public onPageRendered(pr: PageRenderedEvent): void {
-    console.log('pagerendered');
-  }
-
-  public onPdfLoadingStarts(l: PdfLoadingStartsEvent): void {
-    console.log('pdf loading starts');
+  public onLoadingFailed(err: Error): void {
+    console.log('pdf loading error:', err);
+    this.closeViewer();
+    document.getElementById('pdf-error').style.display = 'block';
+    window.setTimeout(() => { document.getElementById('pdf-error').style.display = 'none'; }, 3000);
   }
 }

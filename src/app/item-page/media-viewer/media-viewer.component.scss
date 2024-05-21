@@ -29,14 +29,15 @@ div#viewer-progress > span {
   position: absolute;
   top: 40vh;
   left: 45vw;
+  text-align: center;
 }
 
 div#viewer-progress > img {
   top: 50vh;
   position: absolute;
   left: 45vw;
-  width: 217px;
-  height: 58px; 
+  width: 105px;
+  height: 27px; 
 }
 
 div#viewer-progress > button {
@@ -71,4 +72,29 @@ img.pdf-viewer-thumbnail {
   width: 141px;
   height: 200px;
   cursor: pointer;
+}
+
+div#pdf-error {
+  display: block;
+  position: absolute;
+  width: 50vw;
+  height: 50vh;
+  border: 1px solid black;
+  top: 0px;
+  left: 0px;
+  margin: 0 auto;
+  padding: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+
+div#pdf-error::after {
+  content: "PDF Error";
+  text-align: center;
+  text-align: center;
+  position: absolute;
+  top: 21vh;
+  left: 21vw;
+  color: white;
+  font-size: xxx-large;
 }

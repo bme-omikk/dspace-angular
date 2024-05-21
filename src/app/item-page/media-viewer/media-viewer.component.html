@@ -38,6 +38,7 @@
         <ds-media-viewer-pdf *ngIf="pdfblob" id="pdf-viewer-el" class="pdfviewer-wrapper" [pdf]="pdfblob"></ds-media-viewer-pdf>
       </div>
       <div id="viewer-progress"><span>{{ kbLoaded }}</span><img src="assets/images/bme-progress.gif"/><button (click)="cancelContentDownload()">Mégsem...</button></div>
+      <div id="pdf-error" style="display:none"></div>
     </ng-container>
   </ng-template>
   <ng-template #showThumbnail>

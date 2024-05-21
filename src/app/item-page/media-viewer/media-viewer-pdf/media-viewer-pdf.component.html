@@ -24,9 +24,7 @@
     [showSpreadButton]="false"
     [showPropertiesButton]="false"
     [zoom]="'100%'"
-    (pagesLoaded)="onPagesLoaded($event)"
-    (pageRendered)="onPageRendered($event)"
-    (pdfLoadingStarts)="onPdfLoadingStarts($event)">
+    (pdfLoadingFailed)="onLoadingFailed($event)">
 </ngx-extended-pdf-viewer>
 <ng-template #additionalButtons>
   <div id="toolbarViewer">
