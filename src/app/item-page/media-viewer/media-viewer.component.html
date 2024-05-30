@@ -32,13 +32,12 @@
               </li>
           </ng-container>
         </ul>
-      </div>
-      
+      </div>      
       <div id="pdf-viewer-wrapper" class="pdfviewer-wrapper">
         <ds-media-viewer-pdf *ngIf="pdfblob" id="pdf-viewer-el" class="pdfviewer-wrapper" [pdf]="pdfblob"></ds-media-viewer-pdf>
       </div>
-      <div id="viewer-progress"><span>{{ kbLoaded }}</span><img src="assets/images/bme-progress.gif"/><button (click)="cancelContentDownload()">Mégsem...</button></div>
-      <div id="pdf-error" style="display:none"></div>
+      <div *ngIf="showModal" id="viewer-progress"><span>{{ kbLoaded }}</span><img src="assets/images/bme-progress.gif"/><button (click)="cancelContentDownload()">Mégsem...</button></div>
+      <div id="pdf-error"></div>
     </ng-container>
   </ng-template>
   <ng-template #showThumbnail>

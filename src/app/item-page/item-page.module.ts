@@ -64,7 +64,6 @@ import { ThemedItemAlertsComponent } from './alerts/themed-item-alerts.component
 import {
   ThemedFullFileSectionComponent
 } from './full/field-components/file-section/themed-full-file-section.component';
-import { MediaViewerPdfComponent } from './media-viewer/media-viewer-pdf/media-viewer-pdf.component';
 
 const ENTRY_COMPONENTS = [
   // put only entry components that use custom decorator
@@ -100,7 +99,6 @@ const DECLARATIONS = [
   ThemedMediaViewerVideoComponent,
   MediaViewerImageComponent,
   ThemedMediaViewerImageComponent,
-  MediaViewerPdfComponent,
   MiradorViewerComponent,
   VersionPageComponent,
   OrcidPageComponent,

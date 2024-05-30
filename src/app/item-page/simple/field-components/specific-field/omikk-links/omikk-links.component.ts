@@ -57,7 +57,6 @@ export class OmikkLinksComponent extends ItemPageFieldComponent implements OnIni
 
   ngOnInit() {
     const owningCollection$: Observable<Collection> = this.cds.findOwningCollectionFor(this.item).pipe(
-      tap(coll => { console.log('collection in omikk-links', coll); }),
       getFirstSucceededRemoteDataPayload(),
       startWith(null as Collection),
     );

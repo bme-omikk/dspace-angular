@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { filter, take, map } from 'rxjs/operators';
 import { BitstreamDataService } from '../../core/data/bitstream-data.service';
 import { PaginatedList } from '../../core/data/paginated-list.model';
@@ -50,6 +50,10 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
   thumbnailsRD$: Observable<RemoteData<PaginatedList<Bitstream>>>;
 
   subs: Subscription[] = [];
+
+  showModal: boolean;
+
+  showPdfError: boolean;
 
   viewPdfOnCollLevel = '';
   viewPdfOnItemLevel = '';
@@ -112,6 +116,7 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
       }
     }));
 
+    this.showModal = this.showPdfError = false;
   }
 
   /**
@@ -165,11 +170,15 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
   }
 
   private showProgressModal() {
-    document.getElementById('viewer-progress').style.display = 'block';
+    this.showModal = true;
+      this.changeDetectorRef.detectChanges();
+    //document.getElementById('viewer-progress').style.display = 'block';
   }
   
   private hideProgressModal() {
-    document.getElementById('viewer-progress').style.display = 'none';
+    this.showModal = false;
+      this.changeDetectorRef.detectChanges();
+    //document.getElementById('viewer-progress').style.display = 'none';
   }
 
   private getPDFContent(mediaItem): Observable<HttpEvent<any>> {
@@ -234,40 +243,43 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
    */
   isPDFViewEnabled() {
     let vp = new ViewpdfService(this.item);
-    vp.statusOnCollLevel().subscribe(r => { this.viewPdfOnCollLevel = r; });
-    vp.statusOnItemLevel().subscribe(r => { this.viewPdfOnItemLevel = r; });
 
-    this.viewPdfEnabled = false;
+    combineLatest(vp.statusOnCollLevel(), vp.statusOnItemLevel()).subscribe(([coll, item]) => {
+      this.viewPdfOnCollLevel = coll;
+      this.viewPdfOnItemLevel = item;
+      
+      this.viewPdfEnabled = false;
 
-    let viewPdfStatus = '';
-    let mediaOptionsPDF: boolean = this.mediaOptions.pdf;
-    let mediaType: string = this.mediaList$.value[0]?.type;
+      let viewPdfStatus = '';
+      let mediaOptionsPDF: boolean = this.mediaOptions.pdf;
+      let mediaType: string = this.mediaList$.value[0]?.type;
 
-    if (this.viewPdfOnItemLevel !== 'na') {
-      viewPdfStatus = this.viewPdfOnItemLevel;
-    } else if (this.viewPdfOnCollLevel !== 'na') {
-      viewPdfStatus = this.viewPdfOnCollLevel;
-    } else {
-      viewPdfStatus = '';
-    }
+      if (this.viewPdfOnItemLevel !== 'na') {
+        viewPdfStatus = this.viewPdfOnItemLevel;
+      } else if (this.viewPdfOnCollLevel !== 'na') {
+        viewPdfStatus = this.viewPdfOnCollLevel;
+      } else {
+        viewPdfStatus = '';
+      }
 
-    switch (viewPdfStatus) {
-      case 'viewer': {
-        this.viewPdfEnabled = mediaOptionsPDF && (mediaType === 'pdf' ? true : false);
-        break;
+      switch (viewPdfStatus) {
+        case 'viewer': {
+          this.viewPdfEnabled = mediaOptionsPDF && (mediaType === 'pdf' ? true : false);
+          break;
+        }
+        case 'viewer-download': {
+          this.viewPdfEnabled = mediaOptionsPDF && (mediaType === 'pdf' ? true : false);
+          break;
+        }
+        case 'download': {
+          this.viewPdfEnabled = false;
+          break;
+        }
+        default: {
+          this.viewPdfEnabled = false;
+          break;
+        }
       }
-      case 'viewer-download': {
-        this.viewPdfEnabled = mediaOptionsPDF && (mediaType === 'pdf' ? true : false);
-        break;
-      }
-      case 'download': {
-        this.viewPdfEnabled = false;
-        break;
-      }
-      default: {
-        this.viewPdfEnabled = false;
-        break;
-      }
-    }
+    });
   }
 }

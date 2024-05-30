@@ -45,7 +45,6 @@ export class MediaViewerPdfComponent {
   }
 
   public onLoadingFailed(err: Error): void {
-    console.log('pdf loading error:', err);
     this.closeViewer();
     document.getElementById('pdf-error').style.display = 'block';
     window.setTimeout(() => { document.getElementById('pdf-error').style.display = 'none'; }, 3000);

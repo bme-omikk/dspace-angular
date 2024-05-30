@@ -18,11 +18,12 @@ export class ViewpdfService {
     let subject = new BehaviorSubject<string>('');
     this.item.owningCollection.subscribe(
       coll => {
+          if (coll.payload !== undefined) {
         subject.next(
           coll.payload.metadata['dspace.viewpdf.enabled'] === undefined ?
               'na' : coll.payload.metadata['dspace.viewpdf.enabled'][0].value
         );
-      }
+          }}
     );
     return subject.asObservable();
   }

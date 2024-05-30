@@ -10,7 +10,6 @@
                            [collectionSize]="originals?.totalElements"
                            [retainScrollPosition]="true">
 
-
                 <div class="file-section row mb-3" *ngFor="let file of originals?.page;">
                     <div class="col-3">
                         <ds-themed-thumbnail [thumbnail]="(file.thumbnail | async)?.payload"></ds-themed-thumbnail>
@@ -34,14 +33,31 @@
                         </dl>
                     </div>
                     <div class="col-2">
-                        <ds-themed-file-download-link [enableRequestACopy]="enableRequestACopy" [bitstream]="file" [item]="item">
+                        <ds-themed-file-download-link
+                            *ngIf="(isDownloadable(file) | async) && (!viewPdfEnabled || (file.format | async)?.payload?.mimetype !== 'application/pdf')"
+                            [enableRequestACopy]="enableRequestACopy" [bitstream]="file" [item]="item">
                             {{"item.page.filesection.download" | translate}}
                         </ds-themed-file-download-link>
+                        <div *ngIf="(isDownloadable(file) | async) && viewPdfEnabled && ((file.format | async)?.payload?.mimetype === 'application/pdf')" class="viewer-link">
+                          <i class="fas fa-eye" title="View">&nbsp;</i>
+                          <a (click)="showPdfViewer(file)">{{ file.name }}</a>
+                        </div>
+                        <div *ngIf="(isDownloadable(file) | async)===false" class="viewer-link">
+                          <i class="fas fa-lock" title="View">&nbsp;</i>
+                          <span>{{ file.name }}</span>
+                        </div>
                     </div>
                 </div>
             </ds-pagination>
         </div>
     </div>
+
+    <div id="pdf-viewer-wrapper" class="pdfviewer-wrapper">
+      <ds-media-viewer-pdf *ngIf="pdfblob" id="pdf-viewer-el" class="pdfviewer-wrapper" [pdf]="pdfblob"></ds-media-viewer-pdf>
+    </div>
+    <div id="viewer-progress"><span>{{ kbLoaded }}</span><img src="assets/images/bme-progress.gif"/><button (click)="cancelContentDownload()">Mégsem...</button></div>
+    <div id="pdf-error"></div>
+    
     <div *ngVar="(licenses$ | async)?.payload as licenses">
         <div *ngIf="hasValuesInBundle(licenses)">
             <h3 class="h5 simple-view-element-header">{{"item.page.filesection.license.bundle" | translate}}</h3>

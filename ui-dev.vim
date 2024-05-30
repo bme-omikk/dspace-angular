@@ -93,8 +93,6 @@ tabnew
 tabnew
 tabnew
 tabnew
-tabnew
-tabnew
 tabrewind
 edit src/themes/bme/app/item-page/simple/item-types/untyped-item/untyped-item.component.html
 set splitbelow splitright
@@ -231,11 +229,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 31 - ((26 * winheight(0) + 25) / 51)
+let s:l = 27 - ((23 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 31
+keepjumps 27
 normal! 07|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
@@ -374,7 +372,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 31 - ((26 * winheight(0) + 25) / 51)
+let s:l = 31 - ((27 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -517,11 +515,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 50 - ((35 * winheight(0) + 25) / 51)
+let s:l = 42 - ((28 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 50
+keepjumps 42
 normal! 037|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
@@ -660,7 +658,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 19 - ((18 * winheight(0) + 25) / 51)
+let s:l = 19 - ((16 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -802,11 +800,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 72 - ((0 * winheight(0) + 25) / 51)
+let s:l = 73 - ((1 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 72
+keepjumps 73
 normal! 05|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
@@ -945,7 +943,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 41 - ((0 * winheight(0) + 25) / 51)
+let s:l = 41 - ((0 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1088,15 +1086,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 201 - ((26 * winheight(0) + 25) / 51)
+let s:l = 119 - ((0 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 201
-normal! 075|
+keepjumps 119
+normal! 03|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
-edit ~/Dokumentumok/dspace-angular/src/app/core/shared/bitstream.model.ts
+edit ~/Dokumentumok/dspace-angular/src/app/item-page/item-page.module.ts
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -1106,8 +1104,8 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-if bufexists("~/Dokumentumok/dspace-angular/src/app/core/shared/bitstream.model.ts") | buffer ~/Dokumentumok/dspace-angular/src/app/core/shared/bitstream.model.ts | else | edit ~/Dokumentumok/dspace-angular/src/app/core/shared/bitstream.model.ts | endif
-balt ~/Dokumentumok/dspace-angular/src/app/core/shared
+if bufexists("~/Dokumentumok/dspace-angular/src/app/item-page/item-page.module.ts") | buffer ~/Dokumentumok/dspace-angular/src/app/item-page/item-page.module.ts | else | edit ~/Dokumentumok/dspace-angular/src/app/item-page/item-page.module.ts | endif
+balt ~/Dokumentumok/dspace-angular/src/app/item-page
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -1134,7 +1132,7 @@ setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
 setlocal nocursorcolumn
-setlocal cursorline
+setlocal nocursorline
 setlocal cursorlineopt=both
 setlocal define=
 setlocal dictionary=
@@ -1168,7 +1166,7 @@ setlocal includeexpr=
 setlocal indentexpr=GetTypescriptIndent()
 setlocal indentkeys=0{,0},0),0],0,,!^F,o,O,e
 setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255,$,#
+setlocal iskeyword=@,48-57,_,192-255,#,$
 setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
@@ -1231,155 +1229,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 25) / 51)
+let s:l = 96 - ((0 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
-normal! 0
-lcd ~/Dokumentumok/dspace-angular
-tabnext
-edit ~/Dokumentumok/dspace-angular/package.json
-set splitbelow splitright
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-argglobal
-if bufexists("~/Dokumentumok/dspace-angular/package.json") | buffer ~/Dokumentumok/dspace-angular/package.json | else | edit ~/Dokumentumok/dspace-angular/package.json | endif
-balt ~/Dokumentumok/dspace-angular/angular.json
-setlocal keymap=
-setlocal noarabic
-setlocal noautoindent
-setlocal backupcopy=
-setlocal balloonexpr=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=
-setlocal commentstring=
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal cursorlineopt=both
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'json'
-setlocal filetype=json
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=cq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=-1
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=GetJSONIndent(v:lnum)
-setlocal indentkeys=0{,0},0),0[,0],!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal nomodeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-setlocal nonumber
-setlocal numberwidth=4
-setlocal omnifunc=htmlcomplete#CompleteTags
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=2
-setlocal noshortname
-setlocal showbreak=
-setlocal sidescrolloff=-1
-setlocal signcolumn=auto
-setlocal nosmartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal spelloptions=
-setlocal statusline=
-setlocal suffixesadd=
-setlocal swapfile
-setlocal synmaxcol=3000
-if &syntax != 'json'
-setlocal syntax=json
-endif
-setlocal tabstop=2
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal varsofttabstop=
-setlocal vartabstop=
-setlocal wincolor=
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 123 - ((25 * winheight(0) + 25) / 51)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 123
-normal! 019|
+keepjumps 96
+normal! 03|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/app/core/shared/media-viewer-item.model.ts
@@ -1517,7 +1372,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 28) / 56)
+let s:l = 1 - ((0 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1660,12 +1515,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 41 - ((40 * winheight(0) + 28) / 56)
+let s:l = 28 - ((25 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 41
-normal! 048|
+keepjumps 28
+normal! 056|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer.component.scss
@@ -1679,7 +1534,7 @@ set winminwidth=0
 set winwidth=1
 argglobal
 if bufexists("~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer.component.scss") | buffer ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer.component.scss | else | edit ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer.component.scss | endif
-balt ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer
+balt ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer.component.scss
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -1803,12 +1658,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 100 - ((52 * winheight(0) + 28) / 56)
+let s:l = 78 - ((28 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 100
-normal! 0
+keepjumps 78
+normal! 015|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer-pdf/media-viewer-pdf.component.html
@@ -1946,7 +1801,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 47 - ((46 * winheight(0) + 28) / 56)
+let s:l = 47 - ((43 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -2089,12 +1944,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 51 - ((23 * winheight(0) + 28) / 56)
+let s:l = 1 - ((0 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 51
-normal! 0100|
+keepjumps 1
+normal! 0
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/app/shared/viewpdf.service.ts
@@ -2232,12 +2087,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 24 - ((23 * winheight(0) + 28) / 56)
+let s:l = 21 - ((18 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 24
-normal! 03|
+keepjumps 21
+normal! 040|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/themes/bme/assets/i18n/hu.json5
@@ -2375,7 +2230,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 158 - ((15 * winheight(0) + 25) / 51)
+let s:l = 158 - ((15 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -2517,7 +2372,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 156 - ((35 * winheight(0) + 25) / 51)
+let s:l = 156 - ((36 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -2660,7 +2515,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 7921 - ((15 * winheight(0) + 25) / 51)
+let s:l = 7921 - ((15 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -2803,7 +2658,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 5649 - ((6 * winheight(0) + 25) / 51)
+let s:l = 5649 - ((6 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -2946,7 +2801,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 27 - ((24 * winheight(0) + 25) / 51)
+let s:l = 27 - ((24 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -3089,170 +2944,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 92 - ((17 * winheight(0) + 25) / 51)
+let s:l = 92 - ((17 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 92
 normal! 09|
-lcd ~/Dokumentumok/dspace-angular
-tabnext
-set splitbelow splitright
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-argglobal
-enew
-balt ~/Dokumentumok/dspace-angular/src
-let s:cpo_save=&cpo
-set cpo&vim
-nmap <buffer>  <Plug>NetrwHideEdit
-nmap <buffer> <nowait> <silent>  <Plug>NetrwRefresh
-nmap <buffer> <nowait> <silent>  <Plug>NetrwLocalBrowseCheck
-nmap <buffer> <nowait> <silent>  <Plug>NetrwServerEdit
-nmap <buffer> <nowait> <silent> % <Plug>NetrwOpenFile
-nmap <buffer> <nowait> <silent> - <Plug>NetrwBrowseUpDir
-nmap <buffer> <nowait> <silent> C <Plug>NetrwSetChgwin
-nmap <buffer> <nowait> <silent> a <Plug>NetrwHide_a
-nmap <buffer> <nowait> <silent> cd <Plug>NetrwLcd
-nmap <buffer> <nowait> <silent> cB <Plug>NetrwBadd_cB
-nmap <buffer> <nowait> <silent> cb <Plug>NetrwBadd_cb
-nmap <buffer> <nowait> <silent> gb <Plug>NetrwBookHistHandler_gb
-nnoremap <buffer> <F1> :he netrw-quickhelp
-nmap <buffer> <nowait> <silent> <S-CR> <Plug>NetrwTreeSqueeze
-nnoremap <buffer> <silent> <S-Up> :Pexplore
-nnoremap <buffer> <silent> <S-Down> :Nexplore
-nmap <buffer> <C-H> <Plug>NetrwHideEdit
-nmap <buffer> <nowait> <silent> <C-R> <Plug>NetrwServerEdit
-nmap <buffer> <nowait> <silent> <C-L> <Plug>NetrwRefresh
-let &cpo=s:cpo_save
-unlet s:cpo_save
-setlocal keymap=
-setlocal noarabic
-setlocal noautoindent
-setlocal backupcopy=
-setlocal balloonexpr=netrw#BalloonHelp()
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=hide
-setlocal nobuflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal cursorline
-setlocal cursorlineopt=both
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'netrw'
-setlocal filetype=netrw
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=-1
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal nomodeline
-setlocal nomodifiable
-setlocal nrformats=bin,octal,hex
-setlocal nonumber
-setlocal numberwidth=4
-setlocal omnifunc=htmlcomplete#CompleteTags
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal readonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=2
-setlocal noshortname
-setlocal showbreak=
-setlocal sidescrolloff=-1
-setlocal signcolumn=auto
-setlocal nosmartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal spelloptions=
-setlocal statusline=
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'netrw'
-setlocal syntax=netrw
-endif
-setlocal tabstop=2
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal varsofttabstop=
-setlocal vartabstop=
-setlocal wincolor=
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal nowrap
-setlocal wrapmargin=0
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links/omikk-links.component.html
@@ -3390,7 +3087,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 31 - ((26 * winheight(0) + 25) / 51)
+let s:l = 31 - ((27 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -3533,12 +3230,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 42 - ((27 * winheight(0) + 25) / 51)
+let s:l = 60 - ((25 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 42
-normal! 0
+keepjumps 60
+normal! 07|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/item-page-field.component.ts
@@ -3676,7 +3373,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 6 - ((5 * winheight(0) + 25) / 51)
+let s:l = 6 - ((5 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -3819,7 +3516,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 115 - ((0 * winheight(0) + 25) / 51)
+let s:l = 115 - ((0 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -3962,7 +3659,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 25) / 51)
+let s:l = 1 - ((0 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -3981,7 +3678,7 @@ set winminwidth=0
 set winwidth=1
 argglobal
 if bufexists("~/Dokumentumok/dspace-angular/src/app/item-page/field-components/collections/collections.component.ts") | buffer ~/Dokumentumok/dspace-angular/src/app/item-page/field-components/collections/collections.component.ts | else | edit ~/Dokumentumok/dspace-angular/src/app/item-page/field-components/collections/collections.component.ts | endif
-balt ~/Dokumentumok/dspace-angular/src/app/item-page/field-components/collections
+balt ~/Dokumentumok/dspace-angular/src/app/item-page/field-components/collections/collections.component.ts
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -4105,7 +3802,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 25 - ((22 * winheight(0) + 25) / 51)
+let s:l = 25 - ((22 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -4124,7 +3821,7 @@ set winminwidth=0
 set winwidth=1
 argglobal
 if bufexists("~/Dokumentumok/dspace-angular/src/app/item-page/field-components/collections/collections.component.html") | buffer ~/Dokumentumok/dspace-angular/src/app/item-page/field-components/collections/collections.component.html | else | edit ~/Dokumentumok/dspace-angular/src/app/item-page/field-components/collections/collections.component.html | endif
-balt ~/Dokumentumok/dspace-angular/src/app/item-page/field-components/collections
+balt ~/Dokumentumok/dspace-angular/src/app/item-page/field-components/collections/collections.component.html
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -4248,7 +3945,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 25) / 51)
+let s:l = 1 - ((0 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -4391,12 +4088,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 68 - ((29 * winheight(0) + 25) / 51)
+let s:l = 68 - ((15 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 68
-normal! 097|
+normal! 054|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/file-section/file-section.component.html
@@ -4534,7 +4231,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 4 - ((3 * winheight(0) + 25) / 51)
+let s:l = 4 - ((3 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -4677,12 +4374,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 37 - ((32 * winheight(0) + 25) / 51)
+let s:l = 100 - ((49 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 37
-normal! 096|
+keepjumps 100
+normal! 0
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/app/item-page/full/field-components/file-section/full-file-section.component.ts
@@ -4696,7 +4393,7 @@ set winminwidth=0
 set winwidth=1
 argglobal
 if bufexists("~/Dokumentumok/dspace-angular/src/app/item-page/full/field-components/file-section/full-file-section.component.ts") | buffer ~/Dokumentumok/dspace-angular/src/app/item-page/full/field-components/file-section/full-file-section.component.ts | else | edit ~/Dokumentumok/dspace-angular/src/app/item-page/full/field-components/file-section/full-file-section.component.ts | endif
-balt ~/Dokumentumok/dspace-angular/src/app/item-page/full/field-components/file-section
+balt ~/Dokumentumok/dspace-angular/src/app/item-page/full/field-components/file-section/full-file-section.component.ts
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -4820,12 +4517,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 89 - ((27 * winheight(0) + 25) / 51)
+let s:l = 179 - ((4 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 89
-normal! 07|
+keepjumps 179
+normal! 021|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/app/shared/file-download-link/file-download-link.component.html
@@ -4963,12 +4660,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 6 - ((5 * winheight(0) + 25) / 51)
+let s:l = 1 - ((0 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 6
-normal! 086|
+keepjumps 1
+normal! 03|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/app/shared/file-download-link/file-download-link.component.ts
@@ -5106,14 +4803,14 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 64 - ((29 * winheight(0) + 25) / 51)
+let s:l = 86 - ((51 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 64
-normal! 07|
+keepjumps 86
+normal! 0
 lcd ~/Dokumentumok/dspace-angular
-tabnext 14
+tabnext 30
 set stal=1
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/simple/item-types/untyped-item/untyped-item.component.html
 badd +30 ~/Dokumentumok/dspace-angular/angular.json
@@ -5124,12 +4821,11 @@ badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/simple/item-t
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/item-types/untyped-item/untyped-item.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/item-types/shared/item.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer.component.ts
-badd +1 ~/Dokumentumok/dspace-angular/src/app/core/shared/bitstream.model.ts
-badd +1 ~/Dokumentumok/dspace-angular/package.json
+badd +67 ~/Dokumentumok/dspace-angular/src/app/item-page/item-page.module.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/core/shared/media-viewer-item.model.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer.component.html
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer.component.scss
-badd +0 ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer-pdf/media-viewer-pdf.component.html
+badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer-pdf/media-viewer-pdf.component.html
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer-pdf/media-viewer-pdf.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/shared/viewpdf.service.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/assets/i18n/hu.json5
@@ -5137,7 +4833,6 @@ badd +1 ~/Dokumentumok/dspace-angular/src/assets/i18n/hu.json5
 badd +1 ~/Dokumentumok/dspace-angular/src/assets/i18n/en.json5
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/full/full-item-page.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/full/full-item-page.component.html
-badd +1 ~/Dokumentumok/dspace-angular/src
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links/omikk-links.component.html
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links/omikk-links.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/item-page-field.component.ts
@@ -5150,20 +4845,23 @@ badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/full/field-components/file-section/full-file-section.component.html
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/full/field-components/file-section/full-file-section.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/shared/file-download-link/file-download-link.component.html
-badd +1 ~/Dokumentumok/dspace-angular/src/app/shared/file-download-link/file-download-link.component.ts
-badd +0 ~/Dokumentumok/dspace-angular/src/app/core/shared
+badd +0 ~/Dokumentumok/dspace-angular/src/app/shared/file-download-link/file-download-link.component.ts
+badd +6 ~/Dokumentumok/dspace-angular/src/app/shared/file-download-link/themed-file-download-link.component.ts
+badd +287 ~/Dokumentumok/dspace-angular/src/app/shared/shared.module.ts
+badd +88 ~/Dokumentumok/dspace-angular/src/app/app.module.ts
+badd +0 ~/Dokumentumok/dspace-angular/src/app/item-page
 badd +1 ../../core/shared/media-viewer-item.model
-badd +0 ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/assets/i18n/en.json5
 badd +1 ~/Dokumentumok/dspace-angular/src/assets/i18n
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/full/full-item-page.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/item-page-field.component.html
 badd +141 ~/Dokumentumok/dspace-angular/src/app/item-page/edit-item-page/item-collection-mapper/item-collection-mapper.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links
-badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/field-components/collections
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/full/field-components/file-section/file-section.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/file-section/themed-file-section.component.ts
-badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/full/field-components/file-section
+badd +0 ~/Dokumentumok/dspace-angular/src/app/shared/file-download-link
+badd +18 ~/Dokumentumok/dspace-angular/src/app/core/shared/bitstream.model.ts
+badd +123 ~/Dokumentumok/dspace-angular/package.json
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/generic/generic-item-page-field.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/navbar/navbar.component.html
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/navbar/navbar.component.ts
@@ -5217,13 +4915,14 @@ badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/eager-theme.module.ts
 badd +13 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/author/item-page-author-field.component.ts
 badd +3 ~/Dokumentumok/dspace-angular/src/app/navbar/navbar.component.ts
 badd +3 ~/Dokumentumok/dspace-angular/src/app/core/shared/dspace-object.model.ts
-badd +39 ~/Dokumentumok/dspace-angular/src/app/item-page/item-page.module.ts
 badd +18 ~/Dokumentumok/dspace-angular/src/app/item-page/item-page-routing-paths.ts
 badd +6 ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer-image/media-viewer-image.component.html
 badd +34 ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer-image/themed-media-viewer-image.component.ts
 badd +26 ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer-image/media-viewer-image.component.ts
 badd +31 ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer-video/media-viewer-video.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/core/data/bitstream-data.service.ts
+badd +16 ~/Dokumentumok/dspace-angular/src/app/item-page/full/field-components/file-section/themed-full-file-section.component.ts
+badd +54 ~/Dokumentumok/dspace-angular/src/app/core/shared/bitstream-format.model.ts
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif

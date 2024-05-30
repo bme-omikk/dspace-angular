@@ -65,7 +65,7 @@ export class FileSectionComponent implements OnInit {
           return response.payload.values[0] === undefined ? false : true;
         }
       })
-    ).subscribe(res => {this.enableRequestACopy = res; console.log('enableRequestACopy = ', res);});
+    ).subscribe(res => {this.enableRequestACopy = res;});
   }
 
   /**

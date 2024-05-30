@@ -282,8 +282,10 @@ import {
 } from '../item-page/simple/field-components/specific-field/title/themed-item-page-field.component';
 import { BitstreamListItemComponent } from './object-list/bitstream-list-item/bitstream-list-item.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { ThemedLangSwitchComponent } from './lang-switch/themed-lang-switch.component';
 import {ThemedUserMenuComponent} from './auth-nav-menu/user-menu/themed-user-menu.component';
+import { MediaViewerPdfComponent } from '../item-page/media-viewer/media-viewer-pdf/media-viewer-pdf.component';
 
 const MODULES = [
   CommonModule,
@@ -299,7 +301,8 @@ const MODULES = [
   DragDropModule,
   GoogleRecaptchaModule,
   MenuModule,
-  NgxPaginationModule
+  NgxPaginationModule,
+  NgxExtendedPdfViewerModule,
 ];
 
 const ROOT_MODULES = [
@@ -404,6 +407,7 @@ const COMPONENTS = [
   EpersonSearchBoxComponent,
   GroupSearchBoxComponent,
   ThemedItemPageTitleFieldComponent,
+  MediaViewerPdfComponent,
 ];
 
 const ENTRY_COMPONENTS = [
@@ -467,7 +471,7 @@ const ENTRY_COMPONENTS = [
   AdvancedClaimedTaskActionRatingComponent,
   EpersonGroupListComponent,
   EpersonSearchBoxComponent,
-  GroupSearchBoxComponent
+  GroupSearchBoxComponent,
 ];
 
 const PROVIDERS = [

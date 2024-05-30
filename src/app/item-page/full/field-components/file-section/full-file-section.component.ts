@@ -1,5 +1,5 @@
-import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ChangeDetectorRef, Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BitstreamDataService } from '../../../../core/data/bitstream-data.service';
 import { ConfigurationDataService } from '../../../../core/data/configuration-data.service';
@@ -19,7 +19,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { hasValue, isEmpty } from '../../../../shared/empty.util';
 import { PaginationService } from '../../../../core/pagination/pagination.service';
 import { DSONameService } from '../../../../core/breadcrumbs/dso-name.service';
+import { AuthorizationDataService } from '../../../../core/data/feature-authorization/authorization-data.service';
+import { FeatureID } from '../../../../core/data/feature-authorization/feature-id';
 import { AppConfig, APP_CONFIG } from 'src/config/app-config.interface';
+import { ViewpdfService } from '../../../../shared/viewpdf.service';
+import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
+import { DomSanitizer } from "@angular/platform-browser";
 
 /**
  * This component renders the file section of the item
@@ -34,6 +39,16 @@ import { AppConfig, APP_CONFIG } from 'src/config/app-config.interface';
 export class FullFileSectionComponent extends FileSectionComponent implements OnDestroy, OnInit {
 
   @Input() item: Item;
+
+  kbLoaded: string;
+  
+  pdfblob: Blob;
+
+  viewPdfEnabled: boolean;
+
+  canDownload: boolean;
+
+  request: any;
 
   label: string;
 
@@ -60,7 +75,11 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
     protected notificationsService: NotificationsService,
     protected translateService: TranslateService,
     protected paginationService: PaginationService,
+    protected authorizationService: AuthorizationDataService,
     public dsoNameService: DSONameService,
+    private http: HttpClient,
+    private sanitizer: DomSanitizer,
+    protected changeDetectorRef: ChangeDetectorRef,
     @Inject(APP_CONFIG) protected appConfig: AppConfig
   ) {
     super(configurationService, bitstreamDataService, notificationsService, translateService, dsoNameService, appConfig);
@@ -68,6 +87,7 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
 
   ngOnInit(): void {
     this.initialize();
+    this.isPDFViewEnabled();
   }
 
   initialize(): void {
@@ -125,6 +145,99 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
   ngOnDestroy(): void {
     this.paginationService.clearPagination(this.originalOptions.id);
     this.paginationService.clearPagination(this.licenseOptions.id);
+  }
+
+  isPDFViewEnabled() {
+    let viewPdfOnItemLevel = '';
+    let viewPdfOnCollLevel = '';
+    let vp = new ViewpdfService(this.item);
+
+    combineLatest(vp.statusOnCollLevel(), vp.statusOnItemLevel()).subscribe(([coll, item]) => {
+      viewPdfOnCollLevel = coll;
+      viewPdfOnItemLevel = item;
+      
+      this.viewPdfEnabled = false;
+
+      let viewPdfStatus = '';
+
+      if (viewPdfOnItemLevel !== 'na') {
+        this.viewPdfEnabled = viewPdfOnItemLevel === 'viewer' || viewPdfOnItemLevel === 'viewer-download' ? true : false;
+      } else if (viewPdfOnCollLevel !== 'na') {
+        this.viewPdfEnabled = viewPdfOnCollLevel === 'viewer' || viewPdfOnCollLevel === 'viewer-download' ? true : false;
+      } else {
+        this.viewPdfEnabled = false;
+      }
+    });
+  }
+
+  isDownloadable(bitstream) {
+    return this.authorizationService.isAuthorized(
+      FeatureID.CanDownload,
+      bitstream._links.self.href);
+  }
+
+  showPdfViewer(bitstream) {
+    this.pdfblob = undefined;
+    this.changeDetectorRef.detectChanges();
+
+    this.authorizationService.isAuthorized(
+      FeatureID.CanDownload,
+      bitstream._links.self.href).subscribe(cd => {
+      if (cd) {
+        bitstream.format.subscribe(fmt => {
+          if (fmt.payload !== undefined) {
+            if (fmt.payload.mimetype === 'application/pdf') {
+              this.request = this.getPDFContent(bitstream).subscribe((event) => {
+                switch (event.type) {
+                  case HttpEventType.ResponseHeader:
+                    this.showProgressModal();
+                    break;
+                  case HttpEventType.DownloadProgress:
+                    const kb = Math.round(event.loaded / 1024);
+                    this.kbLoaded = Math.round(bitstream.sizeBytes / 1024) + ' / ' + kb + ' kbytes';
+                    this.changeDetectorRef.detectChanges();
+                    break;
+                  case HttpEventType.Response:
+                    this.hideProgressModal();
+                    this.pdfblob = event.body;
+                    this.changeDetectorRef.detectChanges();
+                    setTimeout(() => {
+                      this.showPDFModal();
+                    }, 100);
+                    break;
+                }
+              });
+            }
+          }
+        });
+      }
+    });
+  }
+
+  private showPDFModal() {
+    document.getElementById('pdf-viewer-wrapper').style.display = 'block';
+  }
+
+  private showProgressModal() {
+    document.getElementById('viewer-progress').style.display = 'block';
+  }
+  
+  private hideProgressModal() {
+    document.getElementById('viewer-progress').style.display = 'none';
+  }
+
+  private getPDFContent(bitstream): Observable<HttpEvent<any>> {
+    return this.http.get(bitstream._links.content.href,
+      { responseType: 'blob',
+        headers: { Accept: 'application/pdf' },
+        reportProgress: true, observe: 'events'
+      }
+    );
+  }
+
+  async cancelContentDownload() {
+    this.request.unsubscribe();
+    this.hideProgressModal();
   }
 
 }

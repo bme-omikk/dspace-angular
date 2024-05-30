@@ -15,6 +15,8 @@ export class ThemedFullFileSectionComponent extends ThemedComponent<FullFileSect
 
   @Input() item: Item;
 
+  @Input() viewPdfEnabled: boolean;
+
   protected inAndOutputNames: (keyof FullFileSectionComponent & keyof this)[] = ['item'];
 
   protected getComponentName(): string {
