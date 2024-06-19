@@ -804,6 +804,8 @@
 
   "browse.comcol.head": "Browse",
 
+  "browse.comcol.by.universityprogram": "By University Program",
+
   "browse.empty": "No items to show.",
 
   "browse.metadata.author": "Author",
@@ -5675,4 +5677,10 @@
   "local-identifier-scopus": "Other Identifier: Scopus",
 
   "local-identifier-wos": "Other Identifier: WOS",
+
+  "search.filters.filter.universityProgram.head": "Szak / Szakirány",
+
+  "search.filters.filter.universityProgram.label": "Szak / szakirány szűrése",
+
+  "search.filters.filter.universityProgram.placeholder": "szak / szakirány",
 }

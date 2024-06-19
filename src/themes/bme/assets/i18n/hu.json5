@@ -167,4 +167,7 @@
   "local-identifier-neptun": "Egyéb azonosító: Neptun",
   "local-identifier-scopus": "Egyéb azonosító: Scopus",
   "local-identifier-wos": "Egyéb azonosító: WOS",
+  "search.filters.filter.universityProgram.head": "Szak / Szakirány",
+  "search.filters.filter.universityProgram.label": "Szak / szakirány szűrése",
+  "search.filters.filter.universityProgram.placeholder": "szak / szakirány",
 }

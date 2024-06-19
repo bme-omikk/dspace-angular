@@ -1155,6 +1155,12 @@
   // "browse.comcol.head": "Browse",
   "browse.comcol.head": "Tallózás",
 
+  // "browse.comcol.by.universityprogram": "By University Program",
+  "browse.comcol.by.universityprogram": "Szak/Szakirány szerint",
+
+  // "browse.comcol.by.srsc": "By Subject Category",
+  "browse.comcol.by.srsc": "Tárgy kategóriák szerint",
+
   // "browse.empty": "No items to show.",
   "browse.empty": "Nincs megjeleníthető dokumentum.",
 
@@ -7952,4 +7958,9 @@
 
   "item-subject": "Tárgy",
 
+  "search.filters.filter.universityProgram.head": "Szak / Szakirány",
+
+  "search.filters.filter.universityProgram.label": "Szak / szakirány szűrése",
+
+  "search.filters.filter.universityProgram.placeholder": "szak / szakirány",
 }

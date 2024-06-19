@@ -165,4 +165,7 @@
   "local-identifier-neptun": "Other Identifier: Neptun",
   "local-identifier-scopus": "Other Identifier: Scopus",
   "local-identifier-wos": "Other Identifier: WOS",
+  "search.filters.filter.universityProgram.head": "Szak / Szakirány",
+  "search.filters.filter.universityProgram.label": "Szak / szakirány szűrése",
+  "search.filters.filter.universityProgram.placeholder": "szak / szakirány",
 }
