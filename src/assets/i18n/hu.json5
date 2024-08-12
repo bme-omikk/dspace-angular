@@ -1156,7 +1156,7 @@
   "browse.comcol.head": "Tallózás",
 
   // "browse.comcol.by.universityprogram": "By University Program",
-  "browse.comcol.by.universityprogram": "Szak/Szakirány szerint",
+  "browse.comcol.by.universityprogram": "Képzés szerint",
 
   // "browse.comcol.by.srsc": "By Subject Category",
   "browse.comcol.by.srsc": "Tárgy kategóriák szerint",
@@ -7758,7 +7758,7 @@
 
   "item-publisher-university": "Egyetem",
 
-  "item-publisher-university-program": "Szak / Szakirány",
+  "item-publisher-university-program": "Képzés",
 
   "item-publisher-university-programlevel": "Képzési szint",
 
@@ -7914,7 +7914,7 @@
 
   "item.page.university": "Egyetem",
 
-  "item.page.universityProgram": "Szak / Szakirány",
+  "item.page.universityProgram": "Képzés",
 
   "item.page.universityProgramLevel": "Képzési szint",
 
@@ -7958,9 +7958,17 @@
 
   "item-subject": "Tárgy",
 
-  "search.filters.filter.universityProgram.head": "Szak / Szakirány",
+  "search.filters.filter.universityProgram.head": "Képzés",
 
-  "search.filters.filter.universityProgram.label": "Szak / szakirány szűrése",
+  "search.filters.filter.universityProgram.label": "Képzés szűrése",
 
-  "search.filters.filter.universityProgram.placeholder": "szak / szakirány",
+  "search.filters.filter.universityProgram.placeholder": "képzés",
+
+  "search.filters.applied.f.universityProgram": "Képzés: ",
+
+  "browse.metadata.universityprogram.breadcrumbs": "Böngészés képzés szerint",
+
+  "browse.metadata.universityprogram": "képzés szerint ",
+  
+  "menu.section.browse_global_by_universityprogram": "Képzés szerint",
 }

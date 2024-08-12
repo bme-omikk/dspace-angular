@@ -5638,7 +5638,7 @@
 
   "item.page.university": "University",
 
-  "item.page.universityProgram": "Program",
+  "item.page.universityProgram": "University Program",
 
   "item.page.universityProgramLevel": "Program Level",
 
@@ -5678,9 +5678,17 @@
 
   "local-identifier-wos": "Other Identifier: WOS",
 
-  "search.filters.filter.universityProgram.head": "Szak / Szakirány",
+  "search.filters.filter.universityProgram.head": "University Program",
 
-  "search.filters.filter.universityProgram.label": "Szak / szakirány szűrése",
+  "search.filters.filter.universityProgram.label": "By University Program",
 
-  "search.filters.filter.universityProgram.placeholder": "szak / szakirány",
+  "search.filters.filter.universityProgram.placeholder": "university program",
+
+  "search.filters.applied.f.universityProgram": "University Program: ",
+
+  "browse.metadata.universityprogram.breadcrumbs": "Browse by university program",
+
+  "browse.metadata.universityprogram": "by University Program ",
+
+  "menu.section.browse_global_by_universityprogram": "By University Program",
 }
