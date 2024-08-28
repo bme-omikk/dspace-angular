@@ -156,6 +156,7 @@
   "item.page.relatedhandle": "Kapcsolódó publikációk, kutatási adatok, projektek azonosítói",
   "item.page.no-related-type-found": "(Nem található local.relatedType metaadat, így az adat linkként értelmezett.)",
   "item.page.citeas": "Link a dokumentumra való hivatkozáshoz",
+  "item.page.localooc": "OOC művek",
   "local-identifier-bmeomikk-aleph": "Egyéb azonosító: BME OMIKK Aleph",
   "local-identifier-bmeomikkCallnumber": "Egyéb azonosító: BME OMIKK call-number",
   "local-identifier-doi": "DOI",

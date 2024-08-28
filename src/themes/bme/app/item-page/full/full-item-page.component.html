@@ -76,8 +76,18 @@
                     </ng-container>
                 </ng-template>
                 <ng-template #relatedurl>
-                    <ng-container *ngIf="mdEntry.key.includes('relatedURL'); else default">
+                    <ng-container *ngIf="mdEntry.key.includes('relatedURL'); else ooc">
                         <td><a href="{{mdValue.value}}" target="_blank">{{mdValue.value}}</a></td>
+                    </ng-container>
+                </ng-template>
+                <ng-template #ooc>
+                    <ng-container *ngIf="mdEntry.key.includes('noteOOC'); else abstract">
+                        <td><ds-item-page-ooc-field [item]="item"></ds-item-page-ooc-field></td>
+                    </ng-container>
+                </ng-template>
+                <ng-template #abstract>
+                    <ng-container *ngIf="mdEntry.key.includes('abstract'); else default">
+                        <td><ds-item-page-abstract-field [item]="item"></ds-item-page-abstract-field></td>
                     </ng-container>
                 </ng-template>
                 <ng-template #default>

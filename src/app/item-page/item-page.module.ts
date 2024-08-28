@@ -18,6 +18,9 @@ import {
 import {
   ItemPageAbstractFieldComponent
 } from './simple/field-components/specific-field/abstract/item-page-abstract-field.component';
+import {
+  ItemPageOOCFieldComponent
+} from './simple/field-components/specific-field/ooc/item-page-ooc-field.component';
 import { ItemPageUriFieldComponent } from './simple/field-components/specific-field/uri/item-page-uri-field.component';
 import { ItemPageFieldComponent } from './simple/field-components/specific-field/item-page-field.component';
 import { CollectionsComponent } from './field-components/collections/collections.component';
@@ -83,6 +86,7 @@ const DECLARATIONS = [
   OmikkLinksComponent,
   ItemPageDateFieldComponent,
   ItemPageAbstractFieldComponent,
+  ItemPageOOCFieldComponent,
   ItemPageUriFieldComponent,
   ItemPageFieldComponent,
   CollectionsComponent,

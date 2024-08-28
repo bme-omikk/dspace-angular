@@ -154,6 +154,7 @@ export class FullItemPageComponent extends BaseComponent implements OnInit {
     this.metadataMap.set('local.inscription','item-description-inscription');
     this.metadataMap.set('local.lastpage','item-lastpage');
     this.metadataMap.set('local.note','item-description-note');
+    this.metadataMap.set('local.noteOOC','item.page.localooc');
     this.metadataMap.set('local.noteNotPublic','item-note-not-public');
     this.metadataMap.set('local.other','item-other');
     this.metadataMap.set('local.page','item-format-page');
