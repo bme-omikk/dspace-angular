@@ -7925,6 +7925,10 @@
   "item.page.pdfviewer.close": "Bezár",
 
   "item.page.localooc": "OOC művek",
+  
+  "item-filter-media-page": "Generált bélyegkép oldalszáma",
+
+  "item-viewpdf-enabled": "Beágyazott PDF nézegető működési mód",
 
   "item.page.citeas": "Link a dokumentumra való hivatkozáshoz",
 

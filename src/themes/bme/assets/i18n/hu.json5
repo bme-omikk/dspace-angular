@@ -157,6 +157,8 @@
   "item.page.no-related-type-found": "(Nem található local.relatedType metaadat, így az adat linkként értelmezett.)",
   "item.page.citeas": "Link a dokumentumra való hivatkozáshoz",
   "item.page.localooc": "OOC művek",
+  "item-filter-media-page": "Generált bélyegkép oldalszáma",
+  "item-viewpdf-enabled": "Beágyazott PDF nézegető működési mód",
   "local-identifier-bmeomikk-aleph": "Egyéb azonosító: BME OMIKK Aleph",
   "local-identifier-bmeomikkCallnumber": "Egyéb azonosító: BME OMIKK call-number",
   "local-identifier-doi": "DOI",

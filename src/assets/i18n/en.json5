@@ -5652,6 +5652,10 @@
 
   "item.page.localooc": "OOC works",
 
+  "item-filter-media-page": "Page number of the generated thumbnail",
+
+  "item-viewpdf-enabled": "Embedded PDF viewer working mode",
+
   "local-identifier-bmeomikk-aleph": "Other Identifier: BME OMIKK Aleph",
 
   "local-identifier-bmeomikkCallnumber": "Other Identifier: BME OMIKK call-number",

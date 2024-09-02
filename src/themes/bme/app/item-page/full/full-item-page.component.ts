@@ -107,6 +107,8 @@ export class FullItemPageComponent extends BaseComponent implements OnInit {
     this.metadataMap.set('dc.title','item-title');
     this.metadataMap.set('dc.title.alternative','item-title-alternative');
     this.metadataMap.set('dc.type','item-type');
+    this.metadataMap.set('dspace.filter-media.page','item-filter-media-page');
+    this.metadataMap.set('dspace.viewpdf.enabled','item-viewpdf-enabled');
     this.metadataMap.set('dcterms.accessRights','item-rights-access');
     this.metadataMap.set('dcterms.rightsHolder','item-rights-holder');
     this.metadataMap.set('local.address','item-description-address');

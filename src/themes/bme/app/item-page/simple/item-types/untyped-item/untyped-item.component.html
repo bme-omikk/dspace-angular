@@ -100,10 +100,6 @@
       [fields]="['journalvolume.identifier.name']"
       [label]="'item.page.volume-title'">
     </ds-generic-item-page-field>
-    <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.publisher')" [item]="object"
-      [fields]="['dc.publisher']"
-      [label]="'item.page.publisher'">
-    </ds-generic-item-page-field>
   </div>
   <div class="col-xs-12 col-md-6">
     <ds-omikk-links [item]="object"></ds-omikk-links>
