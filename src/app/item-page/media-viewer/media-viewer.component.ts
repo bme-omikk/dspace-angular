@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
-import { filter, take, map } from 'rxjs/operators';
+import { filter, take } from 'rxjs/operators';
 import { BitstreamDataService } from '../../core/data/bitstream-data.service';
 import { PaginatedList } from '../../core/data/paginated-list.model';
 import { RemoteData } from '../../core/data/remote-data';
@@ -17,8 +17,8 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { AuthorizationDataService } from '../../core/data/feature-authorization/authorization-data.service';
 import { FeatureID } from '../../core/data/feature-authorization/feature-id';
 import { ViewpdfService } from '../../shared/viewpdf.service';
-import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
-import { DomSanitizer } from "@angular/platform-browser";
+import { HttpClient, HttpEvent } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
 
 /**
  * This component renders the media viewers
@@ -34,8 +34,9 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
   @Input() kbLoaded: string;
 
   @Input() mediaOptions: MediaViewerConfig = environment.mediaViewer;
-  
+
   @Input() pdfblob: Blob;
+  @Input() pdflink: string = null;
 
   mediaList$: BehaviorSubject<MediaViewerItem[]> = new BehaviorSubject([]);
 
@@ -50,10 +51,6 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
   thumbnailsRD$: Observable<RemoteData<PaginatedList<Bitstream>>>;
 
   subs: Subscription[] = [];
-
-  showModal: boolean;
-
-  showPdfError: boolean;
 
   viewPdfOnCollLevel = '';
   viewPdfOnItemLevel = '';
@@ -115,8 +112,6 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
         }));
       }
     }));
-
-    this.showModal = this.showPdfError = false;
   }
 
   /**
@@ -165,62 +160,14 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
     return mediaItem;
   }
 
-  private showPDFModal() {
-    document.getElementById('pdf-viewer-wrapper').style.display = 'block';
-  }
-
-  private showProgressModal() {
-    this.showModal = true;
-      this.changeDetectorRef.detectChanges();
-    //document.getElementById('viewer-progress').style.display = 'block';
-  }
-  
-  private hideProgressModal() {
-    this.showModal = false;
-      this.changeDetectorRef.detectChanges();
-    //document.getElementById('viewer-progress').style.display = 'none';
-  }
-
-  private getPDFContent(mediaItem): Observable<HttpEvent<any>> {
-    return this.http.get(mediaItem.bitstream._links.content.href,
-      { responseType: 'blob',
-        headers: { Accept: 'application/pdf' },
-        reportProgress: true, observe: 'events'
-      }
-    );
-  }
-
-  async cancelContentDownload() {
-    this.request.unsubscribe();
-    this.hideProgressModal();
-  }
-
-  showPdfViewer(mediaItem) {
-    this.pdfblob = undefined;
+  public showPdfViewer(mediaItem) {
+    this.pdflink = mediaItem.bitstream._links.content.href;
     this.changeDetectorRef.detectChanges();
+  }
 
-    if (mediaItem.canDownload && mediaItem.type==='pdf') {
-      this.request = this.getPDFContent(mediaItem).subscribe((event) => {
-        switch (event.type) {
-          case HttpEventType.ResponseHeader:
-            this.showProgressModal();
-            break;
-          case HttpEventType.DownloadProgress:
-            const kb = Math.round(event.loaded / 1024);
-            this.kbLoaded = Math.round(mediaItem.bitstream.sizeBytes / 1024) + ' / ' + kb + ' kbytes';
-            this.changeDetectorRef.detectChanges();
-            break;
-          case HttpEventType.Response:
-            this.hideProgressModal();
-            this.pdfblob = event.body;
-            this.changeDetectorRef.detectChanges();
-            setTimeout(() => {
-              this.showPDFModal();
-            }, 100);
-            break;
-        }
-      });
-    }
+  public handleClose() {
+    this.pdflink = null;
+    this.changeDetectorRef.detectChanges();
   }
 
   /**
@@ -247,7 +194,6 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
     combineLatest(vp.statusOnCollLevel(), vp.statusOnItemLevel()).subscribe(([coll, item]) => {
       this.viewPdfOnCollLevel = coll;
       this.viewPdfOnItemLevel = item;
-      
       this.viewPdfEnabled = false;
 
       let viewPdfStatus = '';

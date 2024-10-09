@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { startWith, tap } from 'rxjs/operators';
+import { startWith } from 'rxjs/operators';
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Item } from '../../../../../core/shared/item.model';

@@ -1,71 +1,13 @@
-div.pdfviewer-wrapper {
-  display: none;
+div.pdf-viewer-wrapper {
   position: fixed;
-  top: 0px;
-  left: 0px;
-  z-index: 999;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  margin: 0 auto;
-  padding: 0;
-  background: rgba(0,0,0,.5);
-}
-
-div#viewer-progress {
-  display: block;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  z-index: 999;
-  width: 100vw;
-  height: 100vh;
-  margin: 0 auto;
-  padding: 0;
-  background: rgba(241,241,241,.9);
-}
-
-div#viewer-progress > span {
-  font-size: xxx-large;
-  position: absolute;
-  top: 40vh;
-  left: 45vw;
-  text-align: center;
-}
-
-div#viewer-progress > img {
-  top: 50vh;
-  position: absolute;
-  left: 45vw;
-  width: 105px;
-  height: 27px; 
-}
-
-div#viewer-progress > button {
-  position: absolute;
-  left: 53vw;
-  top: 60vh;
-}
-
-ul#viewer-links {
-  list-style-type: none;
-  margin: 0 auto;
-  padding: 0;
-}
-
-ul#viewer-links > li.clickable > a {
-  text-decoration: underline;
-  cursor: pointer;
-}
-ul#viewer-links > li.non-clickable > a {
-  text-decoration: none;
-}
-
-button.pdfviewer-close {
-  position: relative;
-  width: 25vw;
-  left: 40vw;
   border: 1px solid black;
-  background-color: lightskyblue;
+  z-index: 1000;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
 }
 
 img.pdf-viewer-thumbnail {
@@ -74,28 +16,6 @@ img.pdf-viewer-thumbnail {
   cursor: pointer;
 }
 
-div#pdf-error {
-  display: none;
-  position: fixed;
-  width: 50vw;
-  height: 50vh;
-  border: 1px solid black;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
-  padding: 0;
-  background-color: rgba(0,0,0,0.5);
-  z-index: 999;
-}
-
-div#pdf-error::after {
-  content: "PDF Error";
-  text-align: center;
-  text-align: center;
-  position: absolute;
-  top: 21vh;
-  left: 21vw;
-  color: white;
-  font-size: xxx-large;
+p.pdf-viewer-thumbnail-text {
+  cursor: pointer;
 }

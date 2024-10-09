@@ -3508,7 +3508,7 @@
   "item.page.journal.search.title": "Cikkek ebben a kiadványban",
 
   // "item.page.link.full": "Full item page",
-  "item.page.link.full": "Teljes megjelenítés",
+  "item.page.link.full": "Összes metaadat megjelenítése",
 
   // "item.page.link.simple": "Simple item page",
   "item.page.link.simple": "Rövidített megjelenítés",
@@ -7925,7 +7925,7 @@
   "item.page.pdfviewer.close": "Bezár",
 
   "item.page.localooc": "OOC művek",
-  
+
   "item-filter-media-page": "Generált bélyegkép oldalszáma",
 
   "item-viewpdf-enabled": "Beágyazott PDF nézegető működési mód",
@@ -7975,6 +7975,6 @@
   "browse.metadata.universityprogram.breadcrumbs": "Böngészés képzés szerint",
 
   "browse.metadata.universityprogram": "képzés szerint ",
-  
+
   "menu.section.browse_global_by_universityprogram": "Képzés szerint",
 }

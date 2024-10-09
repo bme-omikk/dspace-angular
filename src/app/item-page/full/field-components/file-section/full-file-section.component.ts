@@ -24,7 +24,7 @@ import { FeatureID } from '../../../../core/data/feature-authorization/feature-i
 import { AppConfig, APP_CONFIG } from 'src/config/app-config.interface';
 import { ViewpdfService } from '../../../../shared/viewpdf.service';
 import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
-import { DomSanitizer } from "@angular/platform-browser";
+import { DomSanitizer } from '@angular/platform-browser';
 
 /**
  * This component renders the file section of the item
@@ -41,8 +41,10 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
   @Input() item: Item;
 
   kbLoaded: string;
-  
+
   pdfblob: Blob;
+  
+  @Input() pdflink: string = null;
 
   viewPdfEnabled: boolean;
 
@@ -155,7 +157,7 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
     combineLatest(vp.statusOnCollLevel(), vp.statusOnItemLevel()).subscribe(([coll, item]) => {
       viewPdfOnCollLevel = coll;
       viewPdfOnItemLevel = item;
-      
+
       this.viewPdfEnabled = false;
 
       let viewPdfStatus = '';
@@ -177,6 +179,11 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
   }
 
   showPdfViewer(bitstream) {
+    this.pdflink = bitstream._links.self.href + '/content';
+
+    console.log('hello from showPdfViewer, the link is ', this.pdflink);
+    this.changeDetectorRef.detectChanges();
+/*
     this.pdfblob = undefined;
     this.changeDetectorRef.detectChanges();
 
@@ -212,6 +219,7 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
         });
       }
     });
+*/
   }
 
   private showPDFModal() {
@@ -221,7 +229,7 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
   private showProgressModal() {
     document.getElementById('viewer-progress').style.display = 'block';
   }
-  
+
   private hideProgressModal() {
     document.getElementById('viewer-progress').style.display = 'none';
   }
@@ -240,4 +248,8 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
     this.hideProgressModal();
   }
 
+  public handleClose() {
+    this.pdflink = null;
+    this.changeDetectorRef.detectChanges();
+  }
 }

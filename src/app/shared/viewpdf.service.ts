@@ -23,7 +23,8 @@ export class ViewpdfService {
           coll.payload.metadata['dspace.viewpdf.enabled'] === undefined ?
               'na' : coll.payload.metadata['dspace.viewpdf.enabled'][0].value
         );
-          }}
+          }
+      }
     );
     return subject.asObservable();
   }

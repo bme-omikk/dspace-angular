@@ -21,6 +21,7 @@
         *ngIf="viewPdfEnabled"
         (click)="showPdfViewer(mediaList[0])">
           <img class="pdf-viewer-thumbnail" src="{{ (thumbnailsRD$ | async)?.payload?.page[0]?._links.content.href }}"/>
+          <p class="pdf-viewer-thumbnail-text">{{ mediaList[0].bitstream._name }} ({{ (mediaList[0].bitstream.sizeBytes) | dsFileSize }})</p>
       </a>
       <div *ngIf="viewPdfEnabled">
         <ul id="viewer-links">
@@ -33,11 +34,9 @@
           </ng-container>
         </ul>
       </div>      
-      <div id="pdf-viewer-wrapper" class="pdfviewer-wrapper">
-        <ds-media-viewer-pdf *ngIf="pdfblob" id="pdf-viewer-el" class="pdfviewer-wrapper" [pdf]="pdfblob"></ds-media-viewer-pdf>
+      <div *ngIf="pdflink" id="pdf-viewer-wrapper" class="pdf-viewer-wrapper">
+        <ds-media-viewer-pdf (close)="handleClose()" id="pdf-viewer-el" class="pdf-viewer-wrapper" [pdf]="pdfblob" [src]="pdflink"></ds-media-viewer-pdf>
       </div>
-      <div *ngIf="showModal" id="viewer-progress"><span>{{ kbLoaded }}</span><img src="assets/images/bme-progress.gif"/><button (click)="cancelContentDownload()">Mégsem...</button></div>
-      <div id="pdf-error"></div>
     </ng-container>
   </ng-template>
   <ng-template #showThumbnail>
