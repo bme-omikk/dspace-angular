@@ -23,7 +23,7 @@ import { AuthorizationDataService } from '../../../../core/data/feature-authoriz
 import { FeatureID } from '../../../../core/data/feature-authorization/feature-id';
 import { AppConfig, APP_CONFIG } from 'src/config/app-config.interface';
 import { ViewpdfService } from '../../../../shared/viewpdf.service';
-import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
+import { HttpClient, HttpEvent } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 
 /**
@@ -43,7 +43,7 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
   kbLoaded: string;
 
   pdfblob: Blob;
-  
+
   @Input() pdflink: string = null;
 
   viewPdfEnabled: boolean;
@@ -180,46 +180,7 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
 
   showPdfViewer(bitstream) {
     this.pdflink = bitstream._links.self.href + '/content';
-
-    console.log('hello from showPdfViewer, the link is ', this.pdflink);
     this.changeDetectorRef.detectChanges();
-/*
-    this.pdfblob = undefined;
-    this.changeDetectorRef.detectChanges();
-
-    this.authorizationService.isAuthorized(
-      FeatureID.CanDownload,
-      bitstream._links.self.href).subscribe(cd => {
-      if (cd) {
-        bitstream.format.subscribe(fmt => {
-          if (fmt.payload !== undefined) {
-            if (fmt.payload.mimetype === 'application/pdf') {
-              this.request = this.getPDFContent(bitstream).subscribe((event) => {
-                switch (event.type) {
-                  case HttpEventType.ResponseHeader:
-                    this.showProgressModal();
-                    break;
-                  case HttpEventType.DownloadProgress:
-                    const kb = Math.round(event.loaded / 1024);
-                    this.kbLoaded = Math.round(bitstream.sizeBytes / 1024) + ' / ' + kb + ' kbytes';
-                    this.changeDetectorRef.detectChanges();
-                    break;
-                  case HttpEventType.Response:
-                    this.hideProgressModal();
-                    this.pdfblob = event.body;
-                    this.changeDetectorRef.detectChanges();
-                    setTimeout(() => {
-                      this.showPDFModal();
-                    }, 100);
-                    break;
-                }
-              });
-            }
-          }
-        });
-      }
-    });
-*/
   }
 
   private showPDFModal() {

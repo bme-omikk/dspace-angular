@@ -3486,8 +3486,8 @@
   // "item.page.edit": "Edit this item",
   "item.page.edit": "E dokumentum szerkesztése",
 
-  // "item.page.files": "Files",
-  "item.page.files": "Fájlok",
+  // "item.page.files": "Download Files",
+  "item.page.files": "Fájlok letöltése",
 
   // "item.page.filesection.description": "Description:",
   "item.page.filesection.description": "Leírás:",
@@ -3648,6 +3648,9 @@
   // "item.preview.oaire.fundingStream": "Funding Stream:",
   "item.preview.oaire.fundingStream": "Finanszírozó média:",
 
+  // "item.simplepage.files": "View Files",
+  "item.simplepage.files": "Fájlok megtekintése",
+  
   // "item.select.confirm": "Confirm selected",
   "item.select.confirm": "Kiválasztott megerősítése",
 

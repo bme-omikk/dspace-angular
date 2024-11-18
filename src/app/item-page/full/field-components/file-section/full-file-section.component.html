@@ -55,13 +55,6 @@
     <div *ngIf="pdflink" id="pdf-viewer-wrapper" [ngClass]="{'pdf-viewer-wrapper': pdflink}">
       <ds-media-viewer-pdf (close)="handleClose()" id="pdf-viewer-el" class="pdf-viewer-wrapper" [pdf]="pdfblob" [src]="pdflink"></ds-media-viewer-pdf>
     </div>
-    <!--
-    <div id="pdf-viewer-wrapper" class="pdfviewer-wrapper">
-      <ds-media-viewer-pdf *ngIf="pdfblob" id="pdf-viewer-el" class="pdfviewer-wrapper" [pdf]="pdfblob"></ds-media-viewer-pdf>
-    </div>
-    <div id="viewer-progress"><span>{{ kbLoaded }}</span><img src="assets/images/bme-progress.gif"/><button (click)="cancelContentDownload()">Mégsem...</button></div>
-    <div id="pdf-error"></div>
-    -->
     <div *ngVar="(licenses$ | async)?.payload as licenses">
         <div *ngIf="hasValuesInBundle(licenses)">
             <h3 class="h5 simple-view-element-header">{{"item.page.filesection.license.bundle" | translate}}</h3>

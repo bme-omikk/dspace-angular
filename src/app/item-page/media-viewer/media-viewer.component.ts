@@ -1,4 +1,6 @@
-import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 import { BitstreamDataService } from '../../core/data/bitstream-data.service';
@@ -17,7 +19,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { AuthorizationDataService } from '../../core/data/feature-authorization/authorization-data.service';
 import { FeatureID } from '../../core/data/feature-authorization/feature-id';
 import { ViewpdfService } from '../../shared/viewpdf.service';
-import { HttpClient, HttpEvent } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 
 /**
@@ -56,12 +58,16 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
   viewPdfOnItemLevel = '';
   viewPdfEnabled = false;
 
+  private popstateHandler: EventListener;
+
   constructor(
     protected bitstreamDataService: BitstreamDataService,
     protected changeDetectorRef: ChangeDetectorRef,
     private authorizationService: AuthorizationDataService,
     private http: HttpClient,
     private sanitizer: DomSanitizer,
+    private location: Location,
+    private router: Router
   ) {
   }
 
@@ -114,6 +120,17 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
     }));
   }
 
+  @HostListener('window:popstate', ['$event'])
+  handlePopState(event: PopStateEvent) {
+    if (this.pdflink) {
+      event.preventDefault();
+      this.pdflink = null;
+      this.changeDetectorRef.detectChanges();
+    } else {
+      return;
+    }
+  }
+
   /**
    * This method will retrieve the next page of Bitstreams from the external BitstreamDataService call.
    * @param bundleName Bundle name
@@ -161,11 +178,14 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
   }
 
   public showPdfViewer(mediaItem) {
+    history.pushState(null, '', location.href);
     this.pdflink = mediaItem.bitstream._links.content.href;
     this.changeDetectorRef.detectChanges();
   }
 
   public handleClose() {
+    history.replaceState('', null, '');
+    history.back();
     this.pdflink = null;
     this.changeDetectorRef.detectChanges();
   }

@@ -12,14 +12,14 @@ export class MediaViewerPdfComponent {
   private progressBarEl: HTMLElement;
 
   @Input() pdf: MediaViewerItem[];
-  
+
   @Input() src: string;
 
   @Input() public showViewer: boolean;
 
   @Output() close = new EventEmitter<void>();
 
-  showError: boolean = false;
+  showError = false;
 
   public closeComponent: () => void;
 
@@ -49,15 +49,15 @@ export class MediaViewerPdfComponent {
   }
 
   private showProgressBar() {
-    if (this.progressBarEl!==null) {
+    if (this.progressBarEl !== null) {
       this.progressBarEl.setAttribute('value', '0');
       this.progressBarEl.setAttribute('style',
             'display:block;position:absolute;left:0px;top:0px;width:100%;z-index:1000;');
     }
   }
-  
+
   private hideProgressBar() {
-    if (this.progressBarEl!==null) {
+    if (this.progressBarEl !== null) {
       this.progressBarEl.setAttribute('value', '0');
       this.progressBarEl.setAttribute('style',
             'display:none;position:absolute;left:0px;top:0px;width:100%;z-index.1000;');
@@ -67,7 +67,7 @@ export class MediaViewerPdfComponent {
   public onStartLoading(evt: any) {
     this.containerEl = document.getElementById('toolbarViewer');
 
-    if (this.containerEl===null) {
+    if (this.containerEl === null) {
       return;
     }
 
@@ -76,7 +76,7 @@ export class MediaViewerPdfComponent {
   }
 
   public onProgress(evt: ProgressBarEvent) {
-    if (this.progressBarEl!==null) {
+    if (this.progressBarEl !== null) {
       this.progressBarEl.setAttribute('value', evt.percent.toString());
     }
   }
@@ -86,7 +86,7 @@ export class MediaViewerPdfComponent {
 
     this.showError = true;
     this.changeDetectorRef.detectChanges();
-    
+
     window.setTimeout(() => {
       this.showError = false;
       this.changeDetectorRef.detectChanges();

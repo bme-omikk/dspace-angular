@@ -17,19 +17,15 @@
   </div>
   <ng-template #viewPdf>
     <ng-container *ngIf="viewPdfEnabled; else showThumbnail">
-      <a
-        *ngIf="viewPdfEnabled"
-        (click)="showPdfViewer(mediaList[0])">
-          <img class="pdf-viewer-thumbnail" src="{{ (thumbnailsRD$ | async)?.payload?.page[0]?._links.content.href }}"/>
-          <p class="pdf-viewer-thumbnail-text">{{ mediaList[0].bitstream._name }} ({{ (mediaList[0].bitstream.sizeBytes) | dsFileSize }})</p>
-      </a>
+      <img class="pdf-viewer-thumbnail" src="{{ (thumbnailsRD$ | async)?.payload?.page[0]?._links.content.href }}"/>
+      <h2 class="pdf-viewer-files-header">{{ 'item.simplepage.files' | translate  }}</h2>
       <div *ngIf="viewPdfEnabled">
         <ul id="viewer-links">
           <ng-container *ngFor="let media of mediaList; index as i">
-              <li *ngIf="(i > 0) && media.type==='pdf'" [class]="media.canDownload ? 'clickable' : 'non-clickable'">
-                <i *ngIf="!media.canDownload" class="fas fa-lock" title="Restricted">&nbsp;</i>
-                <i *ngIf="media.canDownload" class="fas fa-eye" title="View">&nbsp;</i>
-                <a (click)="showPdfViewer(media)">{{ media.bitstream._name }}</a>
+              <li *ngIf="media.type==='pdf'" [class]="media.canDownload ? 'clickable' : 'non-clickable'">
+                    <i *ngIf="!media.canDownload" class="fas fa-lock" title="Restricted">&nbsp;</i>
+                    <i *ngIf="media.canDownload" class="fas fa-eye" title="View">&nbsp;</i>
+                    <a (click)="showPdfViewer(media)">{{ media.bitstream._name }} ({{ (media.bitstream.sizeBytes) | dsFileSize }})</a>
               </li>
           </ng-container>
         </ul>
