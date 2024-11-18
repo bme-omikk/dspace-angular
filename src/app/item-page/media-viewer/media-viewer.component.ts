@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 import { BitstreamDataService } from '../../core/data/bitstream-data.service';
@@ -58,16 +57,13 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
   viewPdfOnItemLevel = '';
   viewPdfEnabled = false;
 
-  private popstateHandler: EventListener;
-
   constructor(
     protected bitstreamDataService: BitstreamDataService,
     protected changeDetectorRef: ChangeDetectorRef,
     private authorizationService: AuthorizationDataService,
     private http: HttpClient,
     private sanitizer: DomSanitizer,
-    private location: Location,
-    private router: Router
+    private location: Location
   ) {
   }
 

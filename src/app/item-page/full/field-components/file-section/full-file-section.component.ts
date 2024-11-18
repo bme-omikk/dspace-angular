@@ -1,4 +1,5 @@
-import { ChangeDetectorRef, Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, Inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BitstreamDataService } from '../../../../core/data/bitstream-data.service';
@@ -82,7 +83,8 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
     private http: HttpClient,
     private sanitizer: DomSanitizer,
     protected changeDetectorRef: ChangeDetectorRef,
-    @Inject(APP_CONFIG) protected appConfig: AppConfig
+    @Inject(APP_CONFIG) protected appConfig: AppConfig,
+    private location: Location
   ) {
     super(configurationService, bitstreamDataService, notificationsService, translateService, dsoNameService, appConfig);
   }
@@ -90,6 +92,17 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
   ngOnInit(): void {
     this.initialize();
     this.isPDFViewEnabled();
+  }
+
+  @HostListener('window:popstate', ['$event'])
+  handlePopState(event: PopStateEvent) {
+    if (this.pdflink) {
+      event.preventDefault();
+      this.pdflink = null;
+      this.changeDetectorRef.detectChanges();
+    } else {
+      return;
+    }
   }
 
   initialize(): void {
@@ -178,38 +191,15 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
       bitstream._links.self.href);
   }
 
-  showPdfViewer(bitstream) {
+  public showPdfViewer(bitstream) {
+    history.pushState(null, '', location.href);
     this.pdflink = bitstream._links.self.href + '/content';
     this.changeDetectorRef.detectChanges();
   }
 
-  private showPDFModal() {
-    document.getElementById('pdf-viewer-wrapper').style.display = 'block';
-  }
-
-  private showProgressModal() {
-    document.getElementById('viewer-progress').style.display = 'block';
-  }
-
-  private hideProgressModal() {
-    document.getElementById('viewer-progress').style.display = 'none';
-  }
-
-  private getPDFContent(bitstream): Observable<HttpEvent<any>> {
-    return this.http.get(bitstream._links.content.href,
-      { responseType: 'blob',
-        headers: { Accept: 'application/pdf' },
-        reportProgress: true, observe: 'events'
-      }
-    );
-  }
-
-  async cancelContentDownload() {
-    this.request.unsubscribe();
-    this.hideProgressModal();
-  }
-
   public handleClose() {
+    history.replaceState('', null, '');
+    history.back();
     this.pdflink = null;
     this.changeDetectorRef.detectChanges();
   }
