@@ -90,11 +90,13 @@ export class FullItemPageComponent extends BaseComponent implements OnInit {
     this.metadataMap.set('dc.date.created','item-date-created');
     this.metadataMap.set('dc.date.defence','item-date-defence');
     this.metadataMap.set('dc.date.issued','item-date-issued');
+    this.metadataMap.set('dc.description','item.page.description');
     this.metadataMap.set('dc.description.abstract','item-description-abstract');
     this.metadataMap.set('dc.description.provenance','item-description-provenance');
     this.metadataMap.set('dc.description.sponsorship','item-description-sponsorship');
     this.metadataMap.set('dc.format.extent','item-format-extent');
     this.metadataMap.set('dc.format.medium','item-format-medium');
+    this.metadataMap.set('dc.identifier.citation','item-identifier-citation');
     this.metadataMap.set('dc.identifier.isbn','item-identifier-isbn');
     this.metadataMap.set('dc.identifier.issn','item-identifier-issn');
     this.metadataMap.set('dc.identifier.uri','item-identifier-uri');
@@ -159,6 +161,7 @@ export class FullItemPageComponent extends BaseComponent implements OnInit {
     this.metadataMap.set('local.noteOOC','item.page.localooc');
     this.metadataMap.set('local.noteNotPublic','item-note-not-public');
     this.metadataMap.set('local.other','item-other');
+    this.metadataMap.set('local.other.containerDoi','item-other-containerDoi');
     this.metadataMap.set('local.page','item-format-page');
     this.metadataMap.set('local.periodicalCreator','item-contributor-periodicalCreator');
     this.metadataMap.set('local.periodicalNumber','item-other-periodicalNumber');

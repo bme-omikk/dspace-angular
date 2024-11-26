@@ -19,7 +19,10 @@
             <tbody>
             <ng-container *ngFor="let mdEntry of (metadata$ | async) | keyvalue">
               <tr *ngFor="let mdValue of mdEntry.value">
-                <td><label title={{mdEntry.key}}>{{this.metadataMap.get(mdEntry.key) | translate}}</label></td>
+                <td>
+                  <label *ngIf="this.metadataMap.has(mdEntry.key)" title={{mdEntry.key}}>{{this.metadataMap.get(mdEntry.key) | translate}}</label>
+                  <label *ngIf="!this.metadataMap.has(mdEntry.key)" title={{mdEntry.key}}>{{mdEntry.key | translate}}</label>
+                </td>
                 <ng-container *ngIf="mdEntry.key.includes('doi'); else doktori">
                     <td><a href="https://doi.org/{{mdValue.value}}" target="_blank">{{mdValue.value}}</a></td>
                 </ng-container>
@@ -86,8 +89,13 @@
                     </ng-container>
                 </ng-template>
                 <ng-template #abstract>
-                    <ng-container *ngIf="mdEntry.key.includes('abstract'); else default">
+                    <ng-container *ngIf="mdEntry.key.includes('abstract'); else containerDoi">
                         <td><ds-item-page-abstract-field [item]="item"></ds-item-page-abstract-field></td>
+                    </ng-container>
+                </ng-template>
+                <ng-template #containerDoi>
+                    <ng-container *ngIf="mdEntry.key.includes('containerDoi'); else default">
+                        <td><a href="{{mdValue.value}}" target="_blank">{{getIDPart(mdValue.value)}}</a></td>
                     </ng-container>
                 </ng-template>
                 <ng-template #default>

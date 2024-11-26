@@ -38,6 +38,7 @@
     <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.date.created')" [item]="object" [fields]="['dc.date.created']" [label]="'item.page.createdDate'"></ds-generic-item-page-field>
     <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.format.extent')" [item]="object" [fields]="['dc.format.extent']" [label]="'item.page.extent'"></ds-generic-item-page-field>
     <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.format.medium')" [item]="object" [fields]="['dc.format.medium']" [label]="'item.page.medium'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.identifier.citation')" [item]="object" [fields]="['dc.identifier.citation']" [label]="'item.page.citation'"></ds-generic-item-page-field>
     <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.identifier.isbn')" [item]="object" [fields]="['dc.identifier.isbn']" [label]="'item.page.isbn'"></ds-generic-item-page-field>
     <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.identifier.issn')" [item]="object" [fields]="['dc.identifier.issn']" [label]="'item.page.issn'"></ds-generic-item-page-field>
     <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.language')" [item]="object" [fields]="['dc.language']" [label]="'item.page.language'"></ds-generic-item-page-field>
@@ -113,10 +114,6 @@
       [fields]="['dc.subject']"
       [separator]="', '"
       [label]="'item.page.subject'">
-    </ds-generic-item-page-field>
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['dc.identifier.citation']"
-      [label]="'item.page.citation'">
     </ds-generic-item-page-field>
     <ds-item-page-collections [item]="object"></ds-item-page-collections>
     <div>

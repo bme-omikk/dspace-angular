@@ -7697,6 +7697,10 @@
 
   "item-format-technique": "Technika",
 
+  "item-identifier-citation": "Idézés azonosító",
+
+  "item-other-containerDoi": "Forrás",
+
   "item-identifier-isbn": "ISBN",
 
   "item-identifier-issn": "ISSN",
@@ -7814,6 +7818,8 @@
   "item.page.conferencePlace": "Konferencia helye",
 
   "item.page.conferenceTitle": "Konferencia címe",
+
+  "item.page.containerDoi": "Forrás",
 
   "item.page.containerIdentifierIsbn": "ISBN,e-ISBN",
 

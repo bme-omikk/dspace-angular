@@ -239,12 +239,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 22) / 44)
+let s:l = 110 - ((40 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
-normal! 0
+keepjumps 110
+normal! 022|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/app/item-page/simple/item-page.component.ts
@@ -382,7 +382,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 59 - ((0 * winheight(0) + 22) / 44)
+let s:l = 59 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -525,7 +525,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 32 - ((22 * winheight(0) + 22) / 44)
+let s:l = 32 - ((21 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -668,7 +668,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 22) / 44)
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -810,7 +810,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 73 - ((1 * winheight(0) + 22) / 44)
+let s:l = 73 - ((1 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -953,7 +953,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 76 - ((12 * winheight(0) + 22) / 44)
+let s:l = 76 - ((15 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1096,7 +1096,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 183 - ((21 * winheight(0) + 22) / 44)
+let s:l = 183 - ((27 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1239,7 +1239,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 89 - ((23 * winheight(0) + 22) / 44)
+let s:l = 89 - ((29 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1382,7 +1382,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 3 - ((2 * winheight(0) + 22) / 44)
+let s:l = 3 - ((2 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1525,7 +1525,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 21 - ((20 * winheight(0) + 22) / 44)
+let s:l = 21 - ((20 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1668,7 +1668,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 28 - ((27 * winheight(0) + 22) / 44)
+let s:l = 28 - ((27 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1811,7 +1811,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 50 - ((29 * winheight(0) + 22) / 44)
+let s:l = 50 - ((49 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1954,7 +1954,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 89 - ((29 * winheight(0) + 22) / 44)
+let s:l = 89 - ((37 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -2097,7 +2097,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 22) / 44)
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -2240,7 +2240,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 21 - ((12 * winheight(0) + 22) / 44)
+let s:l = 21 - ((20 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -2383,12 +2383,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 22) / 44)
+let s:l = 41 - ((22 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
-normal! 0
+keepjumps 41
+normal! 038|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/themes/bme/assets/i18n/en.json5
@@ -2525,12 +2525,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 143 - ((36 * winheight(0) + 22) / 44)
+let s:l = 40 - ((22 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 143
-normal! 032|
+keepjumps 40
+normal! 042|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/assets/i18n/hu.json5
@@ -2668,12 +2668,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 3652 - ((17 * winheight(0) + 22) / 44)
+let s:l = 7703 - ((25 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 3652
-normal! 047|
+keepjumps 7703
+normal! 0
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/assets/i18n/en.json5
@@ -2811,12 +2811,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 5653 - ((21 * winheight(0) + 22) / 44)
+let s:l = 5420 - ((25 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 5653
-normal! 03|
+keepjumps 5420
+normal! 0
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/full/full-item-page.component.ts
@@ -2954,12 +2954,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 175 - ((0 * winheight(0) + 22) / 44)
+let s:l = 99 - ((23 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 175
-normal! 05|
+keepjumps 99
+normal! 075|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/full/full-item-page.component.html
@@ -3097,12 +3097,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 89 - ((31 * winheight(0) + 22) / 44)
+let s:l = 23 - ((22 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 89
-normal! 071|
+keepjumps 23
+normal! 025|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links/omikk-links.component.html
@@ -3240,12 +3240,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 31 - ((18 * winheight(0) + 22) / 44)
+let s:l = 15 - ((14 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 31
-normal! 09|
+keepjumps 15
+normal! 073|
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/omikk-links/omikk-links.component.ts
@@ -3383,12 +3383,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 60 - ((23 * winheight(0) + 22) / 44)
+let s:l = 42 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 60
-normal! 07|
+keepjumps 42
+normal! 0
 lcd ~/Dokumentumok/dspace-angular
 tabnext
 edit ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/item-page-field.component.ts
@@ -3526,7 +3526,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 6 - ((3 * winheight(0) + 22) / 44)
+let s:l = 6 - ((5 * winheight(0) + 41) / 83)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -3669,7 +3669,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 115 - ((0 * winheight(0) + 22) / 44)
+let s:l = 115 - ((0 * winheight(0) + 41) / 83)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -3812,7 +3812,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 22) / 44)
+let s:l = 1 - ((0 * winheight(0) + 41) / 83)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -3955,7 +3955,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 25 - ((15 * winheight(0) + 22) / 44)
+let s:l = 25 - ((24 * winheight(0) + 41) / 83)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -4098,7 +4098,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 22) / 44)
+let s:l = 1 - ((0 * winheight(0) + 41) / 83)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -4241,7 +4241,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 71 - ((0 * winheight(0) + 22) / 44)
+let s:l = 71 - ((0 * winheight(0) + 41) / 83)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -4384,7 +4384,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 22) / 44)
+let s:l = 2 - ((1 * winheight(0) + 41) / 83)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -4527,7 +4527,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 22) / 44)
+let s:l = 1 - ((0 * winheight(0) + 41) / 83)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -4670,7 +4670,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 21 - ((20 * winheight(0) + 22) / 44)
+let s:l = 21 - ((20 * winheight(0) + 41) / 83)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -4813,7 +4813,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 197 - ((22 * winheight(0) + 22) / 44)
+let s:l = 197 - ((28 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -4956,7 +4956,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 7 - ((6 * winheight(0) + 22) / 44)
+let s:l = 7 - ((6 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -5099,7 +5099,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 68 - ((0 * winheight(0) + 22) / 44)
+let s:l = 68 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -5242,7 +5242,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 22) / 44)
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -5385,7 +5385,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 22) / 44)
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -5528,7 +5528,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 47 - ((26 * winheight(0) + 22) / 44)
+let s:l = 47 - ((46 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -5671,7 +5671,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 38 - ((23 * winheight(0) + 22) / 44)
+let s:l = 38 - ((37 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -5813,7 +5813,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 22) / 44)
+let s:l = 2 - ((1 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -5956,7 +5956,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 81 - ((21 * winheight(0) + 22) / 44)
+let s:l = 81 - ((27 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -5985,17 +5985,17 @@ nmap <buffer> <nowait> <silent> % <Plug>NetrwOpenFile
 nmap <buffer> <nowait> <silent> - <Plug>NetrwBrowseUpDir
 nmap <buffer> <nowait> <silent> C <Plug>NetrwSetChgwin
 nmap <buffer> <nowait> <silent> a <Plug>NetrwHide_a
-nmap <buffer> <nowait> <silent> cd <Plug>NetrwLcd
-nmap <buffer> <nowait> <silent> cB <Plug>NetrwBadd_cB
 nmap <buffer> <nowait> <silent> cb <Plug>NetrwBadd_cb
+nmap <buffer> <nowait> <silent> cB <Plug>NetrwBadd_cB
+nmap <buffer> <nowait> <silent> cd <Plug>NetrwLcd
 nmap <buffer> <nowait> <silent> gb <Plug>NetrwBookHistHandler_gb
-nnoremap <buffer> <F1> :he netrw-quickhelp
-nmap <buffer> <nowait> <silent> <S-CR> <Plug>NetrwTreeSqueeze
-nnoremap <buffer> <silent> <S-Up> :Pexplore
-nnoremap <buffer> <silent> <S-Down> :Nexplore
-nmap <buffer> <C-H> <Plug>NetrwHideEdit
-nmap <buffer> <nowait> <silent> <C-R> <Plug>NetrwServerEdit
 nmap <buffer> <nowait> <silent> <C-L> <Plug>NetrwRefresh
+nmap <buffer> <nowait> <silent> <C-R> <Plug>NetrwServerEdit
+nmap <buffer> <C-H> <Plug>NetrwHideEdit
+nnoremap <buffer> <silent> <S-Down> :Nexplore
+nnoremap <buffer> <silent> <S-Up> :Pexplore
+nmap <buffer> <nowait> <silent> <S-CR> <Plug>NetrwTreeSqueeze
+nnoremap <buffer> <F1> :he netrw-quickhelp
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
@@ -6121,7 +6121,7 @@ setlocal nowinfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
 lcd ~/Dokumentumok/dspace-angular
-tabnext 33
+tabnext 16
 set stal=1
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/simple/item-types/untyped-item/untyped-item.component.html
 badd +30 ~/Dokumentumok/dspace-angular/angular.json
@@ -6134,7 +6134,7 @@ badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/item-types/shared
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/item-page.module.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/core/shared/media-viewer-item.model.ts
-badd +0 ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer.component.html
+badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer.component.html
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer.component.scss
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer-pdf/media-viewer-pdf.component.html
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/media-viewer/media-viewer-pdf/media-viewer-pdf.component.ts
@@ -6156,7 +6156,7 @@ badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/file-section/file-section.component.html
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/full/field-components/file-section/full-file-section.component.html
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/full/field-components/file-section/full-file-section.component.scss
-badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/full/field-components/file-section/full-file-section.component.ts
+badd +0 ~/Dokumentumok/dspace-angular/src/app/item-page/full/field-components/file-section/full-file-section.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/shared/file-download-link/file-download-link.component.html
 badd +1 ~/Dokumentumok/dspace-angular/src/app/shared/file-download-link/file-download-link.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/simple/field-components/specific-field/title/item-page-title-field.component.ts
@@ -6164,7 +6164,6 @@ badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/simple/field-
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/ooc/item-page-ooc-field.component.spec.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/specific-field/ooc/item-page-ooc-field.component.ts
 badd +68 ~/Dokumentumok/dspace-angular/src/styles/_custom_variables.scss
-badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/simple/field-components/specific-field/title
 badd +1 ../../core/shared/media-viewer-item.model
 badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/assets/i18n/en.json5
 badd +1 ~/Dokumentumok/dspace-angular/src/assets/i18n
@@ -6175,6 +6174,7 @@ badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/full/field-components/file-section/file-section.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/app/item-page/simple/field-components/file-section/themed-file-section.component.ts
 badd +1 ~/Dokumentumok/dspace-angular/src/styles
+badd +1 ~/Dokumentumok/dspace-angular/src/themes/bme/app/item-page/simple/field-components/specific-field/title
 badd +6 ~/Dokumentumok/dspace-angular/src/app/shared/file-download-link/themed-file-download-link.component.ts
 badd +287 ~/Dokumentumok/dspace-angular/src/app/shared/shared.module.ts
 badd +88 ~/Dokumentumok/dspace-angular/src/app/app.module.ts

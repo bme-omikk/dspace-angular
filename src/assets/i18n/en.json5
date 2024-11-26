@@ -5414,6 +5414,10 @@
 
   "item-format-technique": "Technique",
 
+  "item-identifier-citation": "Citation ID",
+
+  "item-other-containerDoi": "Source",
+
   "item-identifier-isbn": "ISBN",
 
   "item-identifier-issn": "ISSN",
@@ -5535,6 +5539,8 @@
   "item.page.conferencePlace": "Conference Place",
 
   "item.page.conferenceTitle": "Conference Title",
+
+  "item.page.containerDoi": "Source",
 
   "item.page.containerIdentifierIsbn": "ISBN, e-ISBN",
 
