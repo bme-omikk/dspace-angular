@@ -1,4 +1,5 @@
 import { Component, Inject, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { MetadataValue } from '../../../core/shared/metadata.models';
 import { APP_CONFIG, AppConfig } from '../../../../config/app-config.interface';
 import { BrowseDefinition } from '../../../core/shared/browse-definition.model';
@@ -18,7 +19,9 @@ export class MetadataValuesComponent implements OnChanges {
 
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
+    private router: Router,
   ) {
+    this.currentUrl = this.router.url;
   }
 
   /**
@@ -52,6 +55,9 @@ export class MetadataValuesComponent implements OnChanges {
    * This variable will be true if both {@link environment.markdown.enabled} and {@link enableMarkdown} are true.
    */
   renderMarkdown;
+
+  renderMaxAuthor: number = 5;
+  currentUrl: string = '';
 
   @Input() browseDefinition?: BrowseDefinition;
 

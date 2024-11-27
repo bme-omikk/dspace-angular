@@ -31,6 +31,7 @@
       [label]="'item.page.title'">
     </ds-generic-item-page-field>
     <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.contributor.author')" [item]="object" [fields]="['dc.contributor.author']" [label]="'item.page.author'"></ds-generic-item-page-field>
+    <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.contributor.editor')" [item]="object" [fields]="['dc.contributor.editor']" [label]="'item.page.editor'"></ds-generic-item-page-field>
     <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.contributor.advisor')" [item]="object" [fields]="['dc.contributor.advisor']" [label]="'item.page.advisor'"></ds-generic-item-page-field>
     <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.contributor')" [item]="object" [fields]="['dc.contributor']" [label]="'item.page.contributor'"></ds-generic-item-page-field>
     <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.type')" [item]="object" [fields]="['dc.type']" [label]="'item.page.type'"></ds-generic-item-page-field>
