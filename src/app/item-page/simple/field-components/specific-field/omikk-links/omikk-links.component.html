@@ -12,10 +12,13 @@
                src="{{ copyToClipboardImg }}"
           />
         </dd>
-        <dt class="simple-view-element-header">{{ "item.page.containerDoi" | translate }}</dt>
+        <dt *ngIf="item.hasMetadata('local.other.containerDoi')"
+            class="simple-view-element-header">{{ "item.page.containerDoi" | translate }}</dt>
         <dd>
-          <a href="{{ item['metadata']['local.other.containerDoi'][0].value }}" target="_blank">{{ item['metadata']['local.other.containerDoi'][0].value }}</a>
-          <img *ngIf="hasClipboard"
+          <a
+            *ngIf="item.hasMetadata('local.other.containerDoi')"
+            href="{{ item['metadata']['local.other.containerDoi'][0].value }}" target="_blank">{{ item['metadata']['local.other.containerDoi'][0].value }}</a>
+          <img *ngIf="hasClipboard && item.hasMetadata('local.other.containerDoi')"
                (click)="copyToClipboard(item['metadata']['local.other.containerDoi'][0].value)"
                style="wisth:20px;height:20px;cursor:pointer;"
                alt="copy-to-clipboard"
