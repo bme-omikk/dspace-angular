@@ -5586,6 +5586,8 @@
 
   "item.page.identifier": "Identifier",
 
+  "item.page.identifier.handle": "Other identifier",
+
   "item.page.identifierLectureNotes": "Lecture Notes",
 
   "item.page.identifierReference": "Reference",

@@ -124,6 +124,7 @@
   "item.page.faculty": "Kar",
   "item.page.firstpage": "Első oldal",
   "item.page.identifier": "Azonosító",
+  "item.page.identifier.handle": "Egyéb azonosító",
   "item.page.identifierLectureNotes": "Jegyzetazonsító",
   "item.page.identifierReference": "Jelzet",
   "item.page.illustrator": "Illusztrátor",
