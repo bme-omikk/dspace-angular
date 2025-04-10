@@ -114,6 +114,7 @@ export class AuthorizationDataService extends BaseDataService<Authorization> imp
     const objectUrl$ = observableOf(objectUrl).pipe(
       switchMap((url) => {
         if (hasNoValue(url)) {
+          console.log("HELLO:::", featureId);
           return this.siteService.find().pipe(
             map((site) => site.self),
           );
