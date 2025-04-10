@@ -60,9 +60,9 @@
                 "bundleName": "dspace-theme"
               },
               {
-                "input": "src/themes/bme/styles/theme.scss",
+                "input": "src/themes/omikk/styles/theme.scss",
                 "inject": false,
-                "bundleName": "bme-theme"
+                "bundleName": "omikk-theme"
               }
             ],
             "scripts": [],
