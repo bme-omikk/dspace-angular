@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
+
 import { EagerThemeModule as DSpaceEagerThemeModule } from './dspace/eager-theme.module';
-import { EagerThemeModule as CustomEagerThemeModule } from './custom/eager-theme.module';
 import { EagerThemeModule as OMIKKEagerThemeModule } from './omikk/eager-theme.module';
 
 /**
@@ -13,7 +13,6 @@ import { EagerThemeModule as OMIKKEagerThemeModule } from './omikk/eager-theme.m
 @NgModule({
   imports: [
     DSpaceEagerThemeModule,
-    // CustomEagerThemeModule,
     OMIKKEagerThemeModule,
   ],
 })
