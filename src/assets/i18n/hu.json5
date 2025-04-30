@@ -1897,10 +1897,10 @@
   "browse.taxonomy.button": "Böngészés ",
 
   //"browse.title": "Browsing by {{ field }}{{ startsWith }} {{ value }}",
-  "browse.title": "A(z) {{ collection }} böngészése {{ field }}{{startsWith}} {{ value }} szerint",
+  "browse.title": "Böngészés {{ field }}{{startsWith}} {{ value }} szerint",
 
   //"browse.title.page": "Browsing by {{ field }} {{ value }}",
-  "browse.title.page": "A(z) {{ collection }} böngészése {{ field }} {{ value }} szerint",
+  "browse.title.page": "Böngészés {{ field }} {{ value }} szerint",
 
   //"chips.remove": "Remove chip",
   "chips.remove": "Chip törlése",
