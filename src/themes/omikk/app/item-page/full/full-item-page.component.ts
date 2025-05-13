@@ -38,9 +38,9 @@ import { NotifyInfoService } from '../../../../../app/core/coar-notify/notify-in
 import {
   ItemPageOOCFieldComponent
 } from '../simple/field-components/specific-field/ooc/item-page-ooc-field.component';
-/*import {
-  ItemPageOOCFieldComponent
-} from '../simple/field-components/specific-field/ooc/item-page-ooc-field.component';*/
+import {
+  ItemPageAbstractFieldComponent
+} from '../simple/field-components/specific-field/abstract/item-page-abstract-field.component';
 
 /**
  * This component renders a full item page.
@@ -75,6 +75,7 @@ import {
     ThemedItemAlertsComponent,
     VarDirective,
     ItemPageOOCFieldComponent,
+    ItemPageAbstractFieldComponent,
   ],
 })
 export class FullItemPageComponent extends BaseComponent {
