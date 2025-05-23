@@ -1,18 +1,21 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  Input,
+} from '@angular/core';
 
 import { Item } from '../../../../../../../../app/core/shared/item.model';
-import { ItemPageFieldComponent } from '../../../../../../../../app/item-page/simple/field-components/specific-field/item-page-field.component';
 import { MetadataValuesComponent } from '../../../../../../../../app/item-page/field-components/metadata-values/metadata-values.component';
+import { ItemPageFieldComponent } from '../../../../../../../../app/item-page/simple/field-components/specific-field/item-page-field.component';
 
 @Component({
-    selector: 'ds-item-page-ooc-field',
-    templateUrl: './item-page-field.component.html',
-    standalone: true,
-    imports: [
-      MetadataValuesComponent,
-      AsyncPipe,
-    ],
+  selector: 'ds-item-page-ooc-field',
+  templateUrl: './item-page-field.component.html',
+  standalone: true,
+  imports: [
+    MetadataValuesComponent,
+    AsyncPipe,
+  ],
 })
 /**
  * This component is used for displaying the abstract (dc.description.abstract) of an item
@@ -35,7 +38,7 @@ export class ItemPageOOCFieldComponent extends ItemPageFieldComponent {
      * In this component, we want to display values for metadata 'dc.description.abstract'
      */
     fields: string[] = [
-        'local.noteOOC'
+      'local.noteOOC',
     ];
 
     /**

@@ -1,1 +1,28 @@
+div.pdf-viewer-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid black;
+  z-index: 1000;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+}
 
+img.pdf-viewer-thumbnail {
+  width: 141px;
+  height: 200px;
+}
+
+ul#viewer-links {
+  margin-left: -40px;
+  list-style-type: none;
+}
+
+ul#viewer-links li a {
+  cursor: pointer !important;
+}
+h2.pdf-viewer-files-header {
+  font-size: 1.25em;
+}

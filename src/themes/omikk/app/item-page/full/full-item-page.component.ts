@@ -1,6 +1,7 @@
 import {
   AsyncPipe,
   KeyValuePipe,
+  Location,
   NgForOf,
   NgIf,
 } from '@angular/common';
@@ -10,9 +11,19 @@ import {
   Inject,
   PLATFORM_ID,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  RouterLink,
+} from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { NotifyInfoService } from '../../../../../app/core/coar-notify/notify-info/notify-info.service';
+import { AuthorizationDataService } from '../../../../../app/core/data/feature-authorization/authorization-data.service';
+import { ItemDataService } from '../../../../../app/core/data/item-data.service';
+import { SignpostingDataService } from '../../../../../app/core/data/signposting-data.service';
+import { LinkHeadService } from '../../../../../app/core/services/link-head.service';
+import { ServerResponseService } from '../../../../../app/core/services/server-response.service';
 import { ThemedItemAlertsComponent } from '../../../../../app/item-page/alerts/themed-item-alerts.component';
 import { CollectionsComponent } from '../../../../../app/item-page/field-components/collections/collections.component';
 import { ThemedFullFileSectionComponent } from '../../../../../app/item-page/full/field-components/file-section/themed-full-file-section.component';
@@ -26,21 +37,8 @@ import { ErrorComponent } from '../../../../../app/shared/error/error.component'
 import { ThemedLoadingComponent } from '../../../../../app/shared/loading/themed-loading.component';
 import { VarDirective } from '../../../../../app/shared/utils/var.directive';
 import { ViewTrackerComponent } from '../../../../../app/statistics/angulartics/dspace/view-tracker.component';
-
-import { ActivatedRoute, Router } from '@angular/router';
-import { ItemDataService } from '../../../../../app/core/data/item-data.service';
-import { AuthorizationDataService } from '../../../../../app/core/data/feature-authorization/authorization-data.service';
-import { Location } from '@angular/common';
-import { ServerResponseService } from '../../../../../app/core/services/server-response.service';
-import { SignpostingDataService } from '../../../../../app/core/data/signposting-data.service';
-import { LinkHeadService } from '../../../../../app/core/services/link-head.service';
-import { NotifyInfoService } from '../../../../../app/core/coar-notify/notify-info/notify-info.service';
-import {
-  ItemPageOOCFieldComponent
-} from '../simple/field-components/specific-field/ooc/item-page-ooc-field.component';
-import {
-  ItemPageAbstractFieldComponent
-} from '../simple/field-components/specific-field/abstract/item-page-abstract-field.component';
+import { ItemPageAbstractFieldComponent } from '../simple/field-components/specific-field/abstract/item-page-abstract-field.component';
+import { ItemPageOOCFieldComponent } from '../simple/field-components/specific-field/ooc/item-page-ooc-field.component';
 
 /**
  * This component renders a full item page.
@@ -81,9 +79,9 @@ import {
 export class FullItemPageComponent extends BaseComponent {
   relatedTypesMap: Map<string, string> = new Map(
     [
-        ['DOI','https://doi.org/']
-      , ['OMIKKHANDLE', 'http://hdl.handle.net/']
-    ]
+      ['DOI','https://doi.org/']
+      , ['OMIKKHANDLE', 'http://hdl.handle.net/'],
+    ],
   );
   metadataMap: Map<string, string> = new Map([['dc.date.accessioned', 'blabla']]);
 
@@ -100,7 +98,7 @@ export class FullItemPageComponent extends BaseComponent {
   }
 
   processID(value: string, what: string) {
-    let parts = value.split('@');
+    const parts = value.split('@');
 
     if (this.isValidHandleID(parts)) {
       if (what === 'href') {
@@ -132,7 +130,7 @@ export class FullItemPageComponent extends BaseComponent {
     protected linkHeadService: LinkHeadService,
     protected notifyInfoService: NotifyInfoService,
     @Inject(PLATFORM_ID) protected platformId: string,
-    ) {
+  ) {
     super(route, router, items, authorizationService, _location, responseService, signpostingDataService, linkHeadService, notifyInfoService, platformId);
     this.metadataMap.set('dc.contributor.advisor','item-contributor-advisor');
     this.metadataMap.set('dc.contributor.author','item-author');
