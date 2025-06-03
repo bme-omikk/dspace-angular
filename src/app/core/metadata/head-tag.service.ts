@@ -193,11 +193,14 @@ export class HeadTagService {
       this.setCitationDissertationNameTag();
     }
 
-    // this.setCitationJournalTitleTag();
-    // this.setCitationVolumeTag();
-    // this.setCitationIssueTag();
-    // this.setCitationFirstPageTag();
-    // this.setCitationLastPageTag();
+    this.setCitationJournalTitleTag();
+    this.setCitationFirstPageTag();
+    this.setCitationLastPageTag();
+    this.setCitationVolumeTag();
+    this.setCitationIssueTag();
+    this.setCitationDoiTag();
+    this.setCitationConferenceTag();
+    this.setCitationConferenceTitleTag();
     // this.setCitationDOITag();
     // this.setCitationPMIDTag();
 
@@ -232,8 +235,8 @@ export class HeadTagService {
    * Add <meta name="citation_title" ... >  to the <head>
    */
   protected setCitationTitleTag(): void {
-    const value = this.getMetaTagValue('dc.title');
-    this.addMetaTag('citation_title', value);
+    const values: string[] = this.getMetaTagValues(['dc.title', 'local.containerTitle']);
+    this.addMetaTags('citation_title', values);
   }
 
   /**
@@ -256,16 +259,16 @@ export class HeadTagService {
    * Add <meta name="citation_issn" ... >  to the <head>
    */
   protected setCitationISSNTag(): void {
-    const value = this.getMetaTagValue('dc.identifier.issn');
-    this.addMetaTag('citation_issn', value);
+    const values: string[] = this.getMetaTagValues(['dc.identifier.issn', 'local.containerIdentifierIssn']);
+    this.addMetaTags('citation_issn', values);
   }
 
   /**
    * Add <meta name="citation_isbn" ... >  to the <head>
    */
   protected setCitationISBNTag(): void {
-    const value = this.getMetaTagValue('dc.identifier.isbn');
-    this.addMetaTag('citation_isbn', value);
+    const values: string[] = this.getMetaTagValues(['dc.identifier.isbn', 'local.containerIdentifierIsbn']);
+    this.addMetaTags('citation_isbn', values);
   }
 
   /**
@@ -288,13 +291,14 @@ export class HeadTagService {
    * Add dc.publisher to the <head>. The tag name depends on the item type.
    */
   protected setCitationPublisherTag(): void {
-    const value = this.getMetaTagValue('dc.publisher');
+    const values: string[] = this.getMetaTagValues(['dc.publisher', 'local.ContainerPublisher']);
+
     if (this.isDissertation()) {
-      this.addMetaTag('citation_dissertation_institution', value);
+      this.addMetaTags('citation_dissertation_institution', values);
     } else if (this.isTechReport()) {
-      this.addMetaTag('citation_technical_report_institution', value);
+      this.addMetaTags('citation_technical_report_institution', values);
     } else {
-      this.addMetaTag('citation_publisher', value);
+      this.addMetaTags('citation_publisher', values);
     }
   }
 
@@ -302,7 +306,7 @@ export class HeadTagService {
    * Add <meta name="citation_keywords" ... >  to the <head>
    */
   protected setCitationKeywordsTag(): void {
-    const value = this.getMetaTagValuesAndCombine('dc.subject');
+    const value = this.getMetaTagValues(['dc.subject', 'dc.type', 'local.subjectField', 'local.subjectArea', 'local.subjectOszkar']).join(';');
     this.addMetaTag('citation_keywords', value);
   }
 
@@ -317,6 +321,70 @@ export class HeadTagService {
       }
       this.addMetaTag('citation_abstract_html_url', url);
     }
+  }
+
+  /**
+   * Add <meta name="citation_volume" ... > to the <head>
+   */
+  private setCitationVolumeTag(): void {
+    const values: string[] = this.getMetaTagValues(['local.containerPeriodicalVolume', 'local.periodicalVolume']);
+    this.addMetaTags('citation_volume', values);
+  }
+
+  /**
+   * Add <meta name="citation_issue" ...> to the <head>
+   */
+  private setCitationIssueTag(): void {
+    const values: string[] = this.getMetaTagValues(['local.containerPeriodicalNumber', 'local.periodicalNumber']);
+    this.addMetaTags('citation_issue', values);
+  }
+
+  /**
+   * Add <meta name="citation_firstpage" ...> to the <head>
+   */
+  private setCitationFirstPageTag(): void {
+    const value = this.getMetaTagValue('local.firstpage');
+    this.addMetaTag('citation_firstpage', value);
+  }
+
+  /**
+   * Add <meta name="citation_lastpage" ...> to the <head>
+   */
+  private setCitationLastPageTag(): void {
+    const value = this.getMetaTagValue('local.lastpage');
+    this.addMetaTag('citation_lastpage', value);
+  }
+
+  /**
+   * Add <meta name="citation_doi" ...> to the <head>
+   */
+  private setCitationDoiTag(): void {
+    const values: string[] = this.getMetaTagValues(['local.identifier.doi', 'local.other.containerDoi']);
+    this.addMetaTags('citation_doi', values);
+  }
+
+  /**
+   * Add <meta name="citation_conference" ...> to the <head>
+   */
+  private setCitationConferenceTag(): void {
+    const value = this.getMetaTagValue('local.conferenceTitle');
+    this.addMetaTag('citation_conference', value);
+  }
+
+  /**
+   * Add <meta name="citation_conference_title" ...> to the <head>
+   */
+  private setCitationConferenceTitleTag(): void {
+    const value = this.getMetaTagValue('local.conferenceTitle');
+    this.addMetaTag('citation_conference_title', value);
+  }
+
+  /**
+   * Add <meta name="citation_journal_title" ...> to the <head>
+   */
+  private setCitationJournalTitleTag(): void {
+    const value = this.getMetaTagValue('local.conferenceTitle');
+    this.addMetaTag('citation_journal_title', value);
   }
 
   /**
