@@ -1,8 +1,13 @@
-import { NgIf } from '@angular/common';
+import {
+  isPlatformBrowser,
+  NgIf,
+} from '@angular/common';
 import {
   Component,
+  Inject,
   Input,
   OnInit,
+  PLATFORM_ID,
 } from '@angular/core';
 import {
   DomSanitizer,
@@ -49,7 +54,7 @@ export class OmikkLinksComponent extends ItemPageFieldComponent implements OnIni
   copyToClipboardImg: string;
   hasRelatedMetadata: boolean;
   hasBMEDOI: boolean;
-  hasClipboard: boolean = window.isSecureContext;
+  hasClipboard: boolean = false;
 
   @Input() item: Item;
   @Input() label: string;
@@ -59,7 +64,8 @@ export class OmikkLinksComponent extends ItemPageFieldComponent implements OnIni
   constructor(protected browseDefinitionDataService: BrowseDefinitionDataService,
               protected browseService: BrowseService,
               private sanitizer: DomSanitizer,
-              private cds: CollectionDataService) {
+              private cds: CollectionDataService,
+              @Inject(PLATFORM_ID) private platformId: Object) {
     super(browseDefinitionDataService, browseService);
   }
 
@@ -71,6 +77,10 @@ export class OmikkLinksComponent extends ItemPageFieldComponent implements OnIni
   );
 
   ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.hasClipboard = window.isSecureContext;
+    }
+
     const owningCollection$: Observable<Collection> = this.cds.findOwningCollectionFor(this.item).pipe(
       getFirstSucceededRemoteDataPayload(),
       startWith(null as Collection),
