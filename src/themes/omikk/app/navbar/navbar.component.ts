@@ -24,10 +24,12 @@ import { slideMobileNav } from '../../../../app/shared/animations/slide';
 import { HostWindowService } from '../../../../app/shared/host-window.service';
 import { MenuService } from '../../../../app/shared/menu/menu.service';
 import { ThemeService } from '../../../../app/shared/theme-support/theme.service';
+import { FeatureID } from '../../../..//app/core/data/feature-authorization/feature-id';
 import {
   APP_CONFIG,
   AppConfig,
 } from '../../../../config/app-config.interface';
+import { OmikkUploadComponent } from '../shared/omikk-upload/omikk-upload.component';
 
 /**
  * Component representing the public navbar
@@ -38,10 +40,12 @@ import {
   templateUrl: './navbar.component.html',
   animations: [slideMobileNav],
   standalone: true,
-  imports: [NgbDropdownModule, NgClass, NgIf, ThemedUserMenuComponent, NgFor, NgComponentOutlet, AsyncPipe, TranslateModule],
+  imports: [NgbDropdownModule, NgClass, NgIf, ThemedUserMenuComponent, NgFor, NgComponentOutlet, AsyncPipe, TranslateModule, OmikkUploadComponent],
 })
 export class NavbarComponent extends BaseComponent {
-  is_dev_mode: boolean = this.appConfig.rest.host.includes('dev') ? true : false;
+  isDevMode: boolean = this.appConfig.rest.host.includes('dev') ? true : false;
+  isAdmin: boolean = false;
+  showOmikkTool: boolean = false;
 
   constructor(
     protected menuService: MenuService,
@@ -63,5 +67,14 @@ export class NavbarComponent extends BaseComponent {
       route,
       themeService,
       store);
+    this.authorizationService.isAuthorized(FeatureID.AdministratorOf).subscribe(res => {
+      this.isAdmin = true; // res; for the tests only
+    });
+  }
+
+  toggleTool(event: Event): void {
+    console.log(this.showOmikkTool);
+    event.preventDefault();
+    this.showOmikkTool = !this.showOmikkTool;
   }
 }

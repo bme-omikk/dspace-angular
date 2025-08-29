@@ -1,0 +1,38 @@
+<input id="xlsx" type="file" (change)="onFileSelected($event)" accept=".xlsx,.ods">
+  
+<div *ngFor="let mapping of mappings; let i = index">
+  <label>{{ mapping.columnHeader }}</label>
+  <select [(ngModel)]="mappings[i].columnType" (change)="onTypeChange(i, mappings[i].columnType)">
+    <option *ngFor="let type of columnTypes" [value]="type">{{ type }}</option>
+  </select>
+  
+  <input *ngIf="mappings[i].columnType === 'metadata'"
+         type="text"
+         placeholder="e.g. dc.title"
+         [(ngModel)]="mappings[i].metadataField"
+         (input)="onMetadataFieldChange(i, mappings[i].metadataField || '')">
+</div>
+<button (click)="saveMappings()">Save Mappings</button>
+  
+<h3>Sheet Preview (editable)</h3>
+<form [formGroup]="formGroup">
+  <div formArrayName="formRows">
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let header of headers">{{ header }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let group of rowForms; let rowIndex = index" [formGroupName]="rowIndex">
+        <td *ngFor="let header of headers; let colIndex = index">
+          <!--input [formControl]="group.get(colIndex.toString())"-->
+          <!--input [formControl]="group.get(colIndex.toString()) as FormControl"-->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</form>
+<button (click)="exportSheet()">Export Sheet</button>
+

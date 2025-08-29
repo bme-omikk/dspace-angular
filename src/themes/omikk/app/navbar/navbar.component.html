@@ -1,4 +1,4 @@
-<div style="background-color:red;color:white;with:100%;text-align:center;" *ngIf="this.is_dev_mode===true">Figyelem! Ezek az oldalak fejlesztési stádiumban vannak.</div>
+<div style="background-color:red;color:white;with:100%;text-align:center;" *ngIf="isDevMode===true">Figyelem! Ezek az oldalak fejlesztési stádiumban vannak.</div>
 <nav [ngClass]="{'open': (menuCollapsed | async) !== true}"
      [@slideMobileNav]="(windowService.isXsOrSm() | async) !== true ? 'default' : ((menuCollapsed | async) ? 'collapsed' : 'expanded')"
      class="navbar navbar-light navbar-expand-md px-md-0 pt-md-0 pt-3 navbar-container" role="navigation"
@@ -18,8 +18,12 @@
           <div class="text-md-center">
             <a href="https://www.omikk.bme.hu" class="nav-link" target="_blank">BME OMIKK</a>
           </div>
+          <div *ngIf="isAdmin" class="text-md-center">
+            <a class="omikk-tool-menu" (click)="toggleTool($event)">Betöltés táblázatból</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <omikk-upload *ngIf="showOmikkTool"></omikk-upload>
 </nav>
