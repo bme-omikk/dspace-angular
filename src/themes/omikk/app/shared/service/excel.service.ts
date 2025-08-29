@@ -24,6 +24,7 @@ export class ExcelService {
         const rows = (json.length > 1 ? json.slice(1) : []) as string[][];
         this.data.headers = headers;
         this.data.rows = rows;
+        // TODO how to fill in mappings?
         this.data.mappings = [];
 
         observer.next(this.data);

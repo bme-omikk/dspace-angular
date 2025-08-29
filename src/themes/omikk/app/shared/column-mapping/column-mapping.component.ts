@@ -32,7 +32,7 @@ export class ColumnMappingComponent implements OnInit {
   onFileSelected(event: Event): void {
     this.excelService.loadFile(
       (event.target as HTMLInputElement).files[0]).subscribe({
-        next: ({ headers, rows }) => { console.log(headers, rows); },
+        next: ({ headers, rows, mappings }) => { console.log(headers, rows, mappings); },
         error: (err) => console.log(err),
     });
   }
