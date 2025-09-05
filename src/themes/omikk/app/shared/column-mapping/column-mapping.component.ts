@@ -1,22 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExcelService } from '../service/excel.service';
-import { ColumnMapping, ColumnType } from '../models/column-mapping.model';
+import { ColumnMapping, ColumnType, SheetDataModel, RowModel } from '../models/column-mapping.model';
 import { FormsModule, FormBuilder, FormArray, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-column-mapping',
   templateUrl: './column-mapping.component.html',
+  styleUrls: ['./column-mapping.component.scss'],
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   providers: [ExcelService],
 })
 export class ColumnMappingComponent implements OnInit {
-  headers: string[] = [];
-  mappings: ColumnMapping[] = [];
-  rows: string[][] = [];
+  data: SheetDataModel = {
+    headers: [],
+    rows: [],
+    mappings: []
+  };
   columnTypes: ColumnType[] = [
-    'fileDescription', 'filePath', 'primary', 'permission', 'permissionType', 'assetstore', 'metadata'
+    'metadata', 'fileDescription', 'filePath', 'primary', 'permission', 'permissionType', 'assetstore', 'id'
   ];
   formRows:FormGroup[] = []; 
 
@@ -32,9 +35,18 @@ export class ColumnMappingComponent implements OnInit {
   onFileSelected(event: Event): void {
     this.excelService.loadFile(
       (event.target as HTMLInputElement).files[0]).subscribe({
-        next: ({ headers, rows, mappings }) => { console.log(headers, rows, mappings); },
-        error: (err) => console.log(err),
+        next: ({ headers, rows, mappings }) => {
+          this.data.headers = headers;
+          this.data.rows = rows;
+          this.data.mappings = mappings;
+          console.log(this.data.headers, this.data.rows, this.data.mappings);
+        },
+        error: (err) => console.log("warning",err),
     });
+  }
+
+  optionLabel(m: ColumnMapping): string {
+    return m.columnType === 'metadata' ? m.metadataField : m.columnHeader;
   }
 
   get rowForms(): FormGroup[] {
@@ -42,23 +54,23 @@ export class ColumnMappingComponent implements OnInit {
   }
 
   onTypeChange(index: number, type: ColumnType): void {
-    this.mappings[index].columnType = type;
+    this.data.mappings[index].columnType = type;
   }
 
   onMetadataFieldChange(index: number, value: string): void {
-    this.mappings[index].metadataField = value;
+    this.data.mappings[index].metadataField = value;
   }
 
   saveMappings(): void {
-    this.excelService.setMappings(this.mappings);
+    this.excelService.setMappings(this.data.mappings);
   }
 
   exportSheet(): void {
-    const output: string[][] = this.rowForms.map(group => {
-      return this.headers.map((_, i) => group.get(i.toString())?.value ?? '');
+    /*const output: RowModel = this.rowForms.map(group => {
+      return this.data.headers.map((_, i) => group.get(i.toString())?.value ?? '');
     });
     this.excelService.data.rows = output;
-    this.excelService.exportToExcel('modified-sheet.xlsx');
+    this.excelService.exportToExcel('modified-sheet.xlsx');*/
   }
 
   trackByRowIndex(index: number, _row: any): number {
@@ -67,6 +79,48 @@ export class ColumnMappingComponent implements OnInit {
 
   trackByColIndex(index: number, _cell: any): number {
     return index;
+  }
+
+  onHeaderInput(colIndex: number, e: Event) {
+    const txt = (e.target as HTMLElement).innerText;
+    this.data.headers[colIndex] = txt ?? '';
+  }
+
+  onCellInput(rowIndex: number, colIndex: number, e: Event) {
+    const txt = (e.target as HTMLElement).innerText;
+    if (!this.data.rows[rowIndex]) this.data.rows[rowIndex] = { id: '', cells: [] };
+    this.data.rows[rowIndex][colIndex] = txt ?? '';
+  }
+
+  focusNextCell(r: number, c: number, e: KeyboardEvent) {
+      e.preventDefault();
+      const nextC = (c + 1) % this.data.headers.length;
+      const nextR = r + (nextC === 0 ? 1 : 0);
+      // fókusz megtalálása DOM alapján (egyszerű megközelítés)
+      queueMicrotask(() => {
+        const table = document.querySelector('.sheet') as HTMLTableElement;
+        const cell = table?.rows[nextR + 1 /* +1 a thead miatt */]?.cells[nextC];
+        (cell as HTMLElement)?.focus();
+        this.placeCaretAtEnd(cell as HTMLElement);
+      });
+  }
+  // egyszerű util a caret a cella végére helyezéséhez
+  placeCaretAtEnd(el?: HTMLElement) {
+    if (!el) return;
+    const range = document.createRange();
+    range.selectNodeContents(el);
+    range.collapse(false);
+    const sel = window.getSelection();
+    sel?.removeAllRanges();
+    sel?.addRange(range);
+  }
+  
+  trackByRowId(_i: number, row: RowModel) {
+    return row.id;
+  }
+  
+  trackByCellIndex(i: number, _cell: string) {
+    return i;
   }
 }
 

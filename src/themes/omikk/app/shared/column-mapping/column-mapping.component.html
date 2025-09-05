@@ -1,38 +1,28 @@
 <input id="xlsx" type="file" (change)="onFileSelected($event)" accept=".xlsx,.ods">
-  
-<div *ngFor="let mapping of mappings; let i = index">
-  <label>{{ mapping.columnHeader }}</label>
-  <select [(ngModel)]="mappings[i].columnType" (change)="onTypeChange(i, mappings[i].columnType)">
-    <option *ngFor="let type of columnTypes" [value]="type">{{ type }}</option>
-  </select>
-  
-  <input *ngIf="mappings[i].columnType === 'metadata'"
-         type="text"
-         placeholder="e.g. dc.title"
-         [(ngModel)]="mappings[i].metadataField"
-         (input)="onMetadataFieldChange(i, mappings[i].metadataField || '')">
-</div>
-<button (click)="saveMappings()">Save Mappings</button>
-  
-<h3>Sheet Preview (editable)</h3>
-<form [formGroup]="formGroup">
-  <div formArrayName="formRows">
-  <table>
+
+<div class="sheet-wrapper">
+  <table class="sheet">
     <thead>
       <tr>
-        <th *ngFor="let header of headers">{{ header }}</th>
+        <th>Mezőtípus</th>
+        <th>Minta érték</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let group of rowForms; let rowIndex = index" [formGroupName]="rowIndex">
-        <td *ngFor="let header of headers; let colIndex = index">
-          <!--input [formControl]="group.get(colIndex.toString())"-->
-          <!--input [formControl]="group.get(colIndex.toString()) as FormControl"-->
+      <tr *ngFor="let header of data.headers; let c = index;">
+        <td>
+          <select>
+              <option
+                *ngFor="let m of data.mappings;"
+                [value]="optionLabel(m)"
+                [selected]="header === optionLabel(m)">
+                {{ optionLabel(m) }}
+              </option>
+          </select>
+        </td>
+        <td>{{ data.rows[0].cells[c] }}
         </td>
       </tr>
     </tbody>
   </table>
-  </div>
-</form>
-<button (click)="exportSheet()">Export Sheet</button>
-
+</div>

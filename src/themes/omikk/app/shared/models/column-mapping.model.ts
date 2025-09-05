@@ -1,3 +1,10 @@
+export const guessDescription = ['desc', 'leírás'];
+export const guessFilePath = ['path', 'filename', 'real', 'út'];
+export const guessPrimary = ['primary', 'első'];
+export const guessPermission = ['permission', 'jogosultság', 'hozzáf'];
+export const guessPermissionType = ['type', 'típus'];
+export const guessAssetstore = ['assetstore'];
+
 export type ColumnType =
   | 'fileDescription'
   | 'filePath'
@@ -5,7 +12,8 @@ export type ColumnType =
   | 'permission'
   | 'permissionType'
   | 'assetstore'
-  | 'metadata';
+  | 'metadata'
+  | 'id';
 
 export interface ColumnMapping {
   columnIndex: number; // 0-based index
@@ -14,9 +22,14 @@ export interface ColumnMapping {
   metadataField?: string; // only if columnType === 'metadata'
 }
 
+export interface RowModel {
+  id: string;
+  cells: string[];
+}
+
 // Sheet memory model
 export interface SheetDataModel {
   headers: string[];
-  rows: string[][]; // each row is array of cell values as strings
+  rows: RowModel[]; // each row is array of cell values as strings
   mappings: ColumnMapping[];
 }

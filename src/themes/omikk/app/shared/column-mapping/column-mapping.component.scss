@@ -1,0 +1,23 @@
+.sheet-wrapper { overflow: auto; }
+.sheet {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+.sheet th, .sheet td {
+  border: 1px solid black;
+  padding: 6px 8px;
+  min-width: 120px;
+  outline: none;
+  vertical-align: top;
+}
+.sheet th[contenteditable],
+.sheet td[contenteditable] { cursor: text; }
+.sheet td:focus, .sheet th:focus {
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,.2);
+}
+.toolbar {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+}
