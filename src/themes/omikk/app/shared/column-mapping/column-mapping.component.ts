@@ -1,27 +1,37 @@
+import { CollectionDropdownComponent } from '../collection-dropdown/collection-dropdown.component';
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgComponentOutlet, CommonModule } from '@angular/common';
 import { ExcelService } from '../service/excel.service';
 import { ColumnMapping, ColumnType, SheetDataModel, RowModel } from '../models/column-mapping.model';
 import { FormsModule, FormBuilder, FormArray, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-column-mapping',
   templateUrl: './column-mapping.component.html',
   styleUrls: ['./column-mapping.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgComponentOutlet, CollectionDropdownComponent],
   providers: [ExcelService],
 })
+
 export class ColumnMappingComponent implements OnInit {
+  dropdownRef = CollectionDropdownComponent;
+
   data: SheetDataModel = {
     headers: [],
     rows: [],
     mappings: []
   };
+  
   columnTypes: ColumnType[] = [
     'metadata', 'fileDescription', 'filePath', 'primary', 'permission', 'permissionType', 'assetstore', 'id'
   ];
-  formRows:FormGroup[] = []; 
+  
+  formRows:FormGroup[] = [];
+
+  selectedCollectionUUID: string = '';
+  selectedCollectionName: string = '';
 
   constructor(private excelService: ExcelService,
               private fb: FormBuilder) {}
@@ -39,7 +49,6 @@ export class ColumnMappingComponent implements OnInit {
           this.data.headers = headers;
           this.data.rows = rows;
           this.data.mappings = mappings;
-          console.log(this.data.headers, this.data.rows, this.data.mappings);
         },
         error: (err) => console.log("warning",err),
     });
@@ -47,6 +56,30 @@ export class ColumnMappingComponent implements OnInit {
 
   optionLabel(m: ColumnMapping): string {
     return m.columnType === 'metadata' ? m.metadataField : m.columnHeader;
+  }
+
+  private importItem(): void {
+  }
+  
+  importItems(all: boolean): void {
+    for (let i = 0; i < this.data.rows.length; i++) {
+      let to_import;
+      let row = this.data.rows[i];
+      for (let j = 0; j < row.cells.length; j++) {
+        let column = this.getColumnByIndex(j);
+        console.log(column, ": ", row.cells[j]);
+      }
+    }
+  }
+
+  getColumnByIndex(idx: number): string {
+    for (let i = 0; i < this.data.mappings.length; i++) {
+      let header = this.data.mappings[i];
+      if (header.columnIndex === idx) {
+        return header.columnHeader;
+      }
+    }
+    return '';
   }
 
   get rowForms(): FormGroup[] {
@@ -71,6 +104,16 @@ export class ColumnMappingComponent implements OnInit {
     });
     this.excelService.data.rows = output;
     this.excelService.exportToExcel('modified-sheet.xlsx');*/
+  }
+
+  onSelectCollection(event) {
+    this.selectedCollectionUUID = event.collection.uuid;
+    this.selectedCollectionName = event.collection.name;
+  }
+
+  toggleCollectionSelect(): void {
+    this.selectedCollectionUUID = '';
+    this.selectedCollectionName = '';
   }
 
   trackByRowIndex(index: number, _row: any): number {

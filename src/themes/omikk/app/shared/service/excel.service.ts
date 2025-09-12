@@ -41,7 +41,7 @@ export class ExcelService {
 
         const headers = (json[0] ?? []) as string[];
 
-        const rawRows = (json.length > 1 ? json.slice(1) : []) as string[][];
+        const rawRows = (json.length > 1 ? json.slice(3) : []) as string[][];
 
         const colCount = headers.length;
         const normalized = rawRows.map(r => {
@@ -69,7 +69,7 @@ export class ExcelService {
           this.data.mappings.push(
             {
               columnIndex: i,
-              columnHeader: header,
+              columnHeader: header === undefined ? guessedType : header,
               columnType: guessedType,
               metadataField: metadata
             }
@@ -90,7 +90,7 @@ export class ExcelService {
     if (header === '' || header === undefined || header === null) {
       return 'id';
     }
-    if (guessDescription.some(n => header.toLowerCase().includes(n.toLowerCase()))) {
+    else if (guessDescription.some(n => header.toLowerCase().includes(n.toLowerCase()))) {
       return 'fileDescription';
     }
     else if (guessFilePath.some(n => header.toLowerCase().includes(n.toLowerCase()))) {

@@ -15,7 +15,7 @@ import { PublicationComponent } from './app/item-page/simple/item-types/publicat
 import { UntypedItemComponent } from './app/item-page/simple/item-types/untyped-item/untyped-item.component';
 import { NavbarComponent } from './app/navbar/navbar.component';
 import { SearchNavbarComponent } from './app/search-navbar/search-navbar.component';
-import { CollectionDropdownComponent } from './app/shared/collection-dropdown/collection-dropdown.component';
+import { CollectionDropdownComponent } from 'src/themes/omikk/app/shared/collection-dropdown/collection-dropdown.component';
 import { CreateCollectionParentSelectorComponent } from './app/shared/dso-selector/modal-wrappers/create-collection-parent-selector/create-collection-parent-selector.component';
 import { CreateCommunityParentSelectorComponent } from './app/shared/dso-selector/modal-wrappers/create-community-parent-selector/create-community-parent-selector.component';
 import { CreateItemParentSelectorComponent } from './app/shared/dso-selector/modal-wrappers/create-item-parent-selector/create-item-parent-selector.component';
@@ -46,7 +46,6 @@ const ENTRY_COMPONENTS = [
   UntypedItemComponent,
   CommunityListElementComponent,
   CollectionListElementComponent,
-  CollectionDropdownComponent,
   FileDownloadLinkComponent,
   StartsWithDateComponent,
   StartsWithTextComponent,
@@ -78,6 +77,7 @@ const DECLARATIONS = [
   imports: [
     CommonModule,
     RootModule,
+    CollectionDropdownComponent,
     ...DECLARATIONS,
   ],
   providers: [

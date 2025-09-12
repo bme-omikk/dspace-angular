@@ -103,6 +103,7 @@ import { ThumbnailComponent } from './app/thumbnail/thumbnail.component';
 import { WorkflowItemDeleteComponent } from './app/workflowitems-edit-page/workflow-item-delete/workflow-item-delete.component';
 import { WorkflowItemSendBackComponent } from './app/workflowitems-edit-page/workflow-item-send-back/workflow-item-send-back.component';
 import { WorkspaceItemsDeletePageComponent } from './app/workspaceitems-edit-page/workspaceitems-delete-page/workspaceitems-delete-page.component';
+import { CollectionDropdownComponent } from 'src/themes/omikk/app/shared/collection-dropdown/collection-dropdown.component';
 
 
 const DECLARATIONS = [
@@ -214,6 +215,7 @@ const DECLARATIONS = [
     TranslateModule,
     FormsModule,
     NgxGalleryModule,
+    CollectionDropdownComponent,
     ...DECLARATIONS,
   ],
 })

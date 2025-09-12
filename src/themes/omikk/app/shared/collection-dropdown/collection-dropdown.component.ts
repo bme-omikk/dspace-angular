@@ -16,10 +16,10 @@ import { ThemedLoadingComponent } from '../../../../../app/shared/loading/themed
 
 @Component({
   selector: 'ds-themed-collection-dropdown',
-  templateUrl: '../../../../../app/shared/collection-dropdown/collection-dropdown.component.html',
-  // templateUrl: './collection-dropdown.component.html',
-  styleUrls: ['../../../../../app/shared/collection-dropdown/collection-dropdown.component.scss'],
-  // styleUrls: ['./collection-dropdown.component.scss']
+  //templateUrl: '../../../../../app/shared/collection-dropdown/collection-dropdown.component.html',
+  templateUrl: './collection-dropdown.component.html',
+  //styleUrls: ['../../../../../app/shared/collection-dropdown/collection-dropdown.component.scss'],
+  styleUrls: ['./collection-dropdown.component.scss'],
   standalone: true,
   imports: [NgIf, FormsModule, ReactiveFormsModule, InfiniteScrollModule, NgFor, ThemedLoadingComponent, AsyncPipe, TranslateModule],
 })

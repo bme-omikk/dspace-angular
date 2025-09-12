@@ -1,5 +1,17 @@
-<input id="xlsx" type="file" (change)="onFileSelected($event)" accept=".xlsx,.ods">
-
+<div *ngIf="selectedCollectionUUID===''" id="collection-goal">
+  <ds-themed-collection-dropdown
+    (selectionChange)="onSelectCollection($event)">
+  </ds-themed-collection-dropdown>
+</div>
+<div *ngIf="selectedCollectionUUID!==''" id="selected-collection">Kiválasztott gyűjtemény: {{ selectedCollectionName }}
+  <button (click)="toggleCollectionSelect()">Másik gyűjtemény választása</button>
+</div>
+<div *ngIf="selectedCollectionUUID!==''" id="select">
+  <label for="select-collection">Import táblázat kiválasztása</label><br/>
+  <input id="xlsx" name="select-collection" type="file" (change)="onFileSelected($event)" accept=".xlsx,.ods">
+  <button id="import-all" (click)="importItems(true)">Összes betöltése</button>
+  <button id="import-one" (click)="importItems(false)">Betöltés egyesével</button>
+</div>
 <div class="sheet-wrapper">
   <table class="sheet">
     <thead>
@@ -11,14 +23,16 @@
     <tbody>
       <tr *ngFor="let header of data.headers; let c = index;">
         <td>
-          <select>
+          <input type="checkbox" name="{{ data.mappings[c].columnHeader }}"/>
+          <label for="{{ data.mappings[c].columnHeader }}">{{ data.mappings[c].columnHeader }}</label>
+          <!--select>
               <option
                 *ngFor="let m of data.mappings;"
                 [value]="optionLabel(m)"
                 [selected]="header === optionLabel(m)">
                 {{ optionLabel(m) }}
               </option>
-          </select>
+          </select-->
         </td>
         <td>{{ data.rows[0].cells[c] }}
         </td>
