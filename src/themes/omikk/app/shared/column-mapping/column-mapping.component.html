@@ -6,13 +6,19 @@
 <div *ngIf="selectedCollectionUUID!==''" id="selected-collection">Kiválasztott gyűjtemény: {{ selectedCollectionName }}
   <button (click)="toggleCollectionSelect()">Másik gyűjtemény választása</button>
 </div>
+<div *ngIf="selectedCollectionUUID!==''" id="bitstream-root">
+  <input type="file" webkitdirectory multiple (change)="onFolderPicked($event)" />
+</div>
 <div *ngIf="selectedCollectionUUID!==''" id="select">
   <label for="select-collection">Import táblázat kiválasztása</label><br/>
   <input id="xlsx" name="select-collection" type="file" (change)="onFileSelected($event)" accept=".xlsx,.ods">
-  <button id="import-all" (click)="importItems(true)">Összes betöltése</button>
-  <button id="import-one" (click)="importItems(false)">Betöltés egyesével</button>
+  <button id="add-test" (click)="addTestItem()">Teszt tétel</button>
+  <button id="import-all" (click)="importItems(true)" [disabled]="!allColumnChecked">Összes betöltése</button>
+  <button id="import-one" (click)="importItems(false)" [disabled]="!allColumnChecked">Betöltés egyesével</button>
 </div>
-<div class="sheet-wrapper">
+<div *ngIf="selectedCollectionUUID!==''" class="sheet-wrapper">
+  <label for="check-all">Minden mezőt ellenőriztem</label>
+  <input type="checkbox" name="check-all" (click)="checkAll($event)"/>
   <table class="sheet">
     <thead>
       <tr>
@@ -23,16 +29,8 @@
     <tbody>
       <tr *ngFor="let header of data.headers; let c = index;">
         <td>
-          <input type="checkbox" name="{{ data.mappings[c].columnHeader }}"/>
+          <input type="checkbox" name="check-field" (click)="fieldChecked($event)" #cb/>
           <label for="{{ data.mappings[c].columnHeader }}">{{ data.mappings[c].columnHeader }}</label>
-          <!--select>
-              <option
-                *ngFor="let m of data.mappings;"
-                [value]="optionLabel(m)"
-                [selected]="header === optionLabel(m)">
-                {{ optionLabel(m) }}
-              </option>
-          </select-->
         </td>
         <td>{{ data.rows[0].cells[c] }}
         </td>
