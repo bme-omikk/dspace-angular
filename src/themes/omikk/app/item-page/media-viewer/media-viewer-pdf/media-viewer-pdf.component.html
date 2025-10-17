@@ -5,7 +5,7 @@
     [height]="'auto'"
     [textLayer]="true"
     [showToolbar]="true"
-    [showSidebarButton]="false"
+    [showSidebarButton]="true"
     [showFindButton]="true"
     [showPagingButtons]="true"
     [showDrawEditor]="false"
@@ -17,7 +17,7 @@
     [showPrintButton]="false"
     [showDownloadButton]="false"
     [showSecondaryToolbarButton]="false"
-    [showRotateButton]="false"
+    [showRotateButton]="true"
     [showHandToolButton]="false"
     [showScrollingButton]="false"
     [showSpreadButton]="false"
@@ -31,6 +31,7 @@
 <ng-template #additionalButtons>
   <div id="toolbarViewer">
     <div id="toolbarViewerLeft">
+      <pdf-toggle-sidebar></pdf-toggle-sidebar>
       <pdf-find-button [showFindButton]="true" [textLayer]="true"></pdf-find-button>
       <pdf-paging-area></pdf-paging-area>
     </div>
