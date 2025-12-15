@@ -1309,7 +1309,7 @@
   "admin.reports.items.collection": "Gyűjtemény",
 
   //"admin.reports.items.handle": "URI",
-  "admin.reports.items.handle": "URI",
+  "admin.reports.items.handle": "Link",
 
   //"admin.reports.items.head": "Metadata Query Report",
   "admin.reports.items.head": "Metaadat lekérdezés riport",
@@ -1768,7 +1768,7 @@
   "browse.comcol.by.universityprogram": "Képzés szerint",
 
   //"browse.comcol.head": "Browse",
-  "browse.comcol.head": "Tallózás",
+  "browse.comcol.head": "Böngészés",
 
   //"browse.empty": "No items to show.",
   "browse.empty": "Nincs megjeleníthető dokumentum.",
@@ -1882,13 +1882,13 @@
   "browse.startsWith.months.september": "Szeptember",
 
   //"browse.startsWith.submit": "Browse",
-  "browse.startsWith.submit": "Tallóz",
+  "browse.startsWith.submit": "Böngész",
 
   //"browse.startsWith.type_date": "Filter results by date",
   "browse.startsWith.type_date": "Eredmények szűrése dátum szerint",
 
   //"browse.startsWith.type_date.label": "Or type in a date (year-month) and click on the Browse button",
-  "browse.startsWith.type_date.label": "Vagy adjon meg egy dátumot (év-hónap) és kattintson a Tallóz gombra",
+  "browse.startsWith.type_date.label": "Vagy adjon meg egy dátumot (év-hónap) és kattintson a Böngész gombra",
 
   //"browse.startsWith.type_text": "Filter results by typing the first few letters",
   "browse.startsWith.type_text": "Eredmények szűrése begépeléssel",
@@ -1942,7 +1942,7 @@
   "collection-access-control-title": "Ez az űrlap lehetővé teszi a gyűjteményhez tartozó összes dokumentum hozzáférési feltételeinek módosítását. A módosítások az összes dokumentum metaadatára vagy az összes tartalomra (csatolmányra) is elvégezhetők.",
 
   //"collection.browse.logo": "Browse for a collection logo",
-  "collection.browse.logo": "Gyűjtemény logo tallózása",
+  "collection.browse.logo": "Gyűjtemény logo böngészése",
 
   //"collection.create.breadcrumbs": "Create collection",
   "collection.create.breadcrumbs": "Gyűjtemény létrehozása",
@@ -1999,7 +1999,7 @@
   "collection.edit.item-mapper.confirm": "Kiválasztott dokumentumok csatlakoztatása",
 
   //"collection.edit.item-mapper.description": "This is the item mapper tool that allows collection administrators to map items from other collections into this collection. You can search for items from other collections and map them, or browse the list of currently mapped items.",
-  "collection.edit.item-mapper.description": "Ez az eszköz a gyűjtemény adminisztrátorokat segíti a dokumentumok más gyűjteményekből ebbe a gyűjteménybe történő csatlakoztatását. Kikereshet más gyűjteményekben lévő dokumentumokat,vagy tallózhat a már csatlakoztatottak között.",
+  "collection.edit.item-mapper.description": "Ez az eszköz a gyűjtemény adminisztrátorokat segíti a dokumentumok más gyűjteményekből ebbe a gyűjteménybe történő csatlakoztatását. Kikereshet más gyűjteményekben lévő dokumentumokat, vagy tallózhat a már csatlakoztatottak között.",
 
   //"collection.edit.item-mapper.head": "Item Mapper - Map Items from Other Collections",
   "collection.edit.item-mapper.head": "Dokumentum csatlakoztató - Dokumentum csatlakoztatása más gyűjteményekből",
@@ -2038,7 +2038,7 @@
   "collection.edit.item-mapper.search-form.placeholder": "Dokumentumok keresése...",
 
   //"collection.edit.item-mapper.tabs.browse": "Browse mapped items",
-  "collection.edit.item-mapper.tabs.browse": "Csatolt dokumentumok tallózása",
+  "collection.edit.item-mapper.tabs.browse": "Csatolt dokumentumok böngészése",
 
   //"collection.edit.item-mapper.tabs.map": "Map new items",
   "collection.edit.item-mapper.tabs.map": "Új dokumentumok csatlakoztatása",
@@ -2452,7 +2452,7 @@
   "community.all-lists.head": "Alkategóriák és gyűjtemények",
 
   //"community.browse.logo": "Browse for a community logo",
-  "community.browse.logo": "Gyűjtemény logo tallózása",
+  "community.browse.logo": "Gyűjtemény logo böngészése",
 
   //"community.create.breadcrumbs": "Create Community",
   "community.create.breadcrumbs": "Kategória létrehozása",
@@ -2596,7 +2596,7 @@
   "community.page.edit": "E kategória a szerkesztése",
 
   //"community.page.handle": "Permanent URI for this community",
-  "community.page.handle": "Állandó URI ehhez a kategóriához",
+  "community.page.handle": "Állandó link ehhez a kategóriához",
 
   //"community.page.license": "License",
   "community.page.license": "Licensz",
@@ -2902,7 +2902,7 @@
   "curation.form.task-select.label": "Feladat:",
 
   //"dc-identifier-uri-contains-doi_condition.label": "URI contains DOI",
-  "dc-identifier-uri-contains-doi_condition.label": "URI DOI azonosítót tartalmaz",
+  "dc-identifier-uri-contains-doi_condition.label": "Link DOI azonosítót tartalmaz",
 
   //"default-relationships.search.results.head": "Search Results",
   "default-relationships.search.results.head": "Találatok",
@@ -3130,7 +3130,7 @@
   "error.validation.groupExists": "Ez a csoport már létezik",
 
   //"error.validation.license.notgranted": "You must grant this license to complete your submission. If you are unable to grant this license at this time you may save your work and return later or remove the submission.",
-  "error.validation.license.notgranted": "El kell fogadnia ezt a licenszet,hogy befejezze a feltöltését. Ha ez jelenleg nem lehetséges,akkor elmentheti az eddigi munkáját,és később folytathatja,vagy törölheti a feltöltést.",
+  "error.validation.license.notgranted": "El kell fogadnia ezt a felhasználási feltételt, hogy befejezze a feltöltését. Ha ez jelenleg nem lehetséges,akkor elmentheti az eddigi munkáját,és később folytathatja,vagy törölheti a feltöltést.",
 
   //"error.validation.metadata.element.invalid-pattern": "This field cannot contain dots, commas or spaces. Please use the Qualifier field instead",
   "error.validation.metadata.element.invalid-pattern": "Ez a mező nem tartalmazhat pontokat, vesszőket vagy szóközöket. Kérem, inkább a minősítő (qualifier) mezőt használja",
@@ -3187,7 +3187,7 @@
   "footer.link.dspace": "DSpace szoftver",
 
   //"footer.link.end-user-agreement": "End User Agreement",
-  "footer.link.end-user-agreement": "Végfelhasználói szerződés",
+  "footer.link.end-user-agreement": "Felhasználási szerződés",
 
   //"footer.link.feedback": "Send Feedback",
   "footer.link.feedback": "Visszajelzés küldése",
@@ -3544,10 +3544,10 @@
   "home.title": "Főoldal",
 
   //"home.top-level-communities.head": "Communities in DSpace",
-  "home.top-level-communities.head": "Kategóriák a DSpace-en",
+  "home.top-level-communities.head": "Válasszon kategóriát!",
 
   //"home.top-level-communities.help": "Select a community to browse its collections.",
-  "home.top-level-communities.help": "Válasszon egy kategóriát a gyűjteményeik tallózásához.",
+  "home.top-level-communities.help": "",
 
   //"id.notify-detail-modal": "Id",
   "id.notify-detail-modal": "Id",
@@ -3604,16 +3604,16 @@
   "info.coar-notify-support.title": "COAR Notify támogatás",
 
   //"info.end-user-agreement.accept": "I have read and I agree to the End User Agreement",
-  "info.end-user-agreement.accept": "Elolvastam és elfogadom a végfelhasználói feltételeket",
+  "info.end-user-agreement.accept": "Elolvastam és elfogadom a felhasználási feltételeket",
 
   //"info.end-user-agreement.accept.error": "An error occurred accepting the End User Agreement",
-  "info.end-user-agreement.accept.error": "Hiba történt a végfelhasználói feltételek elfogadásakor",
+  "info.end-user-agreement.accept.error": "Hiba történt a felhasználási feltételek elfogadásakor",
 
   //"info.end-user-agreement.accept.success": "Successfully updated the End User Agreement",
-  "info.end-user-agreement.accept.success": "Sikeresen frissítette a végfelhasználói feltételeket",
+  "info.end-user-agreement.accept.success": "Sikeresen frissítette a felhasználási feltételeket",
 
   //"info.end-user-agreement.breadcrumbs": "End User Agreement",
-  "info.end-user-agreement.breadcrumbs": "Végfelhasználói megállapodás",
+  "info.end-user-agreement.breadcrumbs": "Felhasználáis feltételek",
 
   //"info.end-user-agreement.buttons.cancel": "Cancel",
   "info.end-user-agreement.buttons.cancel": "Mégsem",
@@ -3622,13 +3622,13 @@
   "info.end-user-agreement.buttons.save": "Ment",
 
   //"info.end-user-agreement.head": "End User Agreement",
-  "info.end-user-agreement.head": "Végfelhasználói megállapodás",
+  "info.end-user-agreement.head": "Felhasználási feltételek",
 
   //"info.end-user-agreement.hosting-country": "the United States",
   "info.end-user-agreement.hosting-country": "az Egyesült Államok",
 
   //"info.end-user-agreement.title": "End User Agreement",
-  "info.end-user-agreement.title": "Végfelhasználói megállapodás",
+  "info.end-user-agreement.title": "Felhasználási feltételek",
 
   //"info.feedback.breadcrumbs": "Feedback",
   "info.feedback.breadcrumbs": "Visszajelzés",
@@ -3805,7 +3805,7 @@
   "item-identifier-reference": "Jelzet",
 
   //"item-identifier-uri": "URI",
-  "item-identifier-uri": "URI",
+  "item-identifier-uri": "Link",
 
   //"item-identifiers": "Identifiers",
   "item-identifiers": "Azonosítók",
@@ -4207,7 +4207,7 @@
   "item.edit.item-mapper.cancel": "Mégsem",
 
   //"item.edit.item-mapper.description": "This is the item mapper tool that allows administrators to map this item to other collections. You can search for collections and map them, or browse the list of collections the item is currently mapped to.",
-  "item.edit.item-mapper.description": "Ez a dokumentum csatlakoztató eszköz,ami a gyűjtemény adminisztrátorokat segíti e dokumentum hozzárendelésében más gyűjteményekhez. Kereshet gyűjteményekre és csatlakoztathat azokhoz,vagy tallózhat a már csatlakoztatottak között.",
+  "item.edit.item-mapper.description": "Ez a dokumentum csatlakoztató eszköz,ami a gyűjtemény adminisztrátorokat segíti e dokumentum hozzárendelésében más gyűjteményekhez. Kereshet gyűjteményekre és csatlakoztathat azokhoz, vagy tallózhat a már csatlakoztatottak között.",
 
   //"item.edit.item-mapper.head": "Item Mapper - Map Item to Collections",
   "item.edit.item-mapper.head": "Dokumentum csatlakoztató - Dokumentum csatlakoztatása gyűjteményekhez",
@@ -4246,7 +4246,7 @@
   "item.edit.item-mapper.search-form.placeholder": "Gyűjtemények keresése...",
 
   //"item.edit.item-mapper.tabs.browse": "Browse mapped collections",
-  "item.edit.item-mapper.tabs.browse": "Csatlakoztatott gyűjtemények tallózása",
+  "item.edit.item-mapper.tabs.browse": "Csatlakoztatott gyűjtemények böngészése",
 
   //"item.edit.item-mapper.tabs.map": "Map new collections",
   "item.edit.item-mapper.tabs.map": "Új gyűjtemények csatlakoztatása",
@@ -5041,7 +5041,7 @@
   "item.page.universityProgramLevel": "Képzési szint",
 
   //"item.page.uri": "URI",
-  "item.page.uri": "URI",
+  "item.page.uri": "Link",
 
   //"item.page.version.create": "Create new version",
   "item.page.version.create": "Új verzió létrehozása",
@@ -5054,6 +5054,9 @@
 
   //"item.page.withdrawn": "Request a withdrawal for this item",
   "item.page.withdrawn": "Visszavonás igénylése ehhez a dokumentumhoz",
+
+  //"item.page.vs-link": "VideoSquare link"
+  "item.page.vs-link": "VideoSquare link",
 
   //"item.preview.dc.contributor.author": "Authors:",
   "item.preview.dc.contributor.author": "Szerzők:",
@@ -6016,7 +6019,7 @@
   "login.form.forgot-password": "Elfelejtette a jelszavát?",
 
   //"login.form.header": "Please log in to DSpace",
-  "login.form.header": "Lépjen be a DSpace-be",
+  "login.form.header": "Jelentkezzen be",
 
   //"login.form.new-user": "New user? Click here to register.",
   "login.form.new-user": "Új felhasználó? Kattintson ide a regisztráláshoz.",
@@ -6103,7 +6106,7 @@
   "menu.section.browse_community_by_title": "Cím szerint",
 
   //"menu.section.browse_global": "All of DSpace",
-  "menu.section.browse_global": "MDA tallózása",
+  "menu.section.browse_global": "Böngészés",
 
   //"menu.section.browse_global_by_author": "By Author",
   "menu.section.browse_global_by_author": "Szerző szerint",
@@ -6127,7 +6130,7 @@
   "menu.section.browse_global_by_universityprogram": "Képzés szerint",
 
   //"menu.section.browse_global_communities_and_collections": "Communities & Collections",
-  "menu.section.browse_global_communities_and_collections": "Kategóriák & Gyűjtemények",
+  "menu.section.browse_global_communities_and_collections": "Kategóriák és Gyűjtemények",
 
   //"menu.section.coar_notify": "COAR Notify",
   "menu.section.coar_notify": "COAR Notify ",
@@ -6439,7 +6442,7 @@
   "mydspace.results.no-title": "Nincs cím",
 
   //"mydspace.results.no-uri": "No URI",
-  "mydspace.results.no-uri": "Nincs Uri",
+  "mydspace.results.no-uri": "Nincs link",
 
   //"mydspace.search-form.placeholder": "Search in MyDSpace...",
   "mydspace.search-form.placeholder": "Keresés a mydspace-ben...",
@@ -10009,13 +10012,13 @@
   "submission.sections.identifiers.otherIdentifiers_label": "Egyéb azonosítók ",
 
   //"submission.sections.license.granted-label": "I confirm the license above",
-  "submission.sections.license.granted-label": "Elfogadom a fenti licenszet",
+  "submission.sections.license.granted-label": "Elfogadom a fenti felhasznlási feltételeket",
 
   //"submission.sections.license.notgranted": "You must accept the license",
-  "submission.sections.license.notgranted": "Kötelező elfogadni a licenszet",
+  "submission.sections.license.notgranted": "Kötelező elfogadni a felhasznáási feltételeket",
 
   //"submission.sections.license.required": "You must accept the license",
-  "submission.sections.license.required": "Kötelező elfogadni a licenszet",
+  "submission.sections.license.required": "Kötelező elfogadni a felhasználási feltételeket",
 
   //"submission.sections.notify.info": "The selected service is compatible with the item according to its current status. {{ service.name }}: {{ service.description }}",
   "submission.sections.notify.info": "A kiválasztott szolgáltatás kompatibilis a dokumentummal a jelenlegi állapota szerint. {{ service.name }}: {{ service.description }}",
@@ -10099,7 +10102,7 @@
   "submission.sections.sherpa.record.information.id": "ID",
 
   //"submission.sections.sherpa.record.information.uri": "URI",
-  "submission.sections.sherpa.record.information.uri": "URI",
+  "submission.sections.sherpa.record.information.uri": "Link",
 
   //"submission.sections.status.errors.aria": "has errors",
   "submission.sections.status.errors.aria": "van hibája",

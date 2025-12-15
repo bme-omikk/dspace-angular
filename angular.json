@@ -39,11 +39,6 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "./node_modules/ngx-extended-pdf-viewer/assets/",
-                "output": "/assets/"
-              },
               "src/assets",
               "src/robots.txt"
             ],
@@ -65,9 +60,9 @@
                 "bundleName": "dspace-theme"
               },
               {
-                "input": "src/themes/omikk/styles/theme.scss",
+                "input": "src/themes/terepo/styles/theme.scss",
                 "inject": false,
-                "bundleName": "omikk-theme"
+                "bundleName": "terepo-theme"
               }
             ],
             "scripts": [],

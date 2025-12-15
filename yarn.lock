@@ -5320,11 +5320,9 @@ eslint-plugin-deprecation@^1.4.1:
 
 "eslint-plugin-dspace-angular-html@link:./lint/dist/src/rules/html":
   version "0.0.0"
-  uid ""
 
 "eslint-plugin-dspace-angular-ts@link:./lint/dist/src/rules/ts":
   version "0.0.0"
-  uid ""
 
 eslint-plugin-import-newlines@^1.3.1:
   version "1.4.0"
@@ -7442,11 +7440,6 @@ lodash.debounce@^4.0.8:
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
 
-lodash.deburr@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/lodash.deburr/-/lodash.deburr-4.1.0.tgz#ddb1bbb3ef07458c0177ba07de14422cb033ff9b"
-  integrity sha512-m/M1U1f3ddMCs6Hq2tAsYThTBDaAKFDX3dwDo97GEYzamXi9SqUpjWi/Rrj/gf3X2n8ktwgZrlP1z6E3v/IExQ==
-
 lodash.merge@4.6.2, lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
@@ -7987,14 +7980,6 @@ ng2-nouislider@^2.0.0:
   resolved "https://registry.yarnpkg.com/ng2-nouislider/-/ng2-nouislider-2.0.0.tgz#a62fd6cf3f1561be19a2691c2f68d21a46dc6006"
   integrity sha512-NGbF/0w0+bZqclpSPFOlWIeVJaVwRRYFJzD1x8PClbw9GIeo7fCHoBzZ81y7K7FTJg6to+cgjSTFETPZG/Dizg==
   dependencies:
-    tslib "^2.3.0"
-
-ngx-extended-pdf-viewer@^20.0.0:
-  version "20.5.2"
-  resolved "https://registry.yarnpkg.com/ngx-extended-pdf-viewer/-/ngx-extended-pdf-viewer-20.5.2.tgz#f309b8b4e62782140f0212726208ae534480ebf2"
-  integrity sha512-kYdDkIqgBkojUXd3RPk1vf7RBfrWCGFCykv+UkXP/owfKtC6ii5SyGgKp5VFw0uBvp0r4jet94+Dh7TDnEWbZg==
-  dependencies:
-    lodash.deburr "^4.1.0"
     tslib "^2.3.0"
 
 ngx-infinite-scroll@^16.0.0:

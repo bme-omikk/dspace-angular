@@ -1,0 +1,42 @@
+// Add any global css for the theme here
+
+// imports the base global style
+@import '../../../styles/_global-styles.scss';
+
+.breadcrumb {
+  background-color: white !important;
+}
+
+.nav-breadcrumb {
+  background-color: white !important;
+}
+
+.jumbotron {
+  color: #fff !important;
+  background-color: var(--ds-home-news-background-color);
+}
+
+img#admin-sidebar-logo {
+  content:url('../assets/images/apple-touch-icon.png');
+}
+
+img.terepo-logo {
+  width: 258px;
+  height: 84px;
+}
+
+header.mainheader {
+  background-color: rgb(133,201,240);
+}
+
+.sidebar-content-terepo {
+  background-color: rgb(214, 162, 0);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.terepo-search-filter-reset {
+  color: #fff;
+  background-color: rgb(38, 130, 140);
+  border-color: rgb(38, 130, 140);
+}

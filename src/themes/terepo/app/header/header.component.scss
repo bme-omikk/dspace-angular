@@ -1,0 +1,23 @@
+div.rrf {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  width: 375px;
+  z-index: 998;
+}
+
+div.rrf-img img {
+  width: 375px;
+  height: 110px;
+}
+
+@media (max-width: 1500px) {
+  div.rrf {
+    position: fixed;
+    right: 1px;
+    bottom: 1px;
+    width: 375px;
+    z-index: 998;
+  }
+}
+

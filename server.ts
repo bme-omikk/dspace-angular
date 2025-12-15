@@ -277,10 +277,6 @@ function serverSideRender(req, res, next, sendToUser: boolean = true) {
         // save server side rendered page to cache (if any are enabled)
         saveToCache(req, html);
         if (sendToUser) {
-          if (res.headersSent) {
-            console.warn('[SSR] Response already sent (probably a redirect). Skipping res.send().');
-            return;
-          }
           res.locals.ssr = true;  // mark response as SSR (enables text compression)
           // send rendered page to user
           res.send(html);
