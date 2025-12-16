@@ -7,8 +7,8 @@ import { PrivacyContentComponent } from '../../../../../app/info/privacy/privacy
   selector: 'ds-themed-privacy',
   // styleUrls: ['./privacy.component.scss'],
   styleUrls: ['../../../../../app/info/privacy/privacy.component.scss'],
-  // templateUrl: './privacy.component.html'
-  templateUrl: '../../../../../app/info/privacy/privacy.component.html',
+  templateUrl: './privacy.component.html',
+  //templateUrl: '../../../../../app/info/privacy/privacy.component.html',
   standalone: true,
   imports: [PrivacyContentComponent],
 })
