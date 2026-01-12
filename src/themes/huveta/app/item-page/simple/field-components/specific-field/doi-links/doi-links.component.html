@@ -1,0 +1,7 @@
+<div *ngIf="doiLink" class="simple-view-element">
+  <h2 class="doi-simple-view-element-header">{{ "item.page.doi" | translate }}</h2>
+  <div class="simple-view-element-body">
+      <a [href]="doiLink"
+         target="_blank">{{ linkTitle }}</a>
+  </div>
+</div>

@@ -29,17 +29,18 @@ import { MetadataFieldWrapperComponent } from '../../../../../../../app/shared/m
 import { listableObjectComponent } from '../../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
 import { ThemedResultsBackButtonComponent } from '../../../../../../../app/shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
+import { DoiLinksComponent } from '../../field-components/specific-field/doi-links/doi-links.component';
 
 /**
  * Component that represents an untyped Item page
  */
-@listableObjectComponent(Item, ViewMode.StandalonePage, Context.Any, 'custom')
+@listableObjectComponent(Item, ViewMode.StandalonePage, Context.Any, 'huveta')
 @Component({
   selector: 'ds-untyped-item',
-  // styleUrls: ['./untyped-item.component.scss'],
-  styleUrls: [
-    '../../../../../../../app/item-page/simple/item-types/untyped-item/untyped-item.component.scss',
-  ],
+  styleUrls: ['./untyped-item.component.scss'],
+  //styleUrls: [
+  //  '../../../../../../../app/item-page/simple/item-types/untyped-item/untyped-item.component.scss',
+  //],
   templateUrl: './untyped-item.component.html',
   // templateUrl:
   //  '../../../../../../../app/item-page/simple/item-types/untyped-item/untyped-item.component.html',
@@ -65,6 +66,7 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
     AsyncPipe,
     TranslateModule,
     ItemPageCcLicenseFieldComponent,
+    DoiLinksComponent,
   ],
 })
 export class UntypedItemComponent extends BaseComponent {}
