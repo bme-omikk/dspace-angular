@@ -1,0 +1,13 @@
+// Add any global css for the theme here
+$custom-file-text: ();
+
+// imports the base global style
+@import '../../../styles/_global-styles.scss';
+
+.navbar {
+  align-items: baseline !important;
+}
+
+.toggle-menu-icon {
+  color: #fff !important;
+}
