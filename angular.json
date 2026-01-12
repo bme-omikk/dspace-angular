@@ -64,7 +64,6 @@
                 "inject": false,
                 "bundleName": "huveta-theme"
               }
-
             ],
             "scripts": [],
             "baseHref": "/"
