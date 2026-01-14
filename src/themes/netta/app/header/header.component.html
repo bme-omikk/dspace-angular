@@ -1,6 +1,11 @@
-<header>
+<header class="mainheader">
   <div class="container">
     <div class="d-flex flex-row justify-content-between">
+      <div *ngIf="!showRRF" class ="rrf">
+        <div class="rrf-img">
+          <img src="assets/netta/images/rrf-logo.jpg"/>
+        </div>
+      </div>
       <a class="navbar-brand my-2" routerLink="/home">
         <img src="assets/netta/images/nje-logo.svg" [attr.alt]="'menu.header.image.logo' | translate"/>
       </a>

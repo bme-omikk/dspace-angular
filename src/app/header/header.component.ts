@@ -6,6 +6,12 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
+import {
+  select,
+  Store,
+} from '@ngrx/store';
+import { AppState } from '../app.reducer';
+import { isAuthenticated } from '../core/auth/selectors';
 import { RouterLink } from '@angular/router';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
@@ -38,8 +44,13 @@ export class HeaderComponent implements OnInit {
    * Whether user is authenticated.
    * @type {Observable<string>}
    */
-  public isAuthenticated: Observable<boolean>;
+  public isAuthenticated$: Observable<boolean>;
   public isMobile$: Observable<boolean>;
+  // NETTA customization:
+  // we have to hide the RRF logo in case of admin!
+  // remove this when the project logo do not need any more
+  // @2026-01-14
+  public showRRF: boolean = false;
 
   menuID = MenuID.PUBLIC;
   maxMobileWidth = WidthCategory.SM;
@@ -47,10 +58,15 @@ export class HeaderComponent implements OnInit {
   constructor(
     protected menuService: MenuService,
     protected windowService: HostWindowService,
+    private store: Store<AppState>,
   ) {
   }
 
   ngOnInit(): void {
+    this.isAuthenticated$ = this.store.pipe(select(isAuthenticated));
+    this.isAuthenticated$.subscribe((res) => {
+      this.showRRF = res;
+    });
     this.isMobile$ = this.windowService.isUpTo(this.maxMobileWidth);
   }
 

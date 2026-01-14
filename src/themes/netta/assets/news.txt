@@ -1,2 +1,3 @@
-<h1>Üdvözöljük a Neumann János Egyetem repozitóriumának oldalán!</h1>
-<p>Mindenféle <b>szöveg</b> lehet itt. A gyűjtemény egy része bárki számára elérhető, míg bizonyos tartalmak megtekintése egyetemi jogosultsághoz kötött.</p>
+<h1>Üdvözöljük a Neumann Egyetemi TudásTár és Archívum (NETTA) oldalán!</h1>
+<p>Az intézményi repozitórium a Neumann János Egyetemen keletkezett publikációkat, doktori disszertációkat, szakdolgozatokat és oktatási anyagokat tartalmazza.</p>
+<p>A feltöltött anyagok szerzői jogvédelem alatt állnak, tanulási és kutatási célokra használhatók.</p>
