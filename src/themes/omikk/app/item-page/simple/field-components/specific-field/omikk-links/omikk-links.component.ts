@@ -54,7 +54,7 @@ export class OmikkLinksComponent extends ItemPageFieldComponent implements OnIni
   copyToClipboardImg: string;
   hasRelatedMetadata: boolean;
   hasBMEDOI: boolean;
-  hasClipboard: boolean = false;
+  hasClipboard = false;
 
   @Input() item: Item;
   @Input() label: string;
@@ -65,7 +65,7 @@ export class OmikkLinksComponent extends ItemPageFieldComponent implements OnIni
               protected browseService: BrowseService,
               private sanitizer: DomSanitizer,
               private cds: CollectionDataService,
-              @Inject(PLATFORM_ID) private platformId: Object) {
+              @Inject(PLATFORM_ID) private platformId: object) {
     super(browseDefinitionDataService, browseService);
   }
 
