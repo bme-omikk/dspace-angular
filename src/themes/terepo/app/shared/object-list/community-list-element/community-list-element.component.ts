@@ -1,21 +1,28 @@
-import { NgIf,
-         AsyncPipe, } from '@angular/common';
-import { Component,
-         Input,
-         OnInit,
-         OnChanges,
-         SimpleChanges, } from '@angular/core';
+import {
+  AsyncPipe,
+  NgIf,
+} from '@angular/common';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { followLink } from '../../../../../../app/shared/utils/follow-link-config.model';
-import { LinkService } from '../../../../../../app/core/cache/builders/link.service';
-import { hasNoValue, hasValue } from '../../../../../../app/shared/empty.util';
 import { DSONameService } from '../../../../../../app/core/breadcrumbs/dso-name.service';
+import { LinkService } from '../../../../../../app/core/cache/builders/link.service';
 import { Community } from '../../../../../../app/core/shared/community.model';
 import { Context } from '../../../../../../app/core/shared/context.model';
 import { ViewMode } from '../../../../../../app/core/shared/view-mode.model';
+import {
+  hasNoValue,
+  hasValue,
+} from '../../../../../../app/shared/empty.util';
 import { listableObjectComponent } from '../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
 import { CommunityListElementComponent as BaseComponent } from '../../../../../../app/shared/object-list/community-list-element/community-list-element.component';
+import { followLink } from '../../../../../../app/shared/utils/follow-link-config.model';
 import { ThemedThumbnailComponent } from '../../../../../../app/thumbnail/themed-thumbnail.component';
 
 @listableObjectComponent(Community, ViewMode.ListElement, Context.Any, 'terepo')

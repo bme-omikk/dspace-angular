@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
+import {
+  Component,
+  OnInit,
+} from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { tap } from 'rxjs';
 
 import { HomeNewsComponent as BaseComponent } from '../../../../../app/home-page/home-news/home-news.component';
@@ -26,8 +29,8 @@ export class HomeNewsComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get('assets/terepo/news.txt', {responseType: 'text'}).pipe(
-        tap(data => console.log("newsfile read ok"))
+    this.http.get('assets/terepo/news.txt', { responseType: 'text' }).pipe(
+      tap(data => console.log('newsfile read ok')),
     ).subscribe(data => {
       this.newstext = data;
     });
