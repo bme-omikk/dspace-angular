@@ -6,17 +6,17 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import {
   select,
   Store,
 } from '@ngrx/store';
-import { AppState } from '../app.reducer';
-import { isAuthenticated } from '../core/auth/selectors';
-import { RouterLink } from '@angular/router';
-import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 
+import { AppState } from '../app.reducer';
+import { isAuthenticated } from '../core/auth/selectors';
 import { ThemedSearchNavbarComponent } from '../search-navbar/themed-search-navbar.component';
 import { ThemedAuthNavMenuComponent } from '../shared/auth-nav-menu/themed-auth-nav-menu.component';
 import {
@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
   // we have to hide the RRF logo in case of admin!
   // remove this when the project logo do not need any more
   // @2026-01-14
-  public showRRF: boolean = false;
+  public showRRF = false;
 
   menuID = MenuID.PUBLIC;
   maxMobileWidth = WidthCategory.SM;
