@@ -577,3 +577,4 @@ liveRegion:
 accessibility:
   # The duration in days after which the accessibility settings cookie expires
   cookieExpirationDuration: 7
+

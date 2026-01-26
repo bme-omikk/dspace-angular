@@ -1,0 +1,26 @@
+:host {
+    display: block;
+    margin-top: calc(-1 * var(--ds-content-spacing));
+    margin-bottom: calc(-1 * var(--ds-content-spacing));
+    color: white;
+}
+
+.display-3 {
+    word-break: break-word;
+}
+
+.jumbotron {
+  background-color: var(--ds-home-news-background-color);
+  //background-image: url('../../../assets/images/3_1.JPG');
+  //background-color: #1F3F5E;
+  padding: 10px 0px 3px 0px !important;
+  text-align: center;
+}
+
+a {
+  color: var(--ds-home-news-link-color);
+
+  @include hover {
+    color: var(--ds-home-news-link-hover-color);
+  }
+}

@@ -29,6 +29,7 @@ webpack.records.json
 morgan.log
 
 yarn-error.log
+yarn.lock
 
 *.css
 
@@ -42,3 +43,4 @@ package-lock.json
 junit.xml
 
 /src/mirador-viewer/config.local.js
+/ssl/
