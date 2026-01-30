@@ -7,6 +7,8 @@ import {
   Component,
 } from '@angular/core';
 import {
+  ActivatedRoute,
+  Router,
   RouterModule,
   RouterOutlet,
 } from '@angular/router';
@@ -25,11 +27,15 @@ import { DsoEditMenuComponent } from '../../../../app/shared/dso-page/dso-edit-m
 import { ErrorComponent } from '../../../../app/shared/error/error.component';
 import { ThemedLoadingComponent } from '../../../../app/shared/loading/themed-loading.component';
 import { VarDirective } from '../../../../app/shared/utils/var.directive';
+import { AuthService } from '../../../../app/core/auth/auth.service';
+import { DSONameService } from '../../../../app/core/breadcrumbs/dso-name.service';
+import { AuthorizationDataService } from '../../../../app/core/data/feature-authorization/authorization-data.service';
+import { LocaleService } from '../../../../app/core/locale/locale.service';
 
 @Component({
   selector: 'ds-themed-community-page',
-  // templateUrl: './community-page.component.html',
-  templateUrl: '../../../../app/community-page/community-page.component.html',
+  templateUrl: './community-page.component.html',
+  //templateUrl: '../../../../app/community-page/community-page.component.html',
   // styleUrls: ['./community-page.component.scss']
   styleUrls: ['../../../../app/community-page/community-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -58,4 +64,40 @@ import { VarDirective } from '../../../../app/shared/utils/var.directive';
  * This component represents a detail page for a single community
  */
 export class CommunityPageComponent extends BaseComponent {
+  currentLang: string;
+  title: string;
+
+  constructor(
+    route: ActivatedRoute,
+    router: Router,
+    authService: AuthService,
+    authorizationDataService: AuthorizationDataService,
+    dsoNameService: DSONameService,
+    public localeService: LocaleService,
+  ) {
+    super(route,
+      router,
+      authService,
+      authorizationDataService,
+      dsoNameService);
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+    this.localeService.getCurrentLanguageCode().subscribe(code => {
+      this.currentLang = code;
+    });
+    this.getTranslatedName();
+  }
+
+  getTranslatedName() {
+    this.communityRD$.subscribe((data) => {
+      for (let md of data.payload.metadata["dc.title"]) {
+        this.title = md["language"] === this.currentLang ? md["value"] : "";
+      }
+      if (this.title === "") {
+        this.title = this.dsoNameService.getName(data.payload);
+      }
+    });
+  }
 }
