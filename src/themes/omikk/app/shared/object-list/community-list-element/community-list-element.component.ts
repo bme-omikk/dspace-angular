@@ -37,13 +37,18 @@ export class CommunityListElementComponent extends BaseComponent {
   }
 
   ngOnInit() {
-    // this.object.allMetadata("dc.title");
     this.localeService.getCurrentLanguageCode().subscribe(code => {
       this.currentLang = code;
     });
   }
 
   getName() {
-    return this.dsoNameService.getName(this.object);
+    let title: string;
+
+    for (let md of this.object.allMetadata("dc.title")){
+      title = md["language"] === this.currentLang ? md["value"] : "";
+    }
+    
+    return title === "" ? this.dsoNameService.getName(this.object) : title;
   }
 }
