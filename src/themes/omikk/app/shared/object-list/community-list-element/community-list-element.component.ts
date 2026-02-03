@@ -1,7 +1,6 @@
 import { NgIf } from '@angular/common';
 import { 
   Component,
-  OnInit,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -11,7 +10,7 @@ import { ViewMode } from '../../../../../../app/core/shared/view-mode.model';
 import { listableObjectComponent } from '../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
 import { CommunityListElementComponent as BaseComponent } from '../../../../../../app/shared/object-list/community-list-element/community-list-element.component';
 import { DSONameService } from '../../../../../../app/core/breadcrumbs/dso-name.service';
-import { LocaleService } from '../../../../../../app/core/locale/locale.service';
+import { DSONameServiceTranslated } from '../../dso-name.service';
 
 @listableObjectComponent(Community, ViewMode.ListElement, Context.Any, 'omikk')
 
@@ -28,27 +27,13 @@ import { LocaleService } from '../../../../../../app/core/locale/locale.service'
  * Component representing a list element for a community
  */
 export class CommunityListElementComponent extends BaseComponent {
-  currentLang: string;
-
   constructor(
-    public dsoNameService: DSONameService,
-    public localeService: LocaleService,) {
-    super(dsoNameService);
-  }
-
-  ngOnInit() {
-    this.localeService.getCurrentLanguageCode().subscribe(code => {
-      this.currentLang = code;
-    });
+    public dsoNS: DSONameService,
+    public dsoNameService: DSONameServiceTranslated,) {
+    super(dsoNS);
   }
 
   getName() {
-    let title: string;
-
-    for (let md of this.object.allMetadata("dc.title")){
-      title = md["language"] === this.currentLang ? md["value"] : "";
-    }
-    
-    return title === "" ? this.dsoNameService.getName(this.object) : title;
+    return this.dsoNameService.getTranslatedName(this.object);
   }
 }

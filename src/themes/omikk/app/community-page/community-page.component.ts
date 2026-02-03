@@ -31,6 +31,7 @@ import { AuthService } from '../../../../app/core/auth/auth.service';
 import { DSONameService } from '../../../../app/core/breadcrumbs/dso-name.service';
 import { AuthorizationDataService } from '../../../../app/core/data/feature-authorization/authorization-data.service';
 import { LocaleService } from '../../../../app/core/locale/locale.service';
+import { DSONameServiceTranslated } from '../../app/shared/dso-name.service';
 
 @Component({
   selector: 'ds-themed-community-page',
@@ -74,6 +75,7 @@ export class CommunityPageComponent extends BaseComponent {
     authorizationDataService: AuthorizationDataService,
     dsoNameService: DSONameService,
     public localeService: LocaleService,
+    public dsoNameServiceTrans: DSONameServiceTranslated,
   ) {
     super(route,
       router,
