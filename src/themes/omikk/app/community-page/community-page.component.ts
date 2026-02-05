@@ -28,10 +28,6 @@ import { DsoEditMenuComponent } from '../../../../app/shared/dso-page/dso-edit-m
 import { ErrorComponent } from '../../../../app/shared/error/error.component';
 import { ThemedLoadingComponent } from '../../../../app/shared/loading/themed-loading.component';
 import { VarDirective } from '../../../../app/shared/utils/var.directive';
-import { AuthService } from '../../../../app/core/auth/auth.service';
-import { DSONameService } from '../../../../app/core/breadcrumbs/dso-name.service';
-import { AuthorizationDataService } from '../../../../app/core/data/feature-authorization/authorization-data.service';
-import { DSONameServiceTranslated } from '../../app/shared/dso-name.service';
 
 @Component({
   selector: 'ds-themed-community-page',
@@ -64,28 +60,4 @@ import { DSONameServiceTranslated } from '../../app/shared/dso-name.service';
 /**
  * This component represents a detail page for a single community
  */
-export class CommunityPageComponent extends BaseComponent implements OnInit {
-  title: string;
-
-  constructor(
-    route: ActivatedRoute,
-    router: Router,
-    authService: AuthService,
-    authorizationDataService: AuthorizationDataService,
-    dsoNS: DSONameService,
-    public dsoNameService: DSONameServiceTranslated,
-  ) {
-    super(route,
-      router,
-      authService,
-      authorizationDataService,
-      dsoNS);
-  }
-
-  ngOnInit() {
-    super.ngOnInit();
-    this.communityRD$.subscribe((data) => {
-      this.title = this.dsoNameService.getTranslatedName(data.payload);
-    });
-  }
-}
+export class CommunityPageComponent extends BaseComponent {}

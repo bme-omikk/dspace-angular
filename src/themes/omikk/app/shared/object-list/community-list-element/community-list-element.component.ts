@@ -11,7 +11,6 @@ import { ViewMode } from '../../../../../../app/core/shared/view-mode.model';
 import { listableObjectComponent } from '../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
 import { CommunityListElementComponent as BaseComponent } from '../../../../../../app/shared/object-list/community-list-element/community-list-element.component';
 import { DSONameService } from '../../../../../../app/core/breadcrumbs/dso-name.service';
-import { DSONameServiceTranslated } from '../../dso-name.service';
 
 @listableObjectComponent(Community, ViewMode.ListElement, Context.Any, 'omikk')
 
@@ -27,14 +26,4 @@ import { DSONameServiceTranslated } from '../../dso-name.service';
 /**
  * Component representing a list element for a community
  */
-export class CommunityListElementComponent extends BaseComponent {
-  constructor(
-    public dsoNS: DSONameService,
-    public dsoNameService: DSONameServiceTranslated,) {
-    super(dsoNS);
-  }
-
-  getName() {
-    return this.dsoNameService.getTranslatedName(this.object);
-  }
-}
+export class CommunityListElementComponent extends BaseComponent {}

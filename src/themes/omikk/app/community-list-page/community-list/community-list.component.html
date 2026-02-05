@@ -43,7 +43,7 @@
       </span>
       <div class="d-flex flex-row">
         <span class="d-flex align-middle my-auto">
-          <a [routerLink]="node.route" class="lead" role="link" tabindex="0">{{ dsoNameService.getTranslatedName(node.payload) | translate }}</a>
+          <a [routerLink]="node.route" class="lead" role="link" tabindex="0">{{ dsoNameService.getName(node.payload) | translate }}</a>
           <span class="pr-2">&nbsp;</span>
           <span *ngIf="node.payload.archivedItemsCount >= 0" class="badge badge-pill badge-secondary align-top archived-items-lead my-auto">{{node.payload.archivedItemsCount}}</span>
         </span>

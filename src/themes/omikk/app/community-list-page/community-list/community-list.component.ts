@@ -16,8 +16,6 @@ import { CommunityListService } from '../../../../../app/community-list-page/com
 import { ThemedLoadingComponent } from '../../../../../app/shared/loading/themed-loading.component';
 import { TruncatableComponent } from '../../../../../app/shared/truncatable/truncatable.component';
 import { TruncatablePartComponent } from '../../../../../app/shared/truncatable/truncatable-part/truncatable-part.component';
-import { DSONameService } from '../../../../../app/core/breadcrumbs/dso-name.service';
-import { DSONameServiceTranslated } from '../../../app/shared/dso-name.service';
 
 /**
  * A tree-structured list of nodes representing the communities, their subCommunities and collections.
@@ -34,23 +32,5 @@ import { DSONameServiceTranslated } from '../../../app/shared/dso-name.service';
   standalone: true,
   imports: [NgIf, ThemedLoadingComponent, CdkTreeModule, NgClass, RouterLink, TruncatableComponent, TruncatablePartComponent, AsyncPipe, TranslateModule],
 })
-export class CommunityListComponent extends BaseComponent implements OnInit {
-  title: string;
-
-  constructor(
-    communityListService: CommunityListService,
-    dsoNS: DSONameService,
-    public dsoNameService: DSONameServiceTranslated,
-  ) {
-    super(communityListService,
-      dsoNS);
-  }
-
-  ngOnInit() {
-    super.ngOnInit();
-    /*this.communityRD$.subscribe((data) => {
-      this.title = this.dsoNameService.getTranslatedName(data.payload);
-    });*/
-  }
-}
+export class CommunityListComponent extends BaseComponent {}
 
