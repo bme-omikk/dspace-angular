@@ -3,6 +3,7 @@ import {
   Component,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { Community } from '../../../../../../app/core/shared/community.model';
 import { Context } from '../../../../../../app/core/shared/context.model';
@@ -21,7 +22,7 @@ import { DSONameServiceTranslated } from '../../dso-name.service';
   templateUrl: './community-list-element.component.html',
   //templateUrl: '../../../../../../app/shared/object-list/community-list-element/community-list-element.component.html',
   standalone: true,
-  imports: [NgIf, RouterLink],
+  imports: [NgIf, RouterLink, TranslateModule],
 })
 /**
  * Component representing a list element for a community

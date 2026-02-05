@@ -27,7 +27,6 @@ export class DSONameServiceTranslated extends DSONameService {
   getTranslatedName(dso: DSpaceObject | undefined, escapeHTML?: boolean): string {
     if (dso) {
       let title: string;
-
       for (let md of dso.allMetadata("dc.title")){
         title = md["language"] === this.currentLang ? md["value"] : this.getName(dso);
       }

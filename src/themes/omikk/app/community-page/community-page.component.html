@@ -4,7 +4,7 @@
       <div class="d-flex flex-row border-bottom mb-4 pb-4">
         <header class="comcol-header mr-auto">
           <!-- Community name -->
-          <h1>{{ title }}</h1>
+          <h1>{{ dsoNameService.getName(communityPayload) | translate }}</h1>
           <!-- Community logo -->
           <ds-comcol-page-logo *ngIf="logoRD$" [logo]="(logoRD$ | async)?.payload" [alternateText]="'community.logo' | translate">
           </ds-comcol-page-logo>

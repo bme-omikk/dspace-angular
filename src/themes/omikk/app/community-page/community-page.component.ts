@@ -5,6 +5,7 @@ import {
 import {
   ChangeDetectionStrategy,
   Component,
+  OnInit,
 } from '@angular/core';
 import {
   ActivatedRoute,
@@ -30,7 +31,6 @@ import { VarDirective } from '../../../../app/shared/utils/var.directive';
 import { AuthService } from '../../../../app/core/auth/auth.service';
 import { DSONameService } from '../../../../app/core/breadcrumbs/dso-name.service';
 import { AuthorizationDataService } from '../../../../app/core/data/feature-authorization/authorization-data.service';
-import { LocaleService } from '../../../../app/core/locale/locale.service';
 import { DSONameServiceTranslated } from '../../app/shared/dso-name.service';
 
 @Component({
@@ -64,8 +64,7 @@ import { DSONameServiceTranslated } from '../../app/shared/dso-name.service';
 /**
  * This component represents a detail page for a single community
  */
-export class CommunityPageComponent extends BaseComponent {
-  currentLang: string;
+export class CommunityPageComponent extends BaseComponent implements OnInit {
   title: string;
 
   constructor(
@@ -73,33 +72,20 @@ export class CommunityPageComponent extends BaseComponent {
     router: Router,
     authService: AuthService,
     authorizationDataService: AuthorizationDataService,
-    dsoNameService: DSONameService,
-    public localeService: LocaleService,
-    public dsoNameServiceTrans: DSONameServiceTranslated,
+    dsoNS: DSONameService,
+    public dsoNameService: DSONameServiceTranslated,
   ) {
     super(route,
       router,
       authService,
       authorizationDataService,
-      dsoNameService);
+      dsoNS);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.localeService.getCurrentLanguageCode().subscribe(code => {
-      this.currentLang = code;
-    });
-    this.getTranslatedName();
-  }
-
-  getTranslatedName() {
     this.communityRD$.subscribe((data) => {
-      for (let md of data.payload.metadata["dc.title"]) {
-        this.title = md["language"] === this.currentLang ? md["value"] : "";
-      }
-      if (this.title === "") {
-        this.title = this.dsoNameService.getName(data.payload);
-      }
+      this.title = this.dsoNameService.getTranslatedName(data.payload);
     });
   }
 }
