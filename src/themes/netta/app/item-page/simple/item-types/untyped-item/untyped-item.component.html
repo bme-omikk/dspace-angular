@@ -36,6 +36,8 @@
     <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.contributor.editor')" [item]="object" [fields]="['dc.contributor.editor']" [label]="'item.page.editor'"></ds-generic-item-page-field>
     <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.contributor.advisor')" [item]="object" [fields]="['dc.contributor.advisor']" [label]="'item.page.advisor'"></ds-generic-item-page-field>
     <ds-generic-item-page-field *ngIf="object.hasMetadata('dc.contributor')" [item]="object" [fields]="['dc.contributor']" [label]="'item.page.contributor'"></ds-generic-item-page-field>
+    <ds-netta-links *ngIf="object.hasMetadata('dc.identifier.doi')" [item]="object" [md]="'dc.identifier.doi'" [label]="'item.page.doi-link'"></ds-netta-links>
+    <ds-netta-links *ngIf="object.hasMetadata('local.identifier.mtmt')" [item]="object" [md]="'local.identifier.mtmt'" [label]="'item.page.mtmt-link'"></ds-netta-links>
     <ds-generic-item-page-field [item]="object"
       [fields]="['journal.title']"
       [label]="'item.page.journal-title'">

@@ -3367,6 +3367,10 @@
   "item.page.volume-title": "Volume Title",
 
   "item.page.withdrawn": "Request a withdrawal for this item",
+  
+  "item.page.doi-link": "DOI",
+
+  "item.page.mtmt-link": "MTMT",
 
   "item.preview.dc.contributor.author": "Authors:",
 

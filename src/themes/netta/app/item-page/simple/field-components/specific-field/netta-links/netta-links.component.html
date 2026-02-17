@@ -1,0 +1,7 @@
+<div *ngIf="safeLink" class="item-page-field">
+  <div class="netta-simple-view-element">
+    <h2 class="netta-simple-view-element-header">{{ label | translate }}</h2>
+      <a [href]="safeLink"
+         target="_blank">{{ linkTitle }}</a>
+  </div>
+</div>

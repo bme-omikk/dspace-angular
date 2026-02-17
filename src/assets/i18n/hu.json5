@@ -5055,6 +5055,12 @@
   //"item.page.withdrawn": "Request a withdrawal for this item",
   "item.page.withdrawn": "Visszavonás igénylése ehhez a dokumentumhoz",
 
+  // "item.page.doi-link": "DOI",
+  "item.page.doi-link": "DOI",
+
+  // "item.page.mtmt-link": "MTMT",
+  "item.page.mtmt-link": "MTMT",
+
   //"item.preview.dc.contributor.author": "Authors:",
   "item.preview.dc.contributor.author": "Szerzők:",
 
