@@ -23,8 +23,14 @@
                   <label *ngIf="this.metadataMap.has(mdEntry.key)" title={{mdEntry.key}}>{{this.metadataMap.get(mdEntry.key) | translate}}</label>
                   <label *ngIf="!this.metadataMap.has(mdEntry.key)" title={{mdEntry.key}}>{{mdEntry.key | translate}}</label>
                 </td>
-                <td>{{mdValue.value}}</td>
-                <td>{{mdValue.language}}</td>
+                <td *ngIf="!showLink(mdEntry.key)">{{ mdValue.value }}</td>
+                <td *ngIf="showLink(mdEntry.key)">
+                    <ds-netta-links
+                        [item]="item"
+                        [md]="mdEntry.key"
+                        [label]="'item.page.mtmt-link'"
+                        [full]="false"></ds-netta-links>
+                <td>{{ mdValue.language }}</td>
               </tr>
             </ng-container>
             </tbody>

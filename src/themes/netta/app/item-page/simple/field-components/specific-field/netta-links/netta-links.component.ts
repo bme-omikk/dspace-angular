@@ -55,6 +55,7 @@ export class NettaLinksComponent extends ItemPageFieldComponent implements OnIni
   @Input() item: Item;
   @Input() label: string;
   @Input() md: string;
+  @Input() full: boolean;
 
   // BrowserDefinitionSevrice is needed due to Angular's unsafe url error of youtube URL:
   // https://filipmolcik.com/error-unsafe-value-used-in-a-resource-url-context/

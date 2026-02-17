@@ -2486,6 +2486,8 @@
 
   "item-date-issued": "Date Issued",
 
+  "item-date-submitted": "Date Submitted",
+
   "item-date-naturalization": "Date Naturalization",
 
   "item-description-abstract": "Abstract",
@@ -2525,6 +2527,8 @@
   "item-format-technique": "Technique",
 
   "item-identifier-citation": "Citation ID",
+
+  "item-identifier-doi": "DOI",
 
   "item-identifier-isbn": "ISBN",
 
@@ -3982,7 +3986,7 @@
 
   "local-identifier-bmeomikkCallnumber": "Other Identifier: BME OMIKK call-number",
 
-  "local-identifier-doi": "DOI",
+  "local-identifier-doi": "Other Identifier: DOI",
 
   "local-identifier-doktori": "Other Identifier: doktori.hu",
 

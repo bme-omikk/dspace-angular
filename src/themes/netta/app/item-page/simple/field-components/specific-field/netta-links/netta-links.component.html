@@ -1,7 +1,8 @@
-<div *ngIf="safeLink" class="item-page-field">
+<div *ngIf="safeLink && full" class="item-page-field">
   <div class="netta-simple-view-element">
     <h2 class="netta-simple-view-element-header">{{ label | translate }}</h2>
       <a [href]="safeLink"
          target="_blank">{{ linkTitle }}</a>
   </div>
 </div>
+<a *ngIf="!full" [href]="safeLink" target="_blank">{{ linkTitle }}</a>

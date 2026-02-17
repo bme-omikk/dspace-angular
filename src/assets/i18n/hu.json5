@@ -3732,6 +3732,9 @@
   //"item-date-issued": "Date Issued",
   "item-date-issued": "Megjelenés ideje",
 
+  //"item-date-submitted": "Date Submitted",
+  "item-date-submitted": "Betöltés ideje",
+
   //"item-date-naturalization": "Date Naturalization",
   "item-date-naturalization": "Honosítás dátuma",
 
@@ -3791,6 +3794,9 @@
 
   //"item-identifier-citation": "Citation ID",
   "item-identifier-citation": "Idézés azonosító",
+
+  //"item-identifier-doi": "DOI",
+  "item-identifier-doi": "DOI",
 
   //"item-identifier-isbn": "ISBN",
   "item-identifier-isbn": "ISBN",
@@ -5977,40 +5983,40 @@
   "local-identifier-bmeomikkCallnumber": "Egyéb azonosító",
 
   //"local-identifier-doi": "DOI",
-  "local-identifier-doi": "DOI",
+  "local-identifier-doi": "Egyéb azonosító: DOI", 
 
   //"local-identifier-doktori": "Other Identifier: doktori.hu",
-  "local-identifier-doktori": "Egyéb azonosító",
+  "local-identifier-doktori": "Egyéb azonosító: doktori.hu",
 
   //"local-identifier-habilitacio": "Habilitation page",
   "local-identifier-habilitacio": "Habilitáció adatlap",
 
   //"local-identifier-handle": "Other Identifier: handle",
-  "local-identifier-handle": "Egyéb azonosító",
+  "local-identifier-handle": "Egyéb azonosító: handle",
 
   //"local-identifier-hoid": "Other Identifier: HOID",
-  "local-identifier-hoid": "Egyéb azonosító",
+  "local-identifier-hoid": "Egyéb azonosító: HOID",
 
   //"local-identifier-honositas": "Naturalization page",
   "local-identifier-honositas": "Honosított fokozat adatlap",
 
   //"local-identifier-mnl": "Other Identifier: Magyar Nemzeti Levéltár",
-  "local-identifier-mnl": "Egyéb azonosító",
+  "local-identifier-mnl": "Egyéb azonosító: MNL",
 
   //"local-identifier-mtmt": "Other Identifier: MTMT",
-  "local-identifier-mtmt": "Egyéb azonosító",
+  "local-identifier-mtmt": "Egyéb azonosító: MTMT",
 
   //"local-identifier-neptun": "Other Identifier: Neptun",
-  "local-identifier-neptun": "Egyéb azonosító",
+  "local-identifier-neptun": "Egyéb azonosító: Neptun",
 
   //"local-identifier-scopus": "Other Identifier: Scopus",
-  "local-identifier-scopus": "Egyéb azonosító",
+  "local-identifier-scopus": "Egyéb azonosító: Scopus",
 
   //"local-identifier-vedes": "Doctorate page",
   "local-identifier-vedes": "Doktori védés adatlap",
 
   //"local-identifier-wos": "Other Identifier: WOS",
-  "local-identifier-wos": "Egyéb azonosító",
+  "local-identifier-wos": "Egyéb azonosító: WOS",
 
   //"login.breadcrumbs": "Login",
   "login.breadcrumbs": "Belépés",

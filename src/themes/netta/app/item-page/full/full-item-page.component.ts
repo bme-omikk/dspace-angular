@@ -24,6 +24,7 @@ import { ErrorComponent } from '../../../../../app/shared/error/error.component'
 import { ThemedLoadingComponent } from '../../../../../app/shared/loading/themed-loading.component';
 import { VarDirective } from '../../../../../app/shared/utils/var.directive';
 import { ViewTrackerComponent } from '../../../../../app/statistics/angulartics/dspace/view-tracker.component';
+import { NettaLinksComponent } from '../simple/field-components/specific-field/netta-links/netta-links.component';
 
 /**
  * This component renders a full item page.
@@ -57,6 +58,7 @@ import { ViewTrackerComponent } from '../../../../../app/statistics/angulartics/
     ViewTrackerComponent,
     ThemedItemAlertsComponent,
     VarDirective,
+    NettaLinksComponent,
   ],
 })
 export class FullItemPageComponent extends BaseComponent {
@@ -71,6 +73,7 @@ export class FullItemPageComponent extends BaseComponent {
     ['dc.date.created','item-date-created'],
     ['dc.date.defence','item-date-defence'],
     ['dc.date.issued','item-date-issued'],
+    ['dc.date.submitted','item-date-submitted'],
     ['dc.description','item.page.description'],
     ['dc.description.abstract','item-description-abstract'],
     ['dc.description.provenance','item-description-provenance'],
@@ -78,13 +81,16 @@ export class FullItemPageComponent extends BaseComponent {
     ['dc.format.extent','item-format-extent'],
     ['dc.format.medium','item-format-medium'],
     ['dc.identifier.citation','item-identifier-citation'],
+    ['dc.identifier.doi','item-identifier-doi'],
     ['dc.identifier.isbn','item-identifier-isbn'],
     ['dc.identifier.issn','item-identifier-issn'],
     ['dc.identifier.uri','item-identifier-uri'],
     ['dc.language','item-language'],
+    ['dc.language.iso','item-language'],
     ['dc.publisher','item-publisher'],
     ['dc.relation.replaces','item-relation-replaces'],
     ['dc.rights','item-rights'],
+    ['dc.rights.holder','item-rights-holder'],
     ['dc.rights.license','item-rights-license'],
     ['dc.subject','item-subject'],
     ['dc.title','item-title'],
@@ -172,6 +178,7 @@ export class FullItemPageComponent extends BaseComponent {
     ['local.universityProgramLevel','item-publisher-university-programlevel'],
   ]);
 
-  /*ngOnInit() {
-  }*/
+  showLink(key: string):boolean {
+    return key.startsWith('local.identifier.') || key.includes('dc.identifier.doi');
+  }
 }
