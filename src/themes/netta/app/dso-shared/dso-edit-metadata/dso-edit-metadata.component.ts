@@ -20,8 +20,8 @@ import { ThemedLoadingComponent } from '../../../../../app/shared/loading/themed
   selector: 'ds-themed-dso-edit-metadata',
   // styleUrls: ['./dso-edit-metadata.component.scss'],
   styleUrls: ['../../../../../app/dso-shared/dso-edit-metadata/dso-edit-metadata.component.scss'],
-  // templateUrl: './dso-edit-metadata.component.html',
-  templateUrl: '../../../../../app/dso-shared/dso-edit-metadata/dso-edit-metadata.component.html',
+  templateUrl: './dso-edit-metadata.component.html',
+  // templateUrl: '../../../../../app/dso-shared/dso-edit-metadata/dso-edit-metadata.component.html',
   standalone: true,
   imports: [NgIf, DsoEditMetadataHeadersComponent, MetadataFieldSelectorComponent, DsoEditMetadataValueHeadersComponent, DsoEditMetadataValueComponent, NgFor, DsoEditMetadataFieldValuesComponent, AlertComponent, ThemedLoadingComponent, AsyncPipe, TranslateModule, BtnDisabledDirective],
 })
