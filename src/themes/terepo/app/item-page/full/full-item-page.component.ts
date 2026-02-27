@@ -34,8 +34,8 @@ import { ViewTrackerComponent } from '../../../../../app/statistics/angulartics/
   selector: 'ds-themed-full-item-page',
   // styleUrls: ['./full-item-page.component.scss'],
   styleUrls: ['../../../../../app/item-page/full/full-item-page.component.scss'],
-  // templateUrl: './full-item-page.component.html',
-  templateUrl: '../../../../../app/item-page/full/full-item-page.component.html',
+  templateUrl: './full-item-page.component.html',
+  // templateUrl: '../../../../../app/item-page/full/full-item-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInOut],
   standalone: true,
@@ -60,4 +60,7 @@ import { ViewTrackerComponent } from '../../../../../app/statistics/angulartics/
   ],
 })
 export class FullItemPageComponent extends BaseComponent {
+  showLink(key: string):boolean {
+    return key.startsWith('local.identifier.') || key.includes('dc.identifier.doi');
+  }
 }
