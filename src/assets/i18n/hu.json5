@@ -10989,4 +10989,7 @@
   //"workspace.search.results.head": "Your submissions",
   "workspace.search.results.head": "Az ön feltöltései",
 
+  "vocabulary-treeview.tree.description.njestruct": "Intézmények/karok",
+
+  "vocabulary-treeview.tree.description.njesci": "Tudományterület/tudományág",
 }
