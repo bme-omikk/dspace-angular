@@ -2042,6 +2042,8 @@
 
   "error.bitstream": "Error fetching bitstream",
 
+  "error.pdf-viewer": "The PDF document is not available or could not be loaded.",
+
   "error.browse-by": "Error fetching items",
 
   "error.collection": "Error fetching collection",

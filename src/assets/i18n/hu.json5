@@ -3081,6 +3081,8 @@
   //"error.bitstream": "Error fetching bitstream",
   "error.bitstream": "Hiba történt a fájl betöltése közben",
 
+  "error.pdf-viewer": "A PDF dokumentum nem elérhető vagy nem megjeleníthető.",
+
   //"error.browse-by": "Error fetching items",
   "error.browse-by": "Hiba történt a dokumentumok betöltése közben",
 

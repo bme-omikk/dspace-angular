@@ -1,6 +1,7 @@
 import {
   AsyncPipe,
   CommonModule,
+  isPlatformBrowser,
   Location,
   NgIf,
 } from '@angular/common';
@@ -9,11 +10,12 @@ import {
   ChangeDetectorRef,
   Component,
   HostListener,
+  Inject,
   Input,
   OnDestroy,
   OnInit,
+  PLATFORM_ID,
 } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 import {
   BehaviorSubject,
@@ -41,6 +43,10 @@ import { FileSizePipe } from '../../../../../app/shared/utils/file-size-pipe';
 import { followLink } from '../../../../../app/shared/utils/follow-link-config.model';
 import { VarDirective } from '../../../../../app/shared/utils/var.directive';
 import { ThemedThumbnailComponent } from '../../../../../app/thumbnail/themed-thumbnail.component';
+import {
+  APP_CONFIG,
+  AppConfig,
+} from '../../../../../config/app-config.interface';
 import { environment } from '../../../../../environments/environment';
 import { ViewpdfService } from '../../../app/shared/viewpdf.service';
 import { OMIKKMediaViewerConfig as MediaViewerConfig } from './media-viewer-config.interface';
@@ -99,18 +105,25 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
   viewPdfOnItemLevel = '';
   viewPdfEnabled = false;
 
+  pdfBlobUrl: string | null = null;
+
   constructor(
     protected bitstreamDataService: BitstreamDataService,
     protected changeDetectorRef: ChangeDetectorRef,
     private authorizationService: AuthorizationDataService,
     private http: HttpClient,
-    private sanitizer: DomSanitizer,
     private location: Location,
+    @Inject(APP_CONFIG) private appConfig: AppConfig,
+    @Inject(PLATFORM_ID) private platformId: object,
   ) {
   }
 
   ngOnDestroy(): void {
     this.subs.forEach((subscription: Subscription) => subscription.unsubscribe());
+    this.setViewerOpen(false);
+    if (this.pdfBlobUrl) {
+      URL.revokeObjectURL(this.pdfBlobUrl);
+    }
   }
 
   /**
@@ -215,16 +228,74 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
     return mediaItem;
   }
 
-  public showPdfViewer(mediaItem) {
-    history.pushState(null, '', location.href);
-    this.pdflink = mediaItem.bitstream._links.content.href;
+  public getSecurePdfBlob(bitstreamId: string): Observable<Blob> {
+    const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    if (!uuidPattern.test(bitstreamId)) {
+      return new Observable(observer => observer.error(new Error('Invalid bitstream ID')));
+    }
+    const url = `${this.appConfig.rest.baseUrl}/api/core/bitstreams/${bitstreamId}/content`;
+
+    return this.http.get(url, {
+      responseType: 'blob',
+      withCredentials: true, // or attach Bearer token manually
+    });
+  }
+
+  private setViewerOpen(open: boolean): void {
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.classList.toggle('pdf-viewer-open', open);
+    }
+  }
+
+  pdfFetching = false;
+  pdfError = false;
+
+  onPdfError(): void {
+    this.setViewerOpen(false);
+    if (this.pdfBlobUrl) {
+      URL.revokeObjectURL(this.pdfBlobUrl);
+    }
+    this.pdfBlobUrl = null;
+    this.pdfError = true;
     this.changeDetectorRef.detectChanges();
   }
 
+  public showPdfViewer(mediaItem) {
+    if (!mediaItem?.canDownload) {
+      return;
+    }
+    this.pdfError = false;
+    this.pdfFetching = true;
+    this.setViewerOpen(true);
+    this.changeDetectorRef.detectChanges();
+    this.getSecurePdfBlob(mediaItem.bitstream.id).subscribe({
+      next: (blob) => {
+        history.pushState(null, '', location.href);
+        if (this.pdfBlobUrl) {
+          URL.revokeObjectURL(this.pdfBlobUrl);
+        }
+        this.pdfBlobUrl = URL.createObjectURL(blob);
+        this.pdfFetching = false;
+        this.changeDetectorRef.detectChanges();
+      },
+      error: (err) => {
+        console.error('Failed to load PDF blob', err);
+        this.setViewerOpen(false);
+        this.pdfFetching = false;
+        this.pdfError = true;
+        this.changeDetectorRef.detectChanges();
+      }
+    });
+  }
+
   public handleClose() {
+    this.setViewerOpen(false);
+    if (this.pdfBlobUrl) {
+      URL.revokeObjectURL(this.pdfBlobUrl);
+    }
     history.replaceState('', null, '');
     history.back();
-    this.pdflink = null;
+    this.pdfBlobUrl = null;
     this.changeDetectorRef.detectChanges();
   }
 

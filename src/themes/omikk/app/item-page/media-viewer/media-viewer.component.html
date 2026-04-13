@@ -30,8 +30,19 @@
           </ng-container>
         </ul>
       </div>      
-      <div *ngIf="pdflink" id="pdf-viewer-wrapper" class="pdf-viewer-wrapper">
-        <ds-media-viewer-pdf (close)="handleClose()" id="pdf-viewer-el" class="pdf-viewer-wrapper" [pdf]="pdfblob" [src]="pdflink"></ds-media-viewer-pdf>
+      <div *ngIf="pdfBlobUrl" id="pdf-viewer-wrapper" class="pdf-viewer-wrapper">
+        <ds-media-viewer-pdf [pdfBlobUrl]="pdfBlobUrl" (loadError)="onPdfError()"></ds-media-viewer-pdf>
+        <button (click)="handleClose()" class="close-button" title="Bezár">&#x2715;</button>
+      </div>
+      <div *ngIf="pdfFetching" class="pdf-fetching-indicator">
+        <div class="pdf-fetching-bar"></div>
+        <span>{{ 'loading.default' | translate }}</span>
+      </div>
+      <div *ngIf="pdfError" class="pdf-error-backdrop" (click)="pdfError = false">
+        <div class="pdf-error-modal" (click)="$event.stopPropagation()">
+          <p>{{ 'error.pdf-viewer' | translate }}</p>
+          <button (click)="pdfError = false">OK</button>
+        </div>
       </div>
     </ng-container>
   </ng-template>
