@@ -39,6 +39,11 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
+              {
+                "glob": "**/*",
+                "input": "node_modules/pdfjs-dist/build/",
+                "output": "assets/pdfjs/"
+              },
               "src/assets",
               "src/robots.txt"
             ],
@@ -65,7 +70,12 @@
                 "bundleName": "terepo-theme"
               }
             ],
-            "scripts": [],
+            "scripts": [
+              {
+                "input": "node_modules/pdfjs-dist/build/pdf.min.js",
+                "inject": true
+              }
+            ],
             "baseHref": "/"
           },
           "configurations": {

@@ -1,0 +1,13 @@
+<div class="pdf-toolbar">
+  <div class="zoom-buttons">
+    <button [class.active]="zoomMode === 'width'"  (click)="setZoom('width')"  title="Fit width">&#x2194;</button>
+    <button [class.active]="zoomMode === 'height'" (click)="setZoom('height')" title="Fit height">&#x2195;</button>
+    <button [class.active]="zoomMode === 'custom'" (click)="setZoom('custom')" title="Custom zoom"><i class="fa-solid fa-magnifying-glass"></i></button>
+  </div>
+  <div class="zoom-custom" *ngIf="zoomMode === 'custom'">
+    <input type="number" [(ngModel)]="customZoom" min="10" max="400" step="10" (change)="applyCustomZoom()"/>
+    <span>%</span>
+  </div>
+</div>
+<div *ngIf="isLoading" class="pdf-loading-bar"></div>
+<div #pdfContainer class="pdf-container"></div>

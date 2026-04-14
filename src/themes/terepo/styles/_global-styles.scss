@@ -40,3 +40,10 @@ header.mainheader {
   background-color: rgb(38, 130, 140);
   border-color: rgb(38, 130, 140);
 }
+
+/* Hide navbar when PDF viewer is open */
+body.pdf-viewer-open #header-navbar-wrapper,
+body.pdf-viewer-open ds-header,
+body.pdf-viewer-open ds-themed-header {
+  display: none;
+}
