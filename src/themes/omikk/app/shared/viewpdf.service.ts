@@ -24,8 +24,8 @@ export class ViewpdfService {
       coll => {
         if (coll.payload !== undefined) {
           subject.next(
-            coll.payload.metadata['dspace.viewpdf.enabled'] === undefined ?
-              'na' : coll.payload.metadata['dspace.viewpdf.enabled'][0].value,
+            coll.payload.metadata['local.viewpdf.enabled'] === undefined ?
+              'na' : coll.payload.metadata['local.viewpdf.enabled'][0].value,
           );
         }
       },
@@ -35,8 +35,8 @@ export class ViewpdfService {
 
   public statusOnItemLevel(): Observable<string> {
     const subject = new BehaviorSubject<string>('');
-    subject.next(this.item.metadata['dspace.viewpdf.enabled'] === undefined ?
-      'na' : this.item.metadata['dspace.viewpdf.enabled'][0].value);
+    subject.next(this.item.metadata['local.viewpdf.enabled'] === undefined ?
+      'na' : this.item.metadata['local.viewpdf.enabled'][0].value);
     return subject.asObservable();
   }
 }

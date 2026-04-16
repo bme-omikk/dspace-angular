@@ -7528,7 +7528,7 @@
   "dspace.orcid.scope": "ORCID - Scope",
   "dspace.orcid.sync-mode": "ORCID - Sync-Mode",
   "dspace.orcid.authenticated": "ORCID - Authenticated",
-  "dspace.viewpdf.enabled": "PDF viewer status",
+  "local.viewpdf.enabled": "PDF viewer status",
   "eperson.lastname": "Last Name",
   "eperson.orcid.scope": "ORCID - Scope",
   "eperson.orcid": "ORCID",

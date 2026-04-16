@@ -11253,7 +11253,7 @@
   "dspace.orcid.sync-mode": "ORCID Sync-Mode",
   "dspace.orcid.authenticated": "ORCID Authenticated",
   "dspace.thumbnail.page": "Generált bélyegkép oldalszáma",
-  "dspace.viewpdf.enabled": "PDF nézegető állapota",
+  "local.viewpdf.enabled": "PDF nézegető állapota",
   "eperson.lastname": "Vezetéknév",
   "eperson.orcid.scope": "ORCID Scope",
   "eperson.orcid": "ORCID",
