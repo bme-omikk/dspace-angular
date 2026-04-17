@@ -12,7 +12,7 @@ type ZoomMode = 'width' | 'height' | 'custom';
 @Component({
   selector: 'ds-pdf-viewer',
   templateUrl: './pdf-viewer.component.html',
-  styleUrls: ['./pdf-viewer.component.css'],
+  styleUrls: ['./pdf-viewer.component.scss'],
   imports: [NgIf, NgClass, FormsModule],
   standalone: true
 })

@@ -30,6 +30,7 @@ import { listableObjectComponent } from '../../../../../../../app/shared/object-
 import { ThemedResultsBackButtonComponent } from '../../../../../../../app/shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 import { TerepoVsLinksComponent } from '../../field-components/specific-field/videosquare/videosquare-link.component';
+import { ViewpdfService } from '../../../../shared/viewpdf.service';
 
 /**
  * Component that represents an untyped Item page
@@ -69,4 +70,46 @@ import { TerepoVsLinksComponent } from '../../field-components/specific-field/vi
     TerepoVsLinksComponent,
   ],
 })
-export class UntypedItemComponent extends BaseComponent {}
+export class UntypedItemComponent extends BaseComponent {
+  private viewPdfOnCollLevel: string;
+  private viewPdfOnItemLevel: string;
+  viewDownloadLink: boolean;
+
+  ngOnInit(): void {
+    super.ngOnInit();
+    const vp = new ViewpdfService(this.object);
+    vp.statusOnCollLevel().subscribe(r => { this.viewPdfOnCollLevel = r; });
+    vp.statusOnItemLevel().subscribe(r => { this.viewPdfOnItemLevel = r; });
+
+    this.viewDownloadLink = false;
+
+    let viewPdfStatus = '';
+
+    if (this.viewPdfOnItemLevel !== 'na') {
+      viewPdfStatus = this.viewPdfOnItemLevel;
+    } else if (this.viewPdfOnCollLevel !== 'na') {
+      viewPdfStatus = this.viewPdfOnCollLevel;
+    } else {
+      viewPdfStatus = '';
+    }
+
+    switch (viewPdfStatus) {
+      case 'viewer': {
+        this.viewDownloadLink = false;
+        break;
+      }
+      case 'viewer-download': {
+        this.viewDownloadLink = true;
+        break;
+      }
+      case 'download': {
+        this.viewDownloadLink = true;
+        break;
+      }
+      default: {
+        this.viewDownloadLink = true;
+        break;
+      }
+    }
+  }
+}

@@ -7587,6 +7587,7 @@
   "local.title.subtitle": "Title - Subtitle",
   "local.type.resrep": "Type - Research Report",
   "local.type.genre": "Type - Genre",
+  "local.viewpdf.enabled": "Status of PDF viewer",
   "oaire.awardTitle.": "Award Title",
   "oaire.version.": "Version",
   "oaire.citation.title": "Citation - Title",

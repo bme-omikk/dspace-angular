@@ -11241,6 +11241,7 @@
   "local.title.subtitle": "Cím - Alcím",
   "local.type.resrep": "Jelleg",
   "local.type.genre": "Besorolás",
+  "local.viewpdf.enabled": "PDF nézegető állapota",
   "oaire.awardTitle.": "Díj címe",
   "oaire.version.": "Verzió",
   "oaire.citation.title": "Hivatkozás - cym",
