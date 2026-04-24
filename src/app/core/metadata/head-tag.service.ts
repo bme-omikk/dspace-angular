@@ -217,9 +217,16 @@ export class HeadTagService {
    * Add <meta name="title" ... >  to the <head>
    */
   protected setTitleTag(): void {
-    const value = this.dsoNameService.getName(this.currentObject.getValue());
-    this.addMetaTag('title', value);
-    this.title.setTitle(value);
+    /*
+     * use translated title
+      const value = this.dsoNameService.getName(this.currentObject.getValue());
+      this.addMetaTag('title', value);
+      this.title.setTitle(value);
+    */
+    this.translate.get(this.dsoNameService.getName(this.currentObject.getValue())).subscribe((v: string) => {
+      this.addMetaTag('title', v);
+      this.title.setTitle(v);
+    });
   }
 
   /**

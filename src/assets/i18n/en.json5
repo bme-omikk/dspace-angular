@@ -1631,6 +1631,8 @@
   "community-collection.edit.logo.delete.title": "Confirm deletion",
 
   "community.all-lists.head": "Subcommunities and Collections",
+  
+  "community.search.breadcrumbs": "Search",
 
   "community.browse.logo": "Browse for a community logo",
 
@@ -7726,4 +7728,9 @@
   "relation.isOrgUnitOfPerson.latestForDiscovery": "Is Org Unit Of Person - Latest For Discovery",
   "workflow.review": "Review",
   "workflow.score": "Score",
+
+  "0. Dokumentumbeadás": "0. Document Submission",
+  "3. Disszertációk (BME)": "3. Dissertations (BME)",
+  "11. Árvíztűrő tükörfúrógép [the quick brown fox jumps over the lazy dog]!?>": "11. §!%/=()\|<>#&@{}[],??.:>-_$",
+  "Konferenciák gyűjteményei": "Collection of Conferences",
 }
