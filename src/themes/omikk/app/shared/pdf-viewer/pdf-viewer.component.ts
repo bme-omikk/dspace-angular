@@ -32,13 +32,23 @@ export class PdfViewerComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     pdfjsLib.GlobalWorkerOptions.workerSrc = '/assets/pdfjs/pdf.worker.min.js';
 
-    if (!this.pdfUrl?.startsWith('blob:')) {
+    if (!this.pdfUrl) {
       this.isLoading = false;
       this.loadError.emit();
       return;
     }
 
-    pdfjsLib.getDocument(this.pdfUrl).promise.then((pdf: any) => {
+    const loadingTask = this.pdfUrl.startsWith('blob:')
+      ? pdfjsLib.getDocument(this.pdfUrl)
+      : pdfjsLib.getDocument({
+          url: this.pdfUrl,
+          withCredentials: true,
+          rangeChunkSize: 524288, // 512 KB chunks
+          disableAutoFetch: true,
+          disableStream: false,
+        });
+
+    loadingTask.promise.then((pdf: any) => {
       this.pdfDoc = pdf;
       return this.renderAll();
     }).then(() => {
