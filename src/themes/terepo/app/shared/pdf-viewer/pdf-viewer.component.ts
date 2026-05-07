@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 import { NgIf, NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../../../../app/core/auth/auth.service';
 
 declare var pdfjsLib: any;
 
@@ -27,7 +28,7 @@ export class PdfViewerComponent implements AfterViewInit {
 
   private pdfDoc: any = null;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef, private authService: AuthService) {}
 
   ngAfterViewInit(): void {
     pdfjsLib.GlobalWorkerOptions.workerSrc = '/assets/pdfjs/pdf.worker.min.js';
@@ -43,6 +44,7 @@ export class PdfViewerComponent implements AfterViewInit {
       : pdfjsLib.getDocument({
           url: this.pdfUrl,
           withCredentials: true,
+          httpHeaders: this.buildAuthHeaders(),
           rangeChunkSize: 524288, // 512 KB chunks
           disableAutoFetch: true,
           disableStream: false,
@@ -104,6 +106,11 @@ export class PdfViewerComponent implements AfterViewInit {
       }));
     }
     return Promise.all(renders);
+  }
+
+  private buildAuthHeaders(): Record<string, string> {
+    const token = this.authService.getToken();
+    return token?.accessToken ? { Authorization: `Bearer ${token.accessToken}` } : {};
   }
 
   private calcScale(page: any, container: HTMLElement): number {
