@@ -11,7 +11,12 @@ import { PdfViewerComponent } from '../../../shared/pdf-viewer/pdf-viewer.compon
 })
 export class MediaViewerPdfComponent {
   @Input() pdfBlobUrl: string | null = null;
+  @Input() pdfUrl: string | null = null;
   @Output() loadError = new EventEmitter<void>();
+
+  get effectivePdfUrl(): string | null {
+    return this.pdfUrl ?? this.pdfBlobUrl;
+  }
 
   disableContextMenu(event: MouseEvent): void {
     event.preventDefault();

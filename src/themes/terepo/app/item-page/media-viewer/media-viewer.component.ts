@@ -121,9 +121,6 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
   ngOnDestroy(): void {
     this.subs.forEach((subscription: Subscription) => subscription.unsubscribe());
     this.setViewerOpen(false);
-    if (this.pdfBlobUrl) {
-      URL.revokeObjectURL(this.pdfBlobUrl);
-    }
   }
 
   /**
@@ -252,9 +249,6 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
 
   onPdfError(): void {
     this.setViewerOpen(false);
-    if (this.pdfBlobUrl) {
-      URL.revokeObjectURL(this.pdfBlobUrl);
-    }
     this.pdfBlobUrl = null;
     this.pdfError = true;
     this.changeDetectorRef.detectChanges();
@@ -265,34 +259,17 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
       return;
     }
     this.pdfError = false;
-    this.pdfFetching = true;
+    this.pdfFetching = false;
     this.setViewerOpen(true);
+    history.pushState(null, '', location.href);
+    this.pdfBlobUrl = null;
+    const bitstreamId = mediaItem.bitstream.id;
+    this.pdfBlobUrl = `${this.appConfig.rest.baseUrl}/api/core/bitstreams/${bitstreamId}/content`;
     this.changeDetectorRef.detectChanges();
-    this.getSecurePdfBlob(mediaItem.bitstream.id).subscribe({
-      next: (blob) => {
-        history.pushState(null, '', location.href);
-        if (this.pdfBlobUrl) {
-          URL.revokeObjectURL(this.pdfBlobUrl);
-        }
-        this.pdfBlobUrl = URL.createObjectURL(blob);
-        this.pdfFetching = false;
-        this.changeDetectorRef.detectChanges();
-      },
-      error: (err) => {
-        console.error('Failed to load PDF blob', err);
-        this.setViewerOpen(false);
-        this.pdfFetching = false;
-        this.pdfError = true;
-        this.changeDetectorRef.detectChanges();
-      }
-    });
   }
 
   public handleClose() {
     this.setViewerOpen(false);
-    if (this.pdfBlobUrl) {
-      URL.revokeObjectURL(this.pdfBlobUrl);
-    }
     history.replaceState('', null, '');
     history.back();
     this.pdfBlobUrl = null;
