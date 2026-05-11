@@ -10,6 +10,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { DSONameService } from '../../../../../../app/core/breadcrumbs/dso-name.service';
 import { LinkService } from '../../../../../../app/core/cache/builders/link.service';
@@ -34,7 +35,7 @@ import { ThemedThumbnailComponent } from '../../../../../../app/thumbnail/themed
   templateUrl: './community-list-element.component.html',
   //templateUrl: '../../../../../../app/shared/object-list/community-list-element/community-list-element.component.html',
   standalone: true,
-  imports: [NgIf, RouterLink, AsyncPipe, ThemedThumbnailComponent],
+  imports: [NgIf, RouterLink, AsyncPipe, ThemedThumbnailComponent, TranslateModule],
 })
 /**
  * Component representing a list element for a community
