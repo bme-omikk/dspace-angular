@@ -6,19 +6,14 @@ import { ThemedLoadingComponent } from '../../../../../app/shared/loading/themed
 import { VarDirective } from '../../../../../app/shared/utils/var.directive';
 import { SiteStatisticsPageComponent as BaseComponent } from '../../../../../app/statistics-page/site-statistics-page/site-statistics-page.component';
 import { StatisticsTableComponent } from '../../../../../app/statistics-page/statistics-table/statistics-table.component';
+import { CustomStatsComponent } from '../custom-stats/custom-stats.component';
 
 @Component({
   selector: 'ds-themed-site-statistics-page',
-  // styleUrls: ['./site-statistics-page.component.scss'],
   styleUrls: ['../../../../../app/statistics-page/site-statistics-page/site-statistics-page.component.scss'],
-  // templateUrl: './site-statistics-page.component.html',
-  templateUrl: '../../../../../app/statistics-page/statistics-page/statistics-page.component.html',
+  templateUrl: './site-statistics-page.component.html',
   standalone: true,
-  imports: [CommonModule, VarDirective, ThemedLoadingComponent, StatisticsTableComponent, TranslateModule],
+  imports: [CommonModule, VarDirective, ThemedLoadingComponent, StatisticsTableComponent, TranslateModule, CustomStatsComponent],
 })
-
-/**
- * Component representing the site-wide statistics page.
- */
 export class SiteStatisticsPageComponent extends BaseComponent {}
 

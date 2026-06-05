@@ -1,7 +1,7 @@
 module.exports = {
   "/server": {
-    target: "http://127.0.0.1:8080",
-    changeOrigin: false,
+    target: "https://devrepozitorium.omikk.bme.hu",
+    changeOrigin: true,
     secure: false,
     xfwd: true,
     headers: {
@@ -21,8 +21,7 @@ module.exports = {
       if (proxyRes.headers["location"]) {
         proxyRes.headers["location"] =
           proxyRes.headers["location"]
-            .replace(/https?:\/\/10\.100\.10\.192(?::\d+)?/g, "https://localhost:1234")
-            .replace(/http:\/\/localhost:8080/g, "https://localhost:1234");
+            .replace(/https:\/\/devrepozitorium\.omikk\.bme\.hu/g, "https://localhost:1234");
       }
 
       const ct = (proxyRes.headers["content-type"] || "").toLowerCase();
@@ -46,8 +45,7 @@ module.exports = {
         try {
           let body = Buffer.concat(chunks).toString("utf8");
           body = body
-            .replace(/https?:\/\/10\.100\.10\.192(?::\d+)?/g, "https://localhost:1234")
-            .replace(/http:\/\/localhost:8080/g, "https://localhost:1234");
+            .replace(/https:\/\/devrepozitorium\.omikk\.bme\.hu/g, "https://localhost:1234");
           const buf = Buffer.from(body, "utf8");
           // forward headers (fix content-length)
           const headers = { ...proxyRes.headers, "content-length": Buffer.byteLength(buf) };

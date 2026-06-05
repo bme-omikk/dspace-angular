@@ -110,6 +110,8 @@
     "mirador-dl-plugin": "^0.13.0",
     "mirador-share-plugin": "^0.16.0",
     "morgan": "^1.10.1",
+    "chart.js": "^4.4.0",
+    "ng2-charts": "^6.0.0",
     "ng2-file-upload": "5.0.0",
     "ng2-nouislider": "^2.0.0",
     "ngx-infinite-scroll": "^16.0.0",
