@@ -11629,6 +11629,7 @@
   "Évkönyvek": "Évkönyvek",
   "„River Basins“ - International Conference on Monitoring, Modelling and Management of River Basins": "„River Basins“ - International Conference on Monitoring, Modelling and Management of River Basins",
   // custom-statistics
+  "custom-stats.title": "Legutóbbi 30 napi statisztika",
   "custom-stats.filter": "Szűrés",
   "custom-stats.from": "Ettől",
   "custom-stats.to": "Eddig",

@@ -34,6 +34,8 @@
     </div>
   </div>
 
+  <h2 class="m-1" *ngIf="!isAdmin">{{ "custom-stats.title" | translate }}</h2>
+
   <!-- 1. Total views -->
   <div class="card mb-4">
     <div class="card-body">
