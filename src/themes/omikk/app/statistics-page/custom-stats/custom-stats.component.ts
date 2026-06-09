@@ -64,6 +64,15 @@ export class CustomStatsComponent implements OnInit {
   searchData: ChartData<'bar'> = { labels: [], datasets: [{ data: [], label: this.translateService.instant('custom-stats.views') }] };
   searchOptions: ChartOptions<'bar'> = { responsive: true, indexAxis: 'y' };
 
+  // Report 6 - submissions this year
+  currentYear = new Date().getFullYear();
+  submissionsTotal = 0;
+  submissionsByCommunity: { uuid: string; name: string; count: number }[] = [];
+
+  // Report 7 - items as of date (admin only)
+  asOfDate = this.formatDate(new Date());
+  asOfDateTotal: number | null = null;
+
   constructor(
     private statsService: CustomStatsService,
     private authService: AuthService,
@@ -82,6 +91,7 @@ export class CustomStatsComponent implements OnInit {
       );
     }
     this.loadAll();
+    this.loadSubmissionsByYear();
   }
 
   private buildRequest(): StatsRequest {
@@ -144,6 +154,27 @@ export class CustomStatsComponent implements OnInit {
         };
         this.cdr.markForCheck();
       });
+  }
+
+  loadSubmissionsByYear(): void {
+    this.statsService.getSubmissionsByYear().subscribe(async (res: any) => {
+      this.submissionsTotal = res.total;
+      this.submissionsByCommunity = await Promise.all(
+        (res.byCommunity as any[]).map(async (c: any) => ({
+          uuid: c.uuid,
+          name: await firstValueFrom(this.getLabel(c.uuid)),
+          count: c.count,
+        }))
+      );
+      this.cdr.markForCheck();
+    });
+  }
+
+  loadItemsAsOfDate(): void {
+    this.statsService.getItemsAsOfDate(this.asOfDate).subscribe((res: any) => {
+      this.asOfDateTotal = res.total;
+      this.cdr.markForCheck();
+    });
   }
   
   /**

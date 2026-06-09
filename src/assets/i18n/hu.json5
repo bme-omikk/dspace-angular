@@ -11652,4 +11652,7 @@
   "custom-stats.dns": "DNS",
   "custom-stats.url": "URL",
   "custom-stats.search": "Keres",
+  "custom-stats.submissions-year": "{{year}}. évben feltöltött dokumentumok",
+  "custom-stats.submissions-count": "Darabszám",
+  "custom-stats.items-asofdate-title": "Archívum mérete adott dátumig",
 }

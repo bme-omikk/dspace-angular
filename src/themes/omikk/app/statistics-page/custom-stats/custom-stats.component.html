@@ -105,4 +105,38 @@
     </div>
   </div>
 
+  <!-- 6. Submissions this year (visible to all) -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">{{ "custom-stats.submissions-year" | translate: { year: currentYear } }}</h5>
+      <h2>{{ submissionsTotal | number }}</h2>
+      <table class="table table-sm table-striped mt-3" *ngIf="submissionsByCommunity.length > 0">
+        <thead>
+          <tr>
+            <th>{{ "custom-stats.community" | translate }}</th>
+            <th>{{ "custom-stats.submissions-count" | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of submissionsByCommunity">
+            <td>{{ row.name }}</td>
+            <td>{{ row.count | number }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 7. Total items as of date (admin only) -->
+  <div class="card mb-4" *ngIf="isAdmin">
+    <div class="card-body">
+      <h5 class="card-title">{{ "custom-stats.items-asofdate-title" | translate }}</h5>
+      <div class="form-inline mb-3">
+        <input type="date" class="form-control mr-2" [(ngModel)]="asOfDate">
+        <button class="btn btn-primary" (click)="loadItemsAsOfDate()">{{ "custom-stats.apply" | translate }}</button>
+      </div>
+      <h2 *ngIf="asOfDateTotal !== null">{{ asOfDateTotal | number }}</h2>
+    </div>
+  </div>
+
 </div>

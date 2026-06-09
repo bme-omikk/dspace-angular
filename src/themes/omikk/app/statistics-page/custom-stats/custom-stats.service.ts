@@ -10,6 +10,7 @@ export interface StatsRequest {
   resourceType?: string;
   searchType?: string;
   keyword?: string;
+  year?: number;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -36,5 +37,13 @@ export class CustomStatsService {
 
   getSearch(req: StatsRequest): Observable<any> {
     return this.http.post(`${this.base}/search`, req);
+  }
+
+  getSubmissionsByYear(year?: number): Observable<any> {
+    return this.http.post(`${this.base}/submissions/byyear`, { year: year ?? 0 });
+  }
+
+  getItemsAsOfDate(todate: string): Observable<any> {
+    return this.http.post(`${this.base}/items/asofdate`, { todate });
   }
 }

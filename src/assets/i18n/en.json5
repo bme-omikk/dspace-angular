@@ -7928,4 +7928,7 @@
   "custom-stats.dns": "DNS",
   "custom-stats.url": "URL",
   "custom-stats.search": "Search",
+  "custom-stats.submissions-year": "Items Submitted in {{year}}",
+  "custom-stats.submissions-count": "Count",
+  "custom-stats.items-asofdate-title": "Total Items in Archive As Of Date",
 }
