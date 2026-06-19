@@ -1,0 +1,90 @@
+<section class="url-section-wrapper" *ngIf="hasRelatedMetadata">
+    <div class="simple-view-element">
+      <dl>
+        <dt class="simple-view-element-header">{{ "item.page.citeas" | translate }}</dt>
+        <dd>
+          <a href="{{ refLink }}" target="_blank">{{ refLink }}</a>
+          <img *ngIf="hasClipboard"
+               (click)="copyToClipboard(refLink)"
+               style="wisth:20px;height:20px;cursor:pointer;"
+               alt="copy-to-clipboard"
+               title="copy-to-clipboard"
+               src="{{ copyToClipboardImg }}"
+          />
+        </dd>
+        <dt *ngIf="item.hasMetadata('local.other.containerDoi')"
+            class="simple-view-element-header">{{ "item.page.containerDoi" | translate }}</dt>
+        <dd>
+          <a
+            *ngIf="item.hasMetadata('local.other.containerDoi')"
+            href="{{ item['metadata']['local.other.containerDoi'][0].value }}" target="_blank">{{ item['metadata']['local.other.containerDoi'][0].value }}</a>
+          <img *ngIf="hasClipboard && item.hasMetadata('local.other.containerDoi')"
+               (click)="copyToClipboard(item['metadata']['local.other.containerDoi'][0].value)"
+               style="wisth:20px;height:20px;cursor:pointer;"
+               alt="copy-to-clipboard"
+               title="copy-to-clipboard"
+               src="{{ copyToClipboardImg }}"
+          />
+        </dd>
+        <dt *ngIf="item.hasMetadata('local.identifier.handle')"
+            class="simple-view-element-header">{{ "item.page.identifier.handle" | translate }}</dt>
+        <dd>
+          <a
+            *ngIf="item.hasMetadata('local.identifier.handle')"
+            href="https://hdl.handle.net/{{ item['metadata']['local.identifier.handle'][0].value }}" target="_blank">{{ item['metadata']['local.identifier.handle'][0].value }}</a>
+          <img *ngIf="hasClipboard && item.hasMetadata('local.identifier.handle')"
+               (click)="copyToClipboard(item['metadata']['local.identifier.handle'][0].value)"
+               style="wisth:20px;height:20px;cursor:pointer;"
+               alt="copy-to-clipboard"
+               title="copy-to-clipboard"
+               src="{{ copyToClipboardImg }}"
+          />
+        </dd>
+      </dl>
+    </div>
+</section>
+<section>
+  <div *ngIf="!hasBMEDOI && item.hasMetadata('local.identifier.doi')" class="simple-view-element">
+    <h2 class="simple-view-element-header">{{ "local-identifier-doi" | translate }}</h2>
+    <div class="simple-view-element-body">
+        <a href="{{ getHandleURI(item['metadata']['local.identifier.doi'][0].value) }}"
+           target="_blank">{{ item['metadata']['local.identifier.doi'][0].value }}</a>
+    </div>
+  </div>
+  <div *ngIf="item.hasMetadata('local.relatedHandle') || item.hasMetadata('local.relatedURL')" 
+       class="simple-view-element">
+    <h2 class="simple-view-element-header">{{ "item.page.relatedhandle" | translate }}</h2>
+    <div class="simple-view-element-body">
+      <p *ngFor="let mdValue of item['metadata']['local.relatedHandle']">
+        <a href="{{ getHandleURI(mdValue.value) }}" target="_blank">{{ mdValue.value }}</a>
+           <img *ngIf="hasClipboard"
+               (click)="copyToClipboard(mdValue.value)"
+               style="wisth:20px;height:20px;cursor:pointer;"
+               alt="copy-to-clipboard"
+               title="copy-to-clipboard"
+               src="{{ copyToClipboardImg }}"
+        />
+      </p>
+      <p *ngFor="let mdValue of item['metadata']['local.relatedURL']">
+        <a href="{{ mdValue.value }}" target="_blank">{{ mdValue.value }}</a>
+        <img *ngIf="hasClipboard"
+             (click)="copyToClipboard(mdValue.value)"
+             style="wisth:20px;height:20px;cursor:pointer;"
+             alt="copy-to-clipboard"
+             title="copy-to-clipboard"
+             src="{{ copyToClipboardImg }}"
+        />
+        <iframe
+            *ngIf="item.hasMetadata('local.embedVideo')"
+            width="560"
+            height="315"
+            [src]="safeVideoLink"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
+      </p>
+    </div>
+  </div>
+</section>

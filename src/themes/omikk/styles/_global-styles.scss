@@ -1,0 +1,30 @@
+// Add any global css for the theme here
+$custom-file-text: ();
+
+// imports the base global style
+@import '../../../styles/_global-styles.scss';
+
+.greeting {
+  color: white !important;
+  text-align: center;
+  font-size: x-large;
+}
+
+.home-news-text {
+  color: white !important;
+  text-align: justify;
+}
+
+span.noselect {
+  position: relative;
+  top: 15px;
+  font-size: xx-large;
+  user-select: none;
+}
+
+/* Hide navbar when PDF viewer is open */
+body.pdf-viewer-open #header-navbar-wrapper,
+body.pdf-viewer-open ds-header,
+body.pdf-viewer-open ds-themed-header {
+  display: none;
+}

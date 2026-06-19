@@ -1,0 +1,6 @@
+<ds-pdf-viewer
+    *ngIf="effectivePdfUrl"
+    [pdfUrl]="effectivePdfUrl"
+    (loadError)="loadError.emit()"
+    (contextmenu)="disableContextMenu($event)">
+</ds-pdf-viewer>

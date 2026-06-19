@@ -1,0 +1,142 @@
+<div class="container mt-4">
+
+  <!-- Filters (admin only) -->
+  <div class="card mb-4" *ngIf="isAdmin">
+    <div class="card-body">
+      <h5 class="card-title">{{ "custom-stats.filter" | translate }}</h5>
+      <div class="row align-items-end">
+        <div class="form-group col-auto">
+          <label>{{ "custom-stats.from" | translate }}</label>
+          <input type="date" class="form-control" [(ngModel)]="fromdate">
+        </div>
+        <div class="form-group col-auto">
+          <label>{{ "custom-stats.to" | translate }}</label>
+          <input type="date" class="form-control" [(ngModel)]="todate">
+        </div>
+        <div class="form-group col-auto">
+          <label>{{ "custom-stats.resolution" | translate }}</label>
+          <select class="form-control" [(ngModel)]="resolution">
+            <option [value]="3">{{ "custom-stats.day" | translate }}</option>
+            <option [value]="2">{{ "custom-stats.month" | translate }}</option>
+            <option [value]="1">{{ "custom-stats.year" | translate }}</option>
+          </select>
+        </div>
+        <div class="form-group col-auto">
+          <div class="form-check mt-4">
+            <input class="form-check-input" type="checkbox" [(ngModel)]="isbot" id="isbot">
+            <label class="form-check-label" for="isbot">{{ "custom-stats.bots" | translate }}</label>
+          </div>
+        </div>
+        <div class="form-group col-auto">
+          <button class="btn btn-primary mt-4" (click)="loadAll()">{{ "custom-stats.apply" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="m-1" *ngIf="!isAdmin">{{ "custom-stats.title" | translate }}</h2>
+
+  <!-- 1. Total views -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">{{ "custom-stats.total-views" | translate }}</h5>
+      <h2>{{ total | number }}</h2>
+    </div>
+  </div>
+
+  <!-- 2. Views over time (line chart) -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">{{ "custom-stats.detailed-views" | translate }}</h5>
+      <canvas baseChart [data]="lineData" [options]="lineOptions" type="line"></canvas>
+    </div>
+  </div>
+
+  <!-- 3. Views by resource (bar chart) -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">{{ "custom-stats.resource-views" | translate }}</h5>
+      <div class="form-inline mb-2">
+        <select class="form-control me-2" [(ngModel)]="resourceType" (change)="loadByResource()">
+          <option value="item">{{ "custom-stats.item" | translate }}</option>
+          <option value="collection">{{ "custom-stats.collection" | translate }}</option>
+          <option value="community">{{ "custom-stats.community" | translate }}</option>
+        </select>
+      </div>
+      <canvas baseChart [data]="resourceData" [options]="resourceOptions" type="bar"></canvas>
+    </div>
+  </div>
+
+  <!-- 4. Views by city (table) -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">{{ "custom-stats.city-views" | translate }}</h5>
+      <table class="table table-sm table-striped">
+        <thead>
+          <tr><th>{{ "custom-stats.city" | translate }}</th><th>{{ "custom-stats.views" | translate }}</th></tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of cityRows">
+            <td>{{ row.city || '(unknown)' }}</td>
+            <td>{{ row.count | number }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 5. Keyword search (bar chart) -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">{{ "custom-stats.keyword-search" | translate }}</h5>
+      <div class="form-inline mb-2">
+        <select class="form-control me-2" [(ngModel)]="searchType">
+          <option value="city">{{ "custom-stats.city" | translate }}</option>
+          <option value="url">{{ "custom-stats.url" | translate }}</option>
+          <option value="dns">{{ "custom-stats.dns" | translate }}</option>
+          <option value="community">{{ "custom-stats.community" | translate }}</option>
+          <option value="collection">{{ "custom-stats.collection" | translate }}</option>
+          <option value="item">{{ "custom-stats.item" | translate }}</option>
+        </select>
+        <input type="text" class="form-control me-2" [(ngModel)]="keyword" placeholder="Enter keyword">
+        <button class="btn btn-secondary" (click)="loadSearch()">{{ "custom-stats.search" | translate }}</button>
+      </div>
+      <canvas baseChart [data]="searchData" [options]="searchOptions" type="bar"></canvas>
+    </div>
+  </div>
+
+  <!-- 6. Submissions this year (visible to all) -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">{{ "custom-stats.submissions-year" | translate: { year: currentYear } }}</h5>
+      <h2>{{ submissionsTotal | number }}</h2>
+      <table class="table table-sm table-striped mt-3" *ngIf="submissionsByCommunity.length > 0">
+        <thead>
+          <tr>
+            <th>{{ "custom-stats.community" | translate }}</th>
+            <th>{{ "custom-stats.submissions-count" | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of submissionsByCommunity">
+            <td>{{ row.name }}</td>
+            <td>{{ row.count | number }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 7. Total items as of date (admin only) -->
+  <div class="card mb-4" *ngIf="isAdmin">
+    <div class="card-body">
+      <h5 class="card-title">{{ "custom-stats.items-asofdate-title" | translate }}</h5>
+      <div class="form-inline mb-3">
+        <input type="date" class="form-control me-2" [(ngModel)]="asOfDate">
+        <button class="btn btn-primary" (click)="loadItemsAsOfDate()">{{ "custom-stats.apply" | translate }}</button>
+      </div>
+      <h2 *ngIf="asOfDateTotal !== null">{{ asOfDateTotal | number }}</h2>
+    </div>
+  </div>
+
+</div>
