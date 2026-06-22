@@ -24,6 +24,23 @@ module.exports = {
             .replace(/https:\/\/devrepozitorium\.omikk\.bme\.hu/g, "https://localhost:1234");
       }
 
+      // Expose the Authorization response header so Angular's AuthInterceptor can read
+      // the Bearer JWT token that DSpace sets after a successful Shibboleth login.
+      // Without this, the token is invisible to the browser and the user stays anonymous.
+      const existingExpose = proxyRes.headers["access-control-expose-headers"] || "";
+      if (!existingExpose.toLowerCase().includes("authorization")) {
+        proxyRes.headers["access-control-expose-headers"] = existingExpose
+          ? existingExpose + ", Authorization"
+          : "Authorization";
+      }
+
+      // Debug: log the Authorization response header for /authn/login requests
+      if (req.url && req.url.includes("/authn/login") && proxyRes.headers["authorization"]) {
+        console.log("[proxy] /authn/login Authorization header present:", !!proxyRes.headers["authorization"]);
+      } else if (req.url && req.url.includes("/authn/login")) {
+        console.warn("[proxy] /authn/login response MISSING Authorization header! Status:", proxyRes.statusCode);
+      }
+
       const ct = (proxyRes.headers["content-type"] || "").toLowerCase();
 
       const isJson =
