@@ -10764,10 +10764,10 @@
   "system-wide-alert-banner.countdown.hours": "{{hours}} óra és",
 
   //"system-wide-alert-banner.countdown.minutes": "{{minutes}} minute(s):",
-  "system-wide-alert-banner.countdown.minutes": "{{minutes}} perc:",
+  "system-wide-alert-banner.countdown.minutes": "{{minutes}} perc múlva:",
 
   //"system-wide-alert-banner.countdown.prefix": "In",
-  "system-wide-alert-banner.countdown.prefix": "Be",
+  "system-wide-alert-banner.countdown.prefix": "Aktív",
 
   //"system-wide-alert-banner.retrieval.error": "Something went wrong retrieving the system-wide alert banner",
   "system-wide-alert-banner.retrieval.error": "Valami félrement a rendszerszintű figyelmeztető sáv lekérése közben",
@@ -11854,9 +11854,9 @@
   "form.group.add": "Hozzáad",
   "form.group.close": "Bezár",
   "form.group.set": "Beállít",
-  "form.number-picker.label.Day": "nap",
-  "form.number-picker.label.Month": "hónap",
-  "form.number-picker.label.Year": "év",
+  "form.number-picker.label.Nap": "Nap",
+  "form.number-picker.label.Hónap": "Hónap",
+  "form.number-picker.label.Év": "Év",
   "form.other-information.dc_relation_grantno": "Grant Szám",
   "form.other-information.institution-affiliation-name": "Affiliációk",
   "form.other-information.not-available": "Ne elérhető",

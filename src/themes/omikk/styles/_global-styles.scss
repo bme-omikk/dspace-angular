@@ -28,3 +28,16 @@ body.pdf-viewer-open ds-header,
 body.pdf-viewer-open ds-themed-header {
   display: none;
 }
+
+/*
+ * Fix ds-dynamic-lookup dropdown alignment (e.g. ORCID & other vocabulary lookups).
+ * ng-bootstrap's ngbDropdown positions the menu with Popper.js in "dynamic" mode,
+ * which writes an inline `transform: translate(...)` onto the menu. Because the menu
+ * is full-width (.w-100) but anchored to the right-side "Search" button, Popper's
+ * overflow handling shifts it left. Neutralising the transform restores the correct
+ * position. This is the theme-only equivalent of setting display="static" on the
+ * dropdown (which would otherwise require editing the core, non-themeable component).
+ */
+ds-dynamic-lookup .dropdown-menu.scrollable-dropdown-menu {
+  transform: none !important;
+}
