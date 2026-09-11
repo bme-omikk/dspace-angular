@@ -264,7 +264,8 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
     history.pushState(null, '', location.href);
     this.pdfBlobUrl = null;
     const bitstreamId = mediaItem.bitstream.id;
-    this.pdfBlobUrl = `${this.appConfig.rest.baseUrl}/api/core/bitstreams/${bitstreamId}/content`;
+    //this.pdfBlobUrl = `${this.appConfig.rest.baseUrl}/api/core/bitstreams/${bitstreamId}/content`;
+    this.pdfBlobUrl = `${this.appConfig.rest.baseUrl}/api/xpdf/stream?uuid=${bitstreamId}`;
     this.changeDetectorRef.detectChanges();
   }
 

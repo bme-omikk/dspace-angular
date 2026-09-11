@@ -65,4 +65,5 @@
   flex-direction: column;
   align-items: center;
   padding: 12px 0;
+  outline: none; // hide focus ring; container is focusable for keyboard scrolling
 }
